@@ -1,0 +1,14 @@
+[
+    {
+        "Id": 1,
+        "Nombre": "Admin",
+        "Apellido": "Usuario",
+        "FechaNacimiento": "1980-01-01T00:00:00"
+    },
+    {
+        "Id": 2,
+        "Nombre": "Regular",
+        "Apellido": "Usuario",
+        "FechaNacimiento": "1990-01-01T00:00:00"
+    }
+]

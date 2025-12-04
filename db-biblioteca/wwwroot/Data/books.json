@@ -1,0 +1,9 @@
+[
+    {
+        "Id": 1,
+        "Titulo": "Libro de Ejemplo",
+        "Autor": "Autor Ejemplo",
+        "ISBN": "1234567890",
+        "Cantidad": 10
+    }
+]

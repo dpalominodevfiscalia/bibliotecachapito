@@ -1,0 +1,7 @@
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.csproj.AssemblyReference.cache
+d:\db-biblioteca\obj\Debug\net8.0\rpswa.dswa.cache.json
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.GeneratedMSBuildEditorConfig.editorconfig
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.csproj.CoreCompileInputs.cache
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.MvcApplicationPartsAssemblyInfo.cache
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.RazorAssemblyInfo.cache
+d:\db-biblioteca\obj\Debug\net8.0\BibliotecaDB.RazorAssemblyInfo.cs

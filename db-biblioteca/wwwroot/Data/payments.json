@@ -1,0 +1,9 @@
+[
+    {
+        "Id": 1,
+        "IdPedido": 1,
+        "Monto": 100.0,
+        "FechaPago": "2023-01-01T00:00:00",
+        "Metodo": "Tarjeta de Crédito"
+    }
+]

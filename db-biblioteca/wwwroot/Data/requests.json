@@ -1,0 +1,9 @@
+[
+    {
+        "Id": 1,
+        "IdUsuario": 1,
+        "Descripcion": "Solicitud de ejemplo",
+        "FechaSolicitud": "2023-01-01T00:00:00",
+        "Estado": "Pendiente"
+    }
+]

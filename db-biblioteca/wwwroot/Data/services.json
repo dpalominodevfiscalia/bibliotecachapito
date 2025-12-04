@@ -1,0 +1,8 @@
+[
+    {
+        "Id": 1,
+        "Nombre": "Servicio de Ejemplo",
+        "Descripcion": "Descripción",
+        "Precio": 50.0
+    }
+]
