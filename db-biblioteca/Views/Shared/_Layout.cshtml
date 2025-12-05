@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title - BibliotecaDB</title>
-    @Styles.Render("~/Content/css")
+    <link href="~/adminlte/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/adminlte/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/site.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -17,6 +19,13 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="@Url.Action("Index", "Home")" class="nav-link">Inicio</a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                @using (Html.BeginForm("Logout", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-link nav-link" style="color: white; padding: 0;">Cerrar Sesión</button>
+                }
+            </li>
         </ul>
     </nav>
     <!-- Main Sidebar Container -->
@@ -27,72 +36,18 @@
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")" class="nav-link">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>Inicio</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Users")" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Usuarios</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Books")" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Libros</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Schools")" class="nav-link">
-                            <i class="nav-icon fas fa-school"></i>
-                            <p>Colegios</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Orders")" class="nav-link">
-                            <i class="nav-icon fas fa-shopping-cart"></i>
-                            <p>Pedidos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Payments")" class="nav-link">
-                            <i class="nav-icon fas fa-credit-card"></i>
-                            <p>Pagos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Sales")" class="nav-link">
-                            <i class="nav-icon fas fa-chart-line"></i>
-                            <p>Ventas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Requests")" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
-                            <p>Solicitudes</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Roles")" class="nav-link">
-                            <i class="nav-icon fas fa-user-tag"></i>
-                            <p>Roles</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Profiles")" class="nav-link">
-                            <i class="nav-icon fas fa-id-card"></i>
-                            <p>Perfiles</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Services")" class="nav-link">
-                            <i class="nav-icon fas fa-cogs"></i>
-                            <p>Servicios</p>
-                        </a>
-                    </li>
+                    @if (ViewBag.MenuItems != null && ViewBag.MenuItems.Count > 0)
+                    {
+                        @foreach (var item in ViewBag.MenuItems)
+                        {
+                            <li class="nav-item">
+                                <a href="@item.Url" class="nav-link">
+                                    <i class="nav-icon @item.Icon"></i>
+                                    <p>@item.Title</p>
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </nav>
         </div>
@@ -118,8 +73,9 @@
         <strong>Copyright &copy; 2023 BibliotecaDB.</strong>
     </footer>
 </div>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+<script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
+<script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/adminlte/js/adminlte.min.js"></script>
 @RenderSection("scripts", required: false)
 </body>
 </html>

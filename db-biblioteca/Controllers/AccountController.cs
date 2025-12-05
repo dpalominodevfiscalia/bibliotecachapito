@@ -1,5 +1,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BibliotecaDB.Models;
 using BibliotecaDB.Services;
@@ -33,8 +34,7 @@ namespace BibliotecaDB.Controllers
                 var user = users.FirstOrDefault(u => u.NombreUsuario == model.NombreUsuario && u.Contraseña == model.Contraseña);
                 if (user != null)
                 {
-                    // TODO: Implement ASP.NET Core authentication
-                    // FormsAuthentication.SetAuthCookie(user.NombreUsuario, false);
+                    HttpContext.Response.Cookies.Append("ProfileId", user.IdPerfil.ToString());
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -50,8 +50,7 @@ namespace BibliotecaDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
-            // TODO: Implement ASP.NET Core sign out
-            // await HttpContext.SignOutAsync();
+            HttpContext.Response.Cookies.Delete("ProfileId");
             return RedirectToAction("Index", "Home");
         }
     }

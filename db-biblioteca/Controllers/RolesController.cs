@@ -5,20 +5,18 @@ using BibliotecaDB.Services;
 
 namespace BibliotecaDB.Controllers
 {
-    public class RolesController : Controller
+    public class RolesController : BaseController
     {
-        private readonly IWebHostEnvironment _env;
-        private readonly DataService _dataService;
-
-        public RolesController(IWebHostEnvironment env, DataService dataService)
+        public RolesController(IWebHostEnvironment env, DataService dataService) : base(env, dataService)
         {
-            _env = env;
-            _dataService = dataService;
         }
 
         // GET: Roles
         public ActionResult Index()
         {
+            var redirect = EnsureLoggedIn();
+            if (redirect != null) return redirect;
+            SetMenuItems();
             return View(_dataService.GetRoles());
         }
 

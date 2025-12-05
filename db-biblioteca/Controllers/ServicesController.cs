@@ -5,20 +5,18 @@ using BibliotecaDB.Services;
 
 namespace BibliotecaDB.Controllers
 {
-    public class ServicesController : Controller
+    public class ServicesController : BaseController
     {
-        private readonly IWebHostEnvironment _env;
-        private readonly DataService _dataService;
-
-        public ServicesController(IWebHostEnvironment env, DataService dataService)
+        public ServicesController(IWebHostEnvironment env, DataService dataService) : base(env, dataService)
         {
-            _env = env;
-            _dataService = dataService;
         }
 
         // GET: Services
         public ActionResult Index()
         {
+            var redirect = EnsureLoggedIn();
+            if (redirect != null) return redirect;
+            SetMenuItems();
             return View(_dataService.GetServicios());
         }
 

@@ -20,6 +20,7 @@ public class DataService
     private List<Venta> _ventas;
     private List<Colegio> _colegios;
     private List<Servicio> _servicios;
+    private List<MenuItem> _menuItems;
 
     public DataService(IWebHostEnvironment env)
     {
@@ -39,6 +40,7 @@ public class DataService
         _ventas = LoadFromFile<Venta>("sales.json");
         _colegios = LoadFromFile<Colegio>("schools.json");
         _servicios = LoadFromFile<Servicio>("services.json");
+        _menuItems = LoadFromFile<MenuItem>("menu.json");
         PopulateUsuarioDetails();
     }
 
@@ -315,4 +317,7 @@ public class DataService
         _servicios.RemoveAll(s => s.Id == id);
         SaveToFile("services.json", _servicios);
     }
+
+    // Menu
+    public List<MenuItem> GetMenuItemsForProfile(int profileId) => _menuItems.Where(m => m.Profiles.Contains(profileId)).ToList();
 }

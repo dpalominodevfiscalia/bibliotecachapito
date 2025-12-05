@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\db-biblioteca\\BibliotecaDB.csproj": {}
+    "D:\\db-biblioteca\\BibliotecaDB.csproj": {}
   },
   "projects": {
-    "d:\\db-biblioteca\\BibliotecaDB.csproj": {
+    "D:\\db-biblioteca\\BibliotecaDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\db-biblioteca\\BibliotecaDB.csproj",
+        "projectUniqueName": "D:\\db-biblioteca\\BibliotecaDB.csproj",
         "projectName": "BibliotecaDB",
-        "projectPath": "d:\\db-biblioteca\\BibliotecaDB.csproj",
+        "projectPath": "D:\\db-biblioteca\\BibliotecaDB.csproj",
         "packagesPath": "C:\\Users\\FN\\.nuget\\packages\\",
-        "outputPath": "d:\\db-biblioteca\\obj\\",
+        "outputPath": "D:\\db-biblioteca\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

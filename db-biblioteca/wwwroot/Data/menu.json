@@ -1,0 +1,68 @@
+[
+    {
+        "title": "Inicio",
+        "url": "/Home/Index",
+        "icon": "fas fa-home",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Usuarios",
+        "url": "/Users/Index",
+        "icon": "fas fa-users",
+        "profiles": [1]
+    },
+    {
+        "title": "Libros",
+        "url": "/Books/Index",
+        "icon": "fas fa-book",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Colegios",
+        "url": "/Schools/Index",
+        "icon": "fas fa-school",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Pedidos",
+        "url": "/Orders/Index",
+        "icon": "fas fa-shopping-cart",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Pagos",
+        "url": "/Payments/Index",
+        "icon": "fas fa-credit-card",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Ventas",
+        "url": "/Sales/Index",
+        "icon": "fas fa-chart-line",
+        "profiles": [1]
+    },
+    {
+        "title": "Solicitudes",
+        "url": "/Requests/Index",
+        "icon": "fas fa-clipboard-list",
+        "profiles": [1, 2]
+    },
+    {
+        "title": "Roles",
+        "url": "/Roles/Index",
+        "icon": "fas fa-user-tag",
+        "profiles": [1]
+    },
+    {
+        "title": "Perfiles",
+        "url": "/Profiles/Index",
+        "icon": "fas fa-id-card",
+        "profiles": [1]
+    },
+    {
+        "title": "Servicios",
+        "url": "/Services/Index",
+        "icon": "fas fa-cogs",
+        "profiles": [1]
+    }
+]

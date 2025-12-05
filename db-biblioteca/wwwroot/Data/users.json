@@ -1,18 +1,18 @@
 [
-    {
-        "Id": 1,
-        "NombreUsuario": "admin",
-        "Contraseña": "password",
-        "Correo": "admin@example.com",
-        "IdRol": 1,
-        "IdPerfil": 1
-    },
-    {
-        "Id": 2,
-        "NombreUsuario": "usuario",
-        "Contraseña": "password",
-        "Correo": "usuario@example.com",
-        "IdRol": 2,
-        "IdPerfil": 2
-    }
+  {
+    "Id": 1,
+    "NombreUsuario": "admin",
+    "Contraseña": "admin",
+    "Correo": "admin@example.com",
+    "IdRol": 1,
+    "IdPerfil": 1
+  },
+  {
+    "Id": 2,
+    "NombreUsuario": "usuario",
+    "Contraseña": "usuario",
+    "Correo": "usuario@example.com",
+    "IdRol": 2,
+    "IdPerfil": 2
+  }
 ]

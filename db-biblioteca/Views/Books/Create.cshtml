@@ -40,7 +40,9 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+    <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary">Regresar</button>
+</div>
 </div>
 
 @section Scripts {

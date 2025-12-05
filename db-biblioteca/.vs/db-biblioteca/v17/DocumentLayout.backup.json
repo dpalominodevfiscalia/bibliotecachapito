@@ -3,8 +3,147 @@
   "WorkspaceRootPath": "D:\\db-biblioteca\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\requests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\requests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\requests\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\requests\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\profiles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\profiles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\requests\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\requests\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\requests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\requests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\payments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\payments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\payments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\payments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\payments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\payments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\roles.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\roles.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\users.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\users.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:services\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\models\\bibliotecadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:models\\bibliotecadbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\menu.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\profiles.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\profiles.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\requests.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\requests.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\payments.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\payments.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\wwwroot\\data\\orders.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:wwwroot\\data\\orders.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\schoolscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\schoolscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|d:\\db-biblioteca\\controllers\\salescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D346AB0-562F-C6FE-BD58-F06007C81DE5}|BibliotecaDB.csproj|solutionrelative:controllers\\salescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +153,467 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Requests\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Requests\\Delete.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Requests\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Requests\\Delete.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACsAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:57:49.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Requests\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Requests\\Create.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Requests\\Create.cshtml",
+              "RelativeToolTip": "Views\\Requests\\Create.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:57:38.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Profiles\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Profiles\\Create.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Profiles\\Create.cshtml",
+              "RelativeToolTip": "Views\\Profiles\\Create.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:57:30.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Requests\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Requests\\Edit.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Requests\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Requests\\Edit.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:57:24.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Requests\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Requests\\Index.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Requests\\Index.cshtml",
+              "RelativeToolTip": "Views\\Requests\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:57:20.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Payments\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Payments\\Edit.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Payments\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Payments\\Edit.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACsAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:50:48.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Users\\Index.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:44:07.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Payments\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Payments\\Index.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Payments\\Index.cshtml",
+              "RelativeToolTip": "Views\\Payments\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:43:59.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Payments\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Payments\\Create.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Payments\\Create.cshtml",
+              "RelativeToolTip": "Views\\Payments\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:43:58.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Roles\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Index.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Roles\\Index.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Index.cshtml",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAABoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:34:24.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Roles\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Roles\\Create.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Roles\\Create.cshtml",
+              "RelativeToolTip": "Views\\Roles\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T22:34:24.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:43.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:38:46.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "Controllers\\ServicesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:37.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "requests.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\requests.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\requests.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\requests.json",
+              "RelativeToolTip": "wwwroot\\Data\\requests.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:32:49.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "menu.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\menu.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\menu.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\menu.json",
+              "RelativeToolTip": "wwwroot\\Data\\menu.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAD4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:43:31.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "users.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\users.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\users.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\users.json",
+              "RelativeToolTip": "wwwroot\\Data\\users.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T22:05:25.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:09:20.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "roles.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\roles.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\roles.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\roles.json",
+              "RelativeToolTip": "wwwroot\\Data\\roles.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:32:41.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DataService.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Services\\DataService.cs",
+              "RelativeDocumentMoniker": "Services\\DataService.cs",
+              "ToolTip": "D:\\db-biblioteca\\Services\\DataService.cs",
+              "RelativeToolTip": "Services\\DataService.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAASwDkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:18:43.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RolesController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Controllers\\RolesController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAhwDgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:16.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BibliotecaDBContext.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Models\\BibliotecaDBContext.cs",
+              "RelativeDocumentMoniker": "Models\\BibliotecaDBContext.cs",
+              "ToolTip": "D:\\db-biblioteca\\Models\\BibliotecaDBContext.cs",
+              "RelativeToolTip": "Models\\BibliotecaDBContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T21:57:33.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "Controllers\\BooksController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAowBgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:38:45.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T20:50:34.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\db-biblioteca\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\db-biblioteca\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T20:52:01.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAP8UAAAAAAAAAAAqwBEVAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-12-05T20:53:08.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "Controllers\\BaseController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAewCAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:05:54.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "orders.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\orders.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\orders.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\orders.json",
+              "RelativeToolTip": "wwwroot\\Data\\orders.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:32:45.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "payments.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\payments.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\payments.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\payments.json",
+              "RelativeToolTip": "wwwroot\\Data\\payments.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:32:46.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "profiles.json",
+              "DocumentMoniker": "D:\\db-biblioteca\\wwwroot\\Data\\profiles.json",
+              "RelativeDocumentMoniker": "wwwroot\\Data\\profiles.json",
+              "ToolTip": "D:\\db-biblioteca\\wwwroot\\Data\\profiles.json",
+              "RelativeToolTip": "wwwroot\\Data\\profiles.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:32:47.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SchoolsController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\SchoolsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SchoolsController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\SchoolsController.cs",
+              "RelativeToolTip": "Controllers\\SchoolsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:34.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "RequestsController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\RequestsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RequestsController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\RequestsController.cs",
+              "RelativeToolTip": "Controllers\\RequestsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:07.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfilesController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "Controllers\\ProfilesController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:38:56.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:38:26.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "SalesController.cs",
+              "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\SalesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SalesController.cs",
+              "ToolTip": "D:\\db-biblioteca\\Controllers\\SalesController.cs",
+              "RelativeToolTip": "Controllers\\SalesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T20:39:27.022Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "D:\\db-biblioteca\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "Controllers\\OrdersController.cs",
               "ToolTip": "D:\\db-biblioteca\\Controllers\\OrdersController.cs",
               "RelativeToolTip": "Controllers\\OrdersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T17:27:23.521Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T17:27:23.521Z"
             }
           ]
         }

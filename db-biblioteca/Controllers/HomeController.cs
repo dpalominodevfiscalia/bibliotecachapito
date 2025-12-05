@@ -1,11 +1,20 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using BibliotecaDB.Services;
 
 namespace BibliotecaDB.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public HomeController(IWebHostEnvironment env, DataService dataService) : base(env, dataService)
+        {
+        }
+
         public IActionResult Index()
         {
+            var redirect = EnsureLoggedIn();
+            if (redirect != null) return redirect;
+            SetMenuItems();
             return View();
         }
 
