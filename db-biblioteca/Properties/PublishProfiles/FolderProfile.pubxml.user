@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\0_Fuentes\Chapito\bibliotecachapito\db-biblioteca\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2025-12-07T23:18:33.2994243Z;True|2025-12-07T04:07:14.5360347-05:00;True|2025-12-07T03:55:12.5239711-05:00;True|2025-12-07T03:14:35.7896883-05:00;True|2025-12-07T03:06:55.3997078-05:00;</History>
+  </PropertyGroup>
+</Project>

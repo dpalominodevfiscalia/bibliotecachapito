@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <Compile Remove="Content\**" />
+    <Content Remove="Content\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <None Remove="Content\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   <ItemGroup>
@@ -38,39 +45,6 @@
     <None Include="wwwroot\adminlte\css\alt\adminlte.plugins.css.map" />
     <None Include="wwwroot\adminlte\css\alt\adminlte.plugins.min.css" />
     <None Include="wwwroot\adminlte\css\alt\adminlte.plugins.min.css.map" />
-    <None Include="wwwroot\adminlte\img\AdminLTELogo.png" />
-    <None Include="wwwroot\adminlte\img\avatar.png" />
-    <None Include="wwwroot\adminlte\img\avatar2.png" />
-    <None Include="wwwroot\adminlte\img\avatar3.png" />
-    <None Include="wwwroot\adminlte\img\avatar4.png" />
-    <None Include="wwwroot\adminlte\img\avatar5.png" />
-    <None Include="wwwroot\adminlte\img\boxed-bg.jpg" />
-    <None Include="wwwroot\adminlte\img\boxed-bg.png" />
-    <None Include="wwwroot\adminlte\img\credit\american-express.png" />
-    <None Include="wwwroot\adminlte\img\credit\cirrus.png" />
-    <None Include="wwwroot\adminlte\img\credit\mastercard.png" />
-    <None Include="wwwroot\adminlte\img\credit\paypal.png" />
-    <None Include="wwwroot\adminlte\img\credit\paypal2.png" />
-    <None Include="wwwroot\adminlte\img\credit\visa.png" />
-    <None Include="wwwroot\adminlte\img\default-150x150.png" />
-    <None Include="wwwroot\adminlte\img\icons.png" />
-    <None Include="wwwroot\adminlte\img\photo1.png" />
-    <None Include="wwwroot\adminlte\img\photo2.png" />
-    <None Include="wwwroot\adminlte\img\photo3.jpg" />
-    <None Include="wwwroot\adminlte\img\photo4.jpg" />
-    <None Include="wwwroot\adminlte\img\prod-1.jpg" />
-    <None Include="wwwroot\adminlte\img\prod-2.jpg" />
-    <None Include="wwwroot\adminlte\img\prod-3.jpg" />
-    <None Include="wwwroot\adminlte\img\prod-4.jpg" />
-    <None Include="wwwroot\adminlte\img\prod-5.jpg" />
-    <None Include="wwwroot\adminlte\img\user1-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user2-160x160.jpg" />
-    <None Include="wwwroot\adminlte\img\user3-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user4-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user5-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user6-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user7-128x128.jpg" />
-    <None Include="wwwroot\adminlte\img\user8-128x128.jpg" />
     <None Include="wwwroot\adminlte\js\adminlte.js" />
     <None Include="wwwroot\adminlte\js\adminlte.js.map" />
     <None Include="wwwroot\adminlte\js\adminlte.min.js" />
@@ -2063,8 +2037,5 @@
     <None Include="wwwroot\adminlte\plugins\uplot\uPlot.iife.js" />
     <None Include="wwwroot\adminlte\plugins\uplot\uPlot.iife.min.js" />
     <None Include="wwwroot\adminlte\plugins\uplot\uPlot.min.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
   </ItemGroup>
 </Project>

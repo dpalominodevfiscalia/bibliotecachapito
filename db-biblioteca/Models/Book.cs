@@ -12,5 +12,6 @@ namespace BibliotecaDB.Models
         public string Autor { get; set; }
         public string ISBN { get; set; }
         public int Cantidad { get; set; }
+        public string Estado { get; set; } = "Activo";
     }
 }

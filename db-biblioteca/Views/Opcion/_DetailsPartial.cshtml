@@ -1,0 +1,41 @@
+@model BibliotecaDB.Models.MenuItem
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Title)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Title)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Url)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Url)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Icon)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Icon)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Estado)
+    </dd>
+    <dt class="col-sm-2">
+        Perfiles
+    </dt>
+    <dd class="col-sm-10">
+        @if (Model.Profiles != null && Model.Profiles.Any())
+        {
+            @string.Join(", ", Model.Profiles)
+        }
+        else
+        {
+            <text>Ninguno</text>
+        }
+    </dd>
+</dl>

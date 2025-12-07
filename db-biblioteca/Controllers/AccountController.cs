@@ -51,7 +51,7 @@ namespace BibliotecaDB.Controllers
         public ActionResult Logout()
         {
             HttpContext.Response.Cookies.Delete("ProfileId");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }

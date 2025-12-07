@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Libro de Matemáticas",
+    "Descripcion": "Libro de matemáticas básicas para estudiantes",
+    "Precio": 25.99,
+    "PrecioCompra": 15.50,
+    "Stock": 50,
+    "IdCategoria": 1,
+    "FechaCreacion": "2023-01-15T00:00:00",
+    "Estado": "Activo",
+    "ImagenUrl": "/images/math-book.jpg"
+  },
+  {
+    "Id": 2,
+    "Nombre": "Libro de Historia",
+    "Descripcion": "Libro de historia mundial",
+    "Precio": 35.50,
+    "PrecioCompra": 20.75,
+    "Stock": 30,
+    "IdCategoria": 2,
+    "FechaCreacion": "2023-02-20T00:00:00",
+    "Estado": "Activo",
+    "ImagenUrl": "/images/history-book.jpg"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Libro de Ciencias",
+    "Descripcion": "Libro de ciencias naturales",
+    "Precio": 45.75,
+    "PrecioCompra": 28.50,
+    "Stock": 25,
+    "IdCategoria": 3,
+    "FechaCreacion": "2023-03-10T00:00:00",
+    "Estado": "Inactivo",
+    "ImagenUrl": "/images/science-book.jpg"
+  }
+]

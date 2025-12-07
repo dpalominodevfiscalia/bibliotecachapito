@@ -3,111 +3,167 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using BibliotecaDB.Models;
 using BibliotecaDB.Services;
+using System.Threading.Tasks;
 
 namespace BibliotecaDB.Controllers
 {
-    public class OrdersController : BaseController
+    public class ComprasController : BaseController
     {
-        public OrdersController(IWebHostEnvironment env, DataService dataService) : base(env, dataService)
+        public ComprasController(IWebHostEnvironment env, DataService dataService) : base(env, dataService)
         {
         }
 
-        // GET: Orders
+        // GET: Compras
         public ActionResult Index()
         {
             var redirect = EnsureLoggedIn();
             if (redirect != null) return redirect;
-            SetMenuItems();
-            return View(_dataService.GetPedidos());
+            SetOpcionItems();
+
+            // Set permission flags based on Opcion configuration
+            HttpContext.Items["HasCreateCompraPermission"] = HasOpcionActionPermission("Compras", "Crear");
+            HttpContext.Items["HasEditCompraPermission"] = HasOpcionActionPermission("Compras", "Editar");
+            HttpContext.Items["HasDetailsCompraPermission"] = HasOpcionActionPermission("Compras", "Editar"); // Details uses Edit permission
+            HttpContext.Items["HasDeleteCompraPermission"] = HasOpcionActionPermission("Compras", "Eliminar");
+            HttpContext.Items["HasToggleCompraPermission"] = HasOpcionActionPermission("Compras", "Desactivar");
+
+            return View(_dataService.GetCompras());
         }
 
-        // GET: Orders/Details/5
+        // GET: Compras/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var order = _dataService.GetPedidoById(id.Value);
-            if (order == null)
+            var compra = _dataService.GetCompraById(id.Value);
+            if (compra == null)
             {
                 return NotFound();
             }
-            return View(order);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_DetailsPartial", compra);
+            }
+            return View(compra);
         }
 
-        // GET: Orders/Create
+        // GET: Compras/Create
         public ActionResult Create()
         {
             ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_CreatePartial");
+            }
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Compras/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id,IdUsuario,FechaPedido,Total")] Pedido order)
+        public async Task<ActionResult> Create([Bind("Id,IdUsuario,FechaCompra,Total")] Compra compra)
         {
             if (ModelState.IsValid)
             {
-                _dataService.AddPedido(order);
+                _dataService.AddCompra(compra);
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return Json(new { success = true, message = "Compra creada exitosamente" });
+                }
                 return RedirectToAction("Index");
             }
-            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", order.IdUsuario);
-            return View(order);
+            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_CreatePartial", compra);
+            }
+            return View(compra);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Compras/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var order = _dataService.GetPedidoById(id.Value);
-            if (order == null)
+            var compra = _dataService.GetCompraById(id.Value);
+            if (compra == null)
             {
                 return NotFound();
             }
-            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", order.IdUsuario);
-            return View(order);
+            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_EditPartial", compra);
+            }
+            return View(compra);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Compras/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind("Id,IdUsuario,FechaPedido,Total")] Pedido order)
+        public async Task<ActionResult> Edit([Bind("Id,IdUsuario,FechaCompra,Total")] Compra compra)
         {
             if (ModelState.IsValid)
             {
-                _dataService.UpdatePedido(order);
+                _dataService.UpdateCompra(compra);
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return Json(new { success = true, message = "Compra actualizada exitosamente" });
+                }
                 return RedirectToAction("Index");
             }
-            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", order.IdUsuario);
-            return View(order);
+            ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_EditPartial", compra);
+            }
+            return View(compra);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Compras/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return BadRequest();
             }
-            var order = _dataService.GetPedidoById(id.Value);
-            if (order == null)
+            var compra = _dataService.GetCompraById(id.Value);
+            if (compra == null)
             {
                 return NotFound();
             }
-            return View(order);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_DeletePartial", compra);
+            }
+            return View(compra);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Compras/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            _dataService.DeletePedido(id);
+            _dataService.DeleteCompra(id);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { success = true, message = "Compra eliminada exitosamente" });
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ToggleEstado(int id)
+        {
+            _dataService.ToggleCompraEstado(id);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { success = true });
+            }
             return RedirectToAction("Index");
         }
     }

@@ -1,0 +1,102 @@
+@model BibliotecaDB.Models.Solicitud
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- Purchase Request (Solicitud interna) Fields -->
+    <h4>Información de Solicitud</h4>
+    <div class="form-group">
+        <label asp-for="IdSolicitud" class="control-label"></label>
+        <input asp-for="IdSolicitud" class="form-control" placeholder="Ej: SOL-0001" />
+        <span asp-validation-for="IdSolicitud" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AreaSolicitante" class="control-label"></label>
+        <input asp-for="AreaSolicitante" class="form-control" placeholder="Ej: Compras" />
+        <span asp-validation-for="AreaSolicitante" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SolicitadoPor" class="control-label"></label>
+        <input asp-for="SolicitadoPor" class="form-control" placeholder="Nombre del solicitante" />
+        <span asp-validation-for="SolicitadoPor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaSolicitud" class="control-label"></label>
+        <input asp-for="FechaSolicitud" class="form-control" type="datetime-local" />
+        <span asp-validation-for="FechaSolicitud" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Prioridad" class="control-label"></label>
+        <select asp-for="Prioridad" class="form-control">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+        </select>
+        <span asp-validation-for="Prioridad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EstadoSolicitud" class="control-label"></label>
+        <select asp-for="EstadoSolicitud" class="form-control">
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Rechazado">Rechazado</option>
+            <option value="Atendido">Atendido</option>
+        </select>
+        <span asp-validation-for="EstadoSolicitud" class="text-danger"></span>
+    </div>
+
+    <!-- Detalle Fields -->
+    <h4>Detalle de Solicitud</h4>
+    <div class="form-group">
+        <label asp-for="ProductoServicio" class="control-label"></label>
+        <input asp-for="ProductoServicio" class="form-control" placeholder="Producto o Servicio solicitado" />
+        <span asp-validation-for="ProductoServicio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CantidadSolicitada" class="control-label"></label>
+        <input asp-for="CantidadSolicitada" class="form-control" type="number" min="1" value="1" />
+        <span asp-validation-for="CantidadSolicitada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Justificacion" class="control-label"></label>
+        <textarea asp-for="Justificacion" class="form-control" rows="3" placeholder="Razón para esta solicitud"></textarea>
+        <span asp-validation-for="Justificacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaRequerida" class="control-label"></label>
+        <input asp-for="FechaRequerida" class="form-control" type="date" />
+        <span asp-validation-for="FechaRequerida" class="text-danger"></span>
+    </div>
+
+    <!-- Original Fields -->
+    <div class="form-group">
+        <label asp-for="IdUsuario" class="control-label"></label>
+        <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
+        <span asp-validation-for="IdUsuario" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descripcion" class="control-label"></label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado" class="control-label"></label>
+        <input asp-for="Estado" class="form-control" />
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Crear Solicitud" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

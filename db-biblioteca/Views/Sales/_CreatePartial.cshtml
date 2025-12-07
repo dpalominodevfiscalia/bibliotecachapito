@@ -1,0 +1,142 @@
+@model BibliotecaDB.Models.Venta
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="IdUsuario" class="control-label"></label>
+        <select asp-for="IdUsuario" asp-items="ViewBag.IdUsuario" class="form-control"></select>
+        <span asp-validation-for="IdUsuario" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tipo" class="control-label"></label>
+        <select asp-for="Tipo" id="tipoVenta" class="form-control" onchange="toggleProductoServicio()">
+            <option value="Producto">Producto</option>
+            <option value="Servicio">Servicio</option>
+        </select>
+        <span asp-validation-for="Tipo" class="text-danger"></span>
+    </div>
+
+    <div id="productoSection" class="form-group">
+        <label asp-for="IdProducto" class="control-label"></label>
+        <select asp-for="IdProducto" id="IdProducto" class="form-control">
+            <option value="">Seleccione un producto</option>
+            @if (ViewBag.Productos != null)
+            {
+                @foreach (var producto in ViewBag.Productos)
+                {
+                    <option value="@producto.Id" data-precio="@producto.Precio">@producto.Nombre - @producto.Precio</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="IdProducto" class="text-danger"></span>
+    </div>
+
+    <div id="servicioSection" class="form-group" style="display:none;">
+        <label asp-for="IdServicio" class="control-label"></label>
+        <select asp-for="IdServicio" id="IdServicio" class="form-control">
+            <option value="">Seleccione un servicio</option>
+            @if (ViewBag.Servicios != null)
+            {
+                @foreach (var servicio in ViewBag.Servicios)
+                {
+                    <option value="@servicio.Id" data-precio="@servicio.Precio">@servicio.Nombre - @servicio.Precio</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="IdServicio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cantidad" class="control-label"></label>
+        <input asp-for="Cantidad" id="Cantidad" class="form-control" value="1" min="1" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Total" class="control-label"></label>
+        <input asp-for="Total" class="form-control" type="number" step="0.01" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaVenta" class="control-label"></label>
+        <input asp-for="FechaVenta" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="FechaVenta" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-primary" />
+    </div>
+</form>
+
+<script>
+    // Use querySelector to find elements by name attribute since ASP.NET Core generates different IDs
+    function toggleProductoServicio() {
+        var tipo = document.querySelector('[name="Tipo"]').value;
+        var productoSection = document.getElementById('productoSection');
+        var servicioSection = document.getElementById('servicioSection');
+
+        if (tipo === 'Producto') {
+            productoSection.style.display = 'block';
+            servicioSection.style.display = 'none';
+            document.querySelector('[name="IdServicio"]').value = '';
+        } else {
+            productoSection.style.display = 'none';
+            servicioSection.style.display = 'block';
+            document.querySelector('[name="IdProducto"]').value = '';
+        }
+        calcularTotal();
+    }
+
+    function calcularTotal() {
+        var tipo = document.querySelector('[name="Tipo"]').value;
+        var cantidad = document.querySelector('[name="Cantidad"]').value || 1;
+        var precio = 0;
+
+        if (tipo === 'Producto') {
+            var productoSelect = document.querySelector('[name="IdProducto"]');
+            if (productoSelect) {
+                var selectedOption = productoSelect.options[productoSelect.selectedIndex];
+                if (selectedOption) {
+                    precio = parseFloat(selectedOption.getAttribute('data-precio')) || 0;
+                }
+            }
+        } else {
+            var servicioSelect = document.querySelector('[name="IdServicio"]');
+            if (servicioSelect) {
+                var selectedOption = servicioSelect.options[servicioSelect.selectedIndex];
+                if (selectedOption) {
+                    precio = parseFloat(selectedOption.getAttribute('data-precio')) || 0;
+                }
+            }
+        }
+
+        var total = precio * cantidad;
+        document.querySelector('[name="Total"]').value = total.toFixed(2);
+    }
+
+    // Add event listeners using querySelector
+    var productoSelect = document.querySelector('[name="IdProducto"]');
+    var servicioSelect = document.querySelector('[name="IdServicio"]');
+    var cantidadInput = document.querySelector('[name="Cantidad"]');
+    var tipoSelect = document.querySelector('[name="Tipo"]');
+
+    if (productoSelect) {
+        productoSelect.addEventListener('change', calcularTotal);
+    }
+    if (servicioSelect) {
+        servicioSelect.addEventListener('change', calcularTotal);
+    }
+    if (cantidadInput) {
+        cantidadInput.addEventListener('change', calcularTotal);
+        cantidadInput.addEventListener('input', calcularTotal);
+    }
+    if (tipoSelect) {
+        tipoSelect.addEventListener('change', toggleProductoServicio);
+    }
+
+    // Initialize total calculation on page load
+    calcularTotal();
+</script>

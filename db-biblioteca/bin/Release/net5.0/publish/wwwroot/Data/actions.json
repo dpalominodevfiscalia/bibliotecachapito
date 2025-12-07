@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "C",
+    "Descripcion": "Permiso para crear nuevos usuarios",
+    "Tipo": "Crear",
+    "Estado": "Activo",
+    "Controlador": "*",
+    "AccionMetodo": "Create"
+  },
+  {
+    "Id": 2,
+    "Nombre": "E",
+    "Descripcion": "Permiso para editar usuarios existentes",
+    "Tipo": "Editar",
+    "Estado": "Activo",
+    "Controlador": "*",
+    "AccionMetodo": "Edit"
+  },
+  {
+    "Id": 3,
+    "Nombre": "E",
+    "Descripcion": "Permiso para eliminar usuarios",
+    "Tipo": "Eliminar",
+    "Estado": "Activo",
+    "Controlador": "*",
+    "AccionMetodo": "Delete"
+  },
+  {
+    "Id": 4,
+    "Nombre": "D",
+    "Descripcion": "Permiso para desactivar",
+    "Tipo": "Desactivar",
+    "Estado": "Activo",
+    "Controlador": "*",
+    "AccionMetodo": "ToggleEstado"
+  },
+  {
+    "Id": 5,
+    "Nombre": "D",
+    "Descripcion": "Permiso para ver Info",
+    "Tipo": "Detalle",
+    "Estado": "Activo",
+    "Controlador": "*",
+    "AccionMetodo": "Details"
+  }
+]

@@ -1,0 +1,50 @@
+@model BibliotecaDB.Models.Accion
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descripcion" class="control-label"></label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tipo" class="control-label"></label>
+        <select asp-for="Tipo" class="form-control">
+            <option value="">-- Seleccione tipo --</option>
+            <option value="Crear">Crear</option>
+            <option value="Editar">Editar</option>
+            <option value="Eliminar">Eliminar</option>
+            <option value="Ver">Ver</option>
+        </select>
+        <span asp-validation-for="Tipo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado" class="control-label"></label>
+        <select asp-for="Estado" class="form-control">
+            <option value="">-- Seleccione estado --</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+            <option value="Pendiente">Pendiente</option>
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Controlador" class="control-label"></label>
+        <input asp-for="Controlador" class="form-control" />
+        <span asp-validation-for="Controlador" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AccionMetodo" class="control-label"></label>
+        <input asp-for="AccionMetodo" class="form-control" />
+        <span asp-validation-for="AccionMetodo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+</form>

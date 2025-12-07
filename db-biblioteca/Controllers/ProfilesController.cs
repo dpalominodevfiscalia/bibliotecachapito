@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using BibliotecaDB.Models;
 using BibliotecaDB.Services;
+using System.Threading.Tasks;
 
 namespace BibliotecaDB.Controllers
 {
@@ -16,7 +18,15 @@ namespace BibliotecaDB.Controllers
         {
             var redirect = EnsureLoggedIn();
             if (redirect != null) return redirect;
-            SetMenuItems();
+            SetOpcionItems();
+
+            // Set permission flags based on Opcion configuration
+            HttpContext.Items["HasCreateProfilePermission"] = HasOpcionActionPermission("Profiles", "Crear");
+            HttpContext.Items["HasEditProfilePermission"] = HasOpcionActionPermission("Profiles", "Editar");
+            HttpContext.Items["HasDetailsProfilePermission"] = HasOpcionActionPermission("Profiles", "Editar"); // Details uses Edit permission
+            HttpContext.Items["HasDeleteProfilePermission"] = HasOpcionActionPermission("Profiles", "Eliminar");
+            HttpContext.Items["HasToggleProfilePermission"] = HasOpcionActionPermission("Profiles", "Desactivar");
+
             return View(_dataService.GetPerfiles());
         }
 
@@ -32,24 +42,41 @@ namespace BibliotecaDB.Controllers
             {
                 return NotFound();
             }
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_DetailsPartial", profile);
+            }
             return View(profile);
         }
 
         // GET: Profiles/Create
         public ActionResult Create()
         {
+            ViewBag.OpcionItems = new SelectList(_dataService.GetOpcionItems(), "Id", "Title");
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_CreatePartial");
+            }
             return View();
         }
 
         // POST: Profiles/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id,Nombre,Apellido,FechaNacimiento")] Perfil profile)
+        public async Task<ActionResult> Create([Bind("Id,Nombre,Apellido,FechaNacimiento,NumeroDocumento,Telefono,StartMenuId")] Perfil profile)
         {
             if (ModelState.IsValid)
             {
                 _dataService.AddPerfil(profile);
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return Json(new { success = true, message = "Perfil creado exitosamente" });
+                }
                 return RedirectToAction("Index");
+            }
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_CreatePartial", profile);
             }
             return View(profile);
         }
@@ -66,18 +93,31 @@ namespace BibliotecaDB.Controllers
             {
                 return NotFound();
             }
+            ViewBag.OpcionItems = new SelectList(_dataService.GetOpcionItems(), "Id", "Title", profile.StartMenuId);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_EditPartial", profile);
+            }
             return View(profile);
         }
 
         // POST: Profiles/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind("Id,Nombre,Apellido,FechaNacimiento")] Perfil profile)
+        public async Task<ActionResult> Edit([Bind("Id,Nombre,Apellido,FechaNacimiento,NumeroDocumento,Telefono,StartMenuId")] Perfil profile)
         {
             if (ModelState.IsValid)
             {
                 _dataService.UpdatePerfil(profile);
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return Json(new { success = true, message = "Perfil actualizado exitosamente" });
+                }
                 return RedirectToAction("Index");
+            }
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_EditPartial", profile);
             }
             return View(profile);
         }
@@ -94,15 +134,34 @@ namespace BibliotecaDB.Controllers
             {
                 return NotFound();
             }
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_DeletePartial", profile);
+            }
             return View(profile);
         }
 
         // POST: Profiles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             _dataService.DeletePerfil(id);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { success = true, message = "Perfil eliminado exitosamente" });
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ToggleEstado(int id)
+        {
+            _dataService.TogglePerfilEstado(id);
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { success = true });
+            }
             return RedirectToAction("Index");
         }
     }

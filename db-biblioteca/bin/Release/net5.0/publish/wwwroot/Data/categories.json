@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Educación",
+    "Descripcion": "Libros y materiales educativos",
+    "Estado": "Activo"
+  },
+  {
+    "Id": 2,
+    "Nombre": "Historia",
+    "Descripcion": "Libros de historia y cultura",
+    "Estado": "Activo"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Ciencias",
+    "Descripcion": "Libros de ciencias naturales y exactas",
+    "Estado": "Activo"
+  },
+  {
+    "Id": 4,
+    "Nombre": "Literatura",
+    "Descripcion": "Libros de literatura y ficción",
+    "Estado": "Inactivo"
+  }
+]

@@ -10,5 +10,7 @@ namespace BibliotecaDB.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Accion> Acciones { get; set; }
+        public string Estado { get; set; } = "Activo";
     }
 }
