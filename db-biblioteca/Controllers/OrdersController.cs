@@ -53,6 +53,8 @@ namespace BibliotecaDB.Controllers
         public ActionResult Create()
         {
             ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario");
+            ViewBag.IdProveedor = new SelectList(_dataService.GetProveedores(), "Id", "Nombre");
+            ViewBag.IdCondicionPago = new SelectList(_dataService.GetCondicionesPago(), "Id", "Nombre");
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_CreatePartial");
@@ -63,7 +65,7 @@ namespace BibliotecaDB.Controllers
         // POST: Compras/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,IdUsuario,FechaCompra,Total")] Compra compra)
+        public async Task<ActionResult> Create([Bind("Id,IdUsuario,IdProveedor,IdCondicionPago,FechaCompra,Total,NumeroOrdenCompra,FechaEntrega,Observaciones")] Compra compra)
         {
             if (ModelState.IsValid)
             {
@@ -75,6 +77,8 @@ namespace BibliotecaDB.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            ViewBag.IdProveedor = new SelectList(_dataService.GetProveedores(), "Id", "Nombre", compra.IdProveedor);
+            ViewBag.IdCondicionPago = new SelectList(_dataService.GetCondicionesPago(), "Id", "Nombre", compra.IdCondicionPago);
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_CreatePartial", compra);
@@ -95,6 +99,8 @@ namespace BibliotecaDB.Controllers
                 return NotFound();
             }
             ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            ViewBag.IdProveedor = new SelectList(_dataService.GetProveedores(), "Id", "Nombre", compra.IdProveedor);
+            ViewBag.IdCondicionPago = new SelectList(_dataService.GetCondicionesPago(), "Id", "Nombre", compra.IdCondicionPago);
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_EditPartial", compra);
@@ -105,7 +111,7 @@ namespace BibliotecaDB.Controllers
         // POST: Compras/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind("Id,IdUsuario,FechaCompra,Total")] Compra compra)
+        public async Task<ActionResult> Edit([Bind("Id,IdUsuario,IdProveedor,IdCondicionPago,FechaCompra,Total,NumeroOrdenCompra,FechaEntrega,Observaciones")] Compra compra)
         {
             if (ModelState.IsValid)
             {
@@ -117,6 +123,8 @@ namespace BibliotecaDB.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdUsuario = new SelectList(_dataService.GetUsuarios(), "Id", "NombreUsuario", compra.IdUsuario);
+            ViewBag.IdProveedor = new SelectList(_dataService.GetProveedores(), "Id", "Nombre", compra.IdProveedor);
+            ViewBag.IdCondicionPago = new SelectList(_dataService.GetCondicionesPago(), "Id", "Nombre", compra.IdCondicionPago);
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_EditPartial", compra);

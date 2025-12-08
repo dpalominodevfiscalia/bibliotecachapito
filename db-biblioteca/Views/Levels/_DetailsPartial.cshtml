@@ -1,0 +1,57 @@
+@model BibliotecaDB.Models.Nivel
+
+<div>
+    <h4>Detalles del Nivel</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoCliente.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.TipoCliente != null)
+            {
+                @Html.DisplayFor(model => model.TipoCliente.Nombre)
+            }
+            else
+            {
+                <span>N/A</span>
+            }
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Estado == "Activo")
+            {
+                <span class="badge badge-success">
+                    <i class="fas fa-check-circle"></i> @Model.Estado
+                </span>
+            }
+            else
+            {
+                <span class="badge badge-danger">
+                    <i class="fas fa-times-circle"></i> @Model.Estado
+                </span>
+            }
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

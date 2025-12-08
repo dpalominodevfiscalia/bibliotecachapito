@@ -18,5 +18,12 @@ namespace BibliotecaDB.Models
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Perfil> Perfiles { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
+
+        // New entities for Client management system
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<TipoCliente> TiposClientes { get; set; }
+        public DbSet<Nivel> Niveles { get; set; }
+        public DbSet<Grado> Grados { get; set; }
+        public DbSet<LibroGrado> LibrosGrados { get; set; }
     }
 }

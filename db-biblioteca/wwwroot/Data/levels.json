@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Inicial",
+    "Descripcion": "AAAAAAAAA",
+    "Estado": "Activo",
+    "TipoClienteId": 1,
+    "TipoCliente": null,
+    "Grados": null
+  },
+  {
+    "Id": 2,
+    "Nombre": "Primaria",
+    "Descripcion": "sadfffs",
+    "Estado": "Activo",
+    "TipoClienteId": 0,
+    "TipoCliente": null,
+    "Grados": null
+  }
+]

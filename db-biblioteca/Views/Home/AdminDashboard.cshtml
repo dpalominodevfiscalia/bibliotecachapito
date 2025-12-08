@@ -1,230 +1,249 @@
+@model BibliotecaDB.Models.DashboardViewModel
+
 @{
-    ViewData["Title"] = "Dashboard Administrador";
+    ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6"> 
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <p>Role: @Model.CurrentUserRole | Profile: @Model.CurrentUserProfile</p>
+            <p>Date: @Model.CurrentDate.ToString("dddd, MMMM dd, yyyy")</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Admin Statistics -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Admin Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Users</span>
+                                    <span class="info-box-number">@Model.AdminData?.TotalUsers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-user-check"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Users</span>
+                                    <span class="info-box-number">@Model.AdminData?.ActiveUsers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fas fa-book"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Books</span>
+                                    <span class="info-box-number">@Model.AdminData?.TotalBooks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-book-open"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Books</span>
+                                    <span class="info-box-number">@Model.AdminData?.ActiveBooks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-danger"><i class="fas fa-shopping-cart"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Orders</span>
+                                    <span class="info-box-number">@Model.AdminData?.TotalOrders</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fas fa-clock"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Pending Orders</span>
+                                    <span class="info-box-number">@Model.AdminData?.PendingOrders</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+        </div>
+
+        <!-- General Statistics -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title">General Statistics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fas fa-book"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Books</span>
+                                    <span class="info-box-number">@Model.GeneralData?.TotalBooks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-book-open"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Books</span>
+                                    <span class="info-box-number">@Model.GeneralData?.ActiveBooks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fas fa-shopping-cart"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Orders</span>
+                                    <span class="info-box-number">@Model.GeneralData?.TotalOrders</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-danger"><i class="fas fa-clock"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Pending Orders</span>
+                                    <span class="info-box-number">@Model.GeneralData?.PendingOrders</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-info"><i class="fas fa-cogs"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Services</span>
+                                    <span class="info-box-number">@Model.GeneralData?.TotalServices</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-cog"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Services</span>
+                                    <span class="info-box-number">@Model.GeneralData?.ActiveServices</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Admin Statistics -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title">System Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fas fa-user-tag"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Profiles</span>
+                                    <span class="info-box-number">@Model.AdminData?.TotalProfiles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-user-check"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Profiles</span>
+                                    <span class="info-box-number">@Model.AdminData?.ActiveProfiles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fas fa-user-shield"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Roles</span>
+                                    <span class="info-box-number">@Model.AdminData?.TotalRoles</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-user-check"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Roles</span>
+                                    <span class="info-box-number">@Model.AdminData?.ActiveRoles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="card-title">School Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Schools</span>
+                                    <span class="info-box-number">@Model.GeneralData?.TotalSchools</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fas fa-school"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Active Schools</span>
+                                    <span class="info-box-number">@Model.GeneralData?.ActiveSchools</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<section class="content">
-    <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalUsers ?? 0)</h3>
-                        <p>Usuarios Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Users")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveUsers ?? 0)</h3>
-                        <p>Usuarios Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Users")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalBooks ?? 0)</h3>
-                        <p>Libros Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-ios-book"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Books")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveBooks ?? 0)</h3>
-                        <p>Libros Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bookmark"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Books")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Second row -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalOrders ?? 0)</h3>
-                        <p>Compras Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Orders")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-secondary">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.PendingOrders ?? 0)</h3>
-                        <p>Compras Pendientes</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-clock"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Orders")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalProfiles ?? 0)</h3>
-                        <p>Perfiles Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-stalker"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Profiles")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveProfiles ?? 0)</h3>
-                        <p>Perfiles Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Profiles")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Third row -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalRoles ?? 0)</h3>
-                        <p>Roles Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-key"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Roles")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveRoles ?? 0)</h3>
-                        <p>Roles Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-locked"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Roles")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalMenuItems ?? 0)</h3>
-                        <p>Elementos de Menú</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-navicon-round"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Menu")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-secondary">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveMenuItems ?? 0)</h3>
-                        <p>Menú Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-navicon"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Menu")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Fourth row -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.TotalActions ?? 0)</h3>
-                        <p>Acciones Totales</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-gear-a"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Actions")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>@(Model.AdminData?.ActiveActions ?? 0)</h3>
-                        <p>Acciones Activas</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-gear-b"></i>
-                    </div>
-                    <a href="@Url.Action("Index", "Actions")" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>

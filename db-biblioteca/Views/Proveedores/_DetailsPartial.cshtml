@@ -1,0 +1,124 @@
+@model BibliotecaDB.Models.Proveedor
+
+<div>
+    <h4>Detalles del Proveedor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RazonSocial)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RazonSocial)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RUC)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RUC)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TipoProveedor)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TipoProveedor)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Moneda)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Moneda)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TelefonoContacto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TelefonoContacto)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EmailContacto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.EmailContacto)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CondicionesPago)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CondicionesPago)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Banco)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Banco)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NumeroCuenta)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NumeroCuenta)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-9">
+            <span class="badge @(Model.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                @Html.DisplayFor(model => model.Estado)
+            </span>
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

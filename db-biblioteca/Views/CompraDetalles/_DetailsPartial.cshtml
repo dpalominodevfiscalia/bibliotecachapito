@@ -1,0 +1,68 @@
+@model BibliotecaDB.Models.CompraDetalle
+
+<div>
+    <h4>Detalles del Item de Compra</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Producto.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.Producto?.Nombre ?? "N/A")
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.UnidadMedida)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.UnidadMedida)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CantidadSolicitada)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CantidadSolicitada)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CantidadRecibida)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CantidadRecibida)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.PrecioUnitario)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TotalParcial)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TotalParcial)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-9">
+            <span class="badge @(Model.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                @Html.DisplayFor(model => model.Estado)
+            </span>
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

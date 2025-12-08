@@ -148,5 +148,55 @@
     "Roles": [ 1 ],
     "ActionIds": [ 1, 2, 3, 4, 5 ],
     "Estado": "Activo"
+  },
+  {
+    "Id": 16,
+    "Title": "Clientes",
+    "Url": "/Clients/Index",
+    "Icon": "fas fa-user-tie",
+    "Profiles": [ 1, 2 ],
+    "Roles": [ 1 ],
+    "ActionIds": [ 1, 2, 3, 4, 5 ],
+    "Estado": "Activo"
+  },
+  {
+    "Id": 17,
+    "Title": "Tipos de Clientes",
+    "Url": "/ClientTypes/Index",
+    "Icon": "fas fa-users-cog",
+    "Profiles": [ 1, 2 ],
+    "Roles": [ 1 ],
+    "ActionIds": [ 1, 2, 3, 4, 5 ],
+    "Estado": "Activo"
+  },
+  {
+    "Id": 18,
+    "Title": "Niveles",
+    "Url": "/Levels/Index",
+    "Icon": "fas fa-layer-group",
+    "Profiles": [ 1, 2 ],
+    "Roles": [ 1 ],
+    "ActionIds": [ 1, 2, 3, 4, 5 ],
+    "Estado": "Activo"
+  },
+  {
+    "Id": 19,
+    "Title": "Grados",
+    "Url": "/Grades/Index",
+    "Icon": "fas fa-graduation-cap",
+    "Profiles": [ 1, 2 ],
+    "Roles": [ 1 ],
+    "ActionIds": [ 1, 2, 3, 4, 5 ],
+    "Estado": "Activo"
+  },
+  {
+    "Id": 20,
+    "Title": "Libros por Grado",
+    "Url": "/BookGrades/Index",
+    "Icon": "fas fa-book-reader",
+    "Profiles": [ 1, 2 ],
+    "Roles": [ 1 ],
+    "ActionIds": [ 1, 2, 3, 4, 5 ],
+    "Estado": "Activo"
   }
 ]

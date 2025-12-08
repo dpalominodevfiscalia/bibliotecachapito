@@ -9,23 +9,23 @@
 <div class="d-flex justify-content-between mb-3">
     <div class="d-flex align-items-center">
         <button type="button" class="btn btn-success mr-3" data-toggle="modal" data-target="#createModal" title="Crear Nuevo Elemento de Menú">
-            <i class="fas fa-plus"></i> Crear Nuevo
+            <i class="fas fa-plus"></i> 
         </button>
-        <a asp-action="BulkAssign" class="btn btn-info mr-3" title="Asignar Acciones de Menú Masivas">
+        <a asp-action="BulkAssign" class="btn btn-info mr-3" title="Asignar Acciones de Menú Masivas" style="display:none;">
             <i class="fas fa-tasks"></i> Asignar Acciones de Menú Masivas
         </a>
         <div class="action-buttons">
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> 
             </button>
-            <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled>
-                <i class="fas fa-info-circle"></i> Detalles
+            <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled data-toggle="modal" data-target="#detailsModal">
+                <i class="fas fa-info-circle"></i> 
             </button>
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
-                <i class="fas fa-trash"></i> Eliminar
+                <i class="fas fa-trash"></i> 
             </button>
             <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled>
-                <i class="fas fa-power-off"></i> <span id="toggleButtonText">Desactivar</span>
+                <i class="fas fa-power-off"></i> <span id="toggleButtonText"> </span>
             </button>
         </div>
     </div>
@@ -211,32 +211,17 @@
                 });
             });
 
-            $('#editModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget);
-                var url = button.data('action');
-                var modal = $(this);
-                $.get(url, function(data) {
-                    modal.find('#editModalContent').html(data);
-                });
-            });
 
-            $('#detailsModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget);
-                var url = button.data('action');
-                var modal = $(this);
-                $.get(url, function(data) {
-                    modal.find('#detailsModalContent').html(data);
-                });
-            });
+            // Details modal loading is now handled by the click handler below
+            // $('#detailsModal').on('show.bs.modal', function (event) {
+            //     var button = $(event.relatedTarget);
+            //     var url = button.data('action');
+            //     var modal = $(this);
+            //     $.get(url, function(data) {
+            //         modal.find('#detailsModalContent').html(data);
+            //     });
+            // });
 
-            $('#deleteModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget);
-                var url = button.data('action');
-                var modal = $(this);
-                $.get(url, function(data) {
-                    modal.find('#deleteModalContent').html(data);
-                });
-            });
 
             // Handle form submission via AJAX
             $(document).on('submit', 'form', function(e) {
@@ -300,7 +285,8 @@
                 selectedOpcionState = radio.dataset.state;
 
                 // Update toggle button text based on state
-                $('#toggleButtonText').text(selectedOpcionState === "Activo" ? "Desactivar" : "Activar");
+                // Always show "Desactivar" since the action is the same (toggle state)
+                $('#toggleButtonText').text("Desactivar");
 
                 // Enable action buttons
                 $('#editSelected').prop('disabled', false);
@@ -359,7 +345,13 @@
                 $.get(url, function(data) {
                     $('#editModalContent').html(data);
                     $('#editModal').modal('show');
+                    console.log('Edit modal loaded with data:', data);
+                }).fail(function(xhr) {
+                    console.error('Error loading edit modal:', xhr.responseText);
+                    toastr.error('Error al cargar el formulario de edición: ' + xhr.status + ' - ' + xhr.statusText);
                 });
+            } else {
+                toastr.warning('Por favor seleccione una opción para editar');
             }
         });
 
@@ -369,7 +361,13 @@
                 $.get(url, function(data) {
                     $('#detailsModalContent').html(data);
                     $('#detailsModal').modal('show');
+                    console.log('Details modal loaded with data:', data);
+                }).fail(function(xhr) {
+                    console.error('Error loading details modal:', xhr.responseText);
+                    toastr.error('Error al cargar los detalles: ' + xhr.status + ' - ' + xhr.statusText);
                 });
+            } else {
+                toastr.warning('Por favor seleccione una opción para ver detalles');
             }
         });
 
@@ -379,7 +377,13 @@
                 $.get(url, function(data) {
                     $('#deleteModalContent').html(data);
                     $('#deleteModal').modal('show');
+                    console.log('Delete modal loaded with data:', data);
+                }).fail(function(xhr) {
+                    console.error('Error loading delete modal:', xhr.responseText);
+                    toastr.error('Error al cargar el formulario de eliminación: ' + xhr.status + ' - ' + xhr.statusText);
                 });
+            } else {
+                toastr.warning('Por favor seleccione una opción para eliminar');
             }
         });
 

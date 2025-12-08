@@ -1,0 +1,149 @@
+@model BibliotecaDB.Models.Proveedor
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="RazonSocial" class="control-label">Razón Social</label>
+                <input asp-for="RazonSocial" class="form-control" />
+                <span asp-validation-for="RazonSocial" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="RUC" class="control-label">RUC</label>
+                <input asp-for="RUC" class="form-control" />
+                <span asp-validation-for="RUC" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TipoProveedor" class="control-label">Tipo de Proveedor</label>
+                <select asp-for="TipoProveedor" class="form-control">
+                    <option value="">Seleccionar tipo</option>
+                    <option value="Nacional">Nacional</option>
+                    <option value="Internacional">Internacional</option>
+                    <option value="Distribuidor">Distribuidor</option>
+                    <option value="Fabricante">Fabricante</option>
+                </select>
+                <span asp-validation-for="TipoProveedor" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label">Dirección</label>
+                <textarea asp-for="Direccion" class="form-control"></textarea>
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label">Teléfono</label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Moneda" class="control-label">Moneda</label>
+                <select asp-for="Moneda" class="form-control">
+                    <option value="">Seleccionar moneda</option>
+                    <option value="PEN">Soles (PEN)</option>
+                    <option value="USD">Dólares (USD)</option>
+                    <option value="EUR">Euros (EUR)</option>
+                </select>
+                <span asp-validation-for="Moneda" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <h5>Información de Contacto</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Contacto" class="control-label">Nombre de Contacto</label>
+                <input asp-for="Contacto" class="form-control" />
+                <span asp-validation-for="Contacto" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TelefonoContacto" class="control-label">Teléfono de Contacto</label>
+                <input asp-for="TelefonoContacto" class="form-control" />
+                <span asp-validation-for="TelefonoContacto" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="EmailContacto" class="control-label">Email de Contacto</label>
+                <input asp-for="EmailContacto" class="form-control" type="email" />
+                <span asp-validation-for="EmailContacto" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="CondicionesPago" class="control-label">Condiciones de Pago</label>
+                <input asp-for="CondicionesPago" class="form-control" />
+                <span asp-validation-for="CondicionesPago" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <h5>Información Bancaria</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Banco" class="control-label">Banco</label>
+                <input asp-for="Banco" class="form-control" />
+                <span asp-validation-for="Banco" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NumeroCuenta" class="control-label">Número de Cuenta</label>
+                <input asp-for="NumeroCuenta" class="form-control" />
+                <span asp-validation-for="NumeroCuenta" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Observaciones" class="control-label">Observaciones</label>
+        <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
+    </div>
+
+    <div class="modal-footer">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

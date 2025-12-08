@@ -1,0 +1,82 @@
+@model BibliotecaDB.Models.CondicionPago
+
+<div>
+    <h4>Detalles de la Condición de Pago</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DiasCredito)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DiasCredito) días
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DescuentoPorProntoPago)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DescuentoPorProntoPago)%
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FormaPago)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FormaPago)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Moneda)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Moneda)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AplicaImpuestos)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AplicaImpuestos)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-9">
+            <span class="badge @(Model.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                @Html.DisplayFor(model => model.Estado)
+            </span>
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

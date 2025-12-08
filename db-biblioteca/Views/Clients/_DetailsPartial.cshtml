@@ -1,0 +1,49 @@
+@model BibliotecaDB.Models.Cliente
+
+<div class="form-group">
+    <label class="control-label">ID</label>
+    <div>@Model.Id</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Nombre</label>
+    <div>@Model.Nombre</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Apellido</label>
+    <div>@Model.Apellido</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Email</label>
+    <div>@Model.Email</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Teléfono</label>
+    <div>@Model.Telefono</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Dirección</label>
+    <div>@Model.Direccion</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Tipo de Documento</label>
+    <div>@Model.TipoDocumento</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Número de Documento</label>
+    <div>@Model.NumeroDocumento</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Fecha de Nacimiento</label>
+    <div>@Model.FechaNacimiento.ToString("yyyy-MM-dd")</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Tipo de Cliente</label>
+    <div>@(Model.TipoCliente?.Nombre ?? "N/A")</div>
+</div>
+<div class="form-group">
+    <label class="control-label">Estado</label>
+    <div>@Model.Estado</div>
+</div>
+<div class="form-group">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

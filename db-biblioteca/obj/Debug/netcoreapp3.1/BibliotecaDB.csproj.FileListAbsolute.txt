@@ -1,8 +1,0 @@
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.csproj.AssemblyReference.cache
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.GeneratedMSBuildEditorConfig.editorconfig
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.AssemblyInfoInputs.cache
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.AssemblyInfo.cs
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.csproj.CoreCompileInputs.cache
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.MvcApplicationPartsAssemblyInfo.cache
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.RazorAssemblyInfo.cache
-d:\db-biblioteca\obj\Debug\netcoreapp3.1\BibliotecaDB.RazorAssemblyInfo.cs

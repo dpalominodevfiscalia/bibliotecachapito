@@ -1,0 +1,175 @@
+@model IEnumerable<BibliotecaDB.Models.CondicionPago>
+
+@{
+    ViewData["Title"] = "Condiciones de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Condiciones de Pago</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Condiciones de Pago</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Lista de Condiciones de Pago</h3>
+                            @if (ViewContext.HttpContext.Items["HasCreateCondicionPagoPermission"] as bool? == true)
+                            {
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                                        <i class="fas fa-plus"></i> Nueva Condición de Pago
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <table id="condicionesPagoTable" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Días Crédito</th>
+                                        <th>Tipo</th>
+                                        <th>Descuento</th>
+                                        <th>Forma de Pago</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Nombre</td>
+                                            <td>@item.DiasCredito</td>
+                                            <td>@item.Tipo</td>
+                                            <td>@item.DescuentoPorProntoPago%</td>
+                                            <td>@item.FormaPago</td>
+                                            <td>
+                                                <span class="badge @(item.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                                                    @item.Estado
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    @if (ViewContext.HttpContext.Items["HasDetailsCondicionPagoPermission"] as bool? == true)
+                                                    {
+                                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailsModal-@item.Id" data-id="@item.Id">
+                                                            <i class="fas fa-eye"></i>
+                                                        </button>
+                                                    }
+                                                    @if (ViewContext.HttpContext.Items["HasEditCondicionPagoPermission"] as bool? == true)
+                                                    {
+                                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal-@item.Id" data-id="@item.Id">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    }
+                                                    @if (ViewContext.HttpContext.Items["HasDeleteCondicionPagoPermission"] as bool? == true)
+                                                    {
+                                                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-@item.Id" data-id="@item.Id">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    }
+                                                    @if (ViewContext.HttpContext.Items["HasToggleCondicionPagoPermission"] as bool? == true)
+                                                    {
+                                                        <button class="btn btn-warning btn-sm toggle-estado" data-id="@item.Id" data-estado="@item.Estado">
+                                                            <i class="fas @(item.Estado == "Activo" ? "fa-toggle-on" : "fa-toggle-off")"></i>
+                                                        </button>
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Nueva Condición de Pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="createPartialContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals will be loaded dynamically via AJAX -->
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            $('#condicionesPagoTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                },
+                "responsive": true,
+                "autoWidth": false
+            });
+
+            // Load create partial on modal show
+            $('#createModal').on('shown.bs.modal', function() {
+                $('#createPartialContainer').load('/CondicionesPago/Create', function() {
+                    // Initialize form validation and other scripts if needed
+                });
+            });
+
+            // Handle dynamic modals for details, edit, delete
+            $(document).on('click', '[data-target^="#detailsModal-"], [data-target^="#editModal-"], [data-target^="#deleteModal-"]', function() {
+                var id = $(this).data('id');
+                var action = $(this).closest('button').hasClass('btn-info') ? 'Details' :
+                             $(this).closest('button').hasClass('btn-primary') ? 'Edit' : 'Delete';
+
+                var modalId = $(this).attr('data-target');
+                $(modalId).on('shown.bs.modal', function() {
+                    var container = $(modalId + ' .modal-body div:first');
+                    container.load('/CondicionesPago/' + action + '/' + id, function() {
+                        // Initialize form validation and other scripts if needed
+                    });
+                });
+            });
+
+            // Handle toggle estado
+            $(document).on('click', '.toggle-estado', function() {
+                var id = $(this).data('id');
+                var currentEstado = $(this).data('estado');
+
+                $.post('/CondicionesPago/ToggleEstado/' + id, function() {
+                    // Reload the page to see changes
+                    location.reload();
+                });
+            });
+        });
+    </script>
+}

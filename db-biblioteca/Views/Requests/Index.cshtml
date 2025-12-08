@@ -31,26 +31,26 @@
 <div class="d-flex justify-content-between mb-3">
     <div>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" title="Crear Nueva Solicitud">
-            <i class="fas fa-plus"></i> Crear Nuevo
+            <i class="fas fa-plus"></i> 
         </button>
     </div>
     <div class="action-buttons">
         @if (ViewContext.HttpContext.Items["HasEditRequestPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled title="Editar Solicitud Seleccionada">
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDetailsRequestPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled title="Ver Detalles de la Solicitud">
-                <i class="fas fa-info-circle"></i> Detalles
+                <i class="fas fa-info-circle"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDeleteRequestPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled title="Eliminar Solicitud Seleccionada">
-                <i class="fas fa-trash"></i> Eliminar
+                <i class="fas fa-trash"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasToggleRequestPermission"] as bool? ?? false)
@@ -225,7 +225,7 @@
 
                 // Get the status of the selected request
                 var row = $(radio).closest('tr');
-                var status = row.find('td:eq(4)').text().trim(); // Estado is the 5th column (index 4)
+                var status = row.find('td:eq(8)').text().trim(); // Estado is the 9th column (index 8)
 
                 // Enable action buttons only if status is "Activo"
                 var isActive = status === 'Activo';
@@ -265,17 +265,29 @@
             });
 
             // Handle action buttons
-            $('#editSelected').click(function() {
+            $('#editSelected').click(function(e) {
+                e.preventDefault(); // Prevent default button behavior
+                e.stopPropagation(); // Stop event propagation
+
                 if (selectedRequestId) {
                     var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedRequestId);
                     $.get(url, function(data) {
                         $('#editModalContent').html(data);
                         $('#editModal').modal('show');
+                        console.log('Edit modal loaded with data:', data);
+                    }).fail(function(xhr) {
+                        console.error('Error loading edit modal:', xhr.responseText);
+                        toastr.error('Error al cargar el formulario de edición');
                     });
+                } else {
+                    toastr.warning('Por favor seleccione una solicitud para editar');
                 }
             });
 
-            $('#detailsSelected').click(function() {
+            $('#detailsSelected').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
                 if (selectedRequestId) {
                     var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedRequestId);
                     $.get(url, function(data) {
@@ -285,7 +297,10 @@
                 }
             });
 
-            $('#deleteSelected').click(function() {
+            $('#deleteSelected').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
                 if (selectedRequestId) {
                     var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedRequestId);
                     $.get(url, function(data) {

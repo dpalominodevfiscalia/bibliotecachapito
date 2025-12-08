@@ -32,7 +32,12 @@ namespace BibliotecaDB.Controllers
                 permissions["Editar"] = HasMenuItemAction(menuItem, "Editar");
                 permissions["Eliminar"] = HasMenuItemAction(menuItem, "Eliminar");
                 permissions["Detalles"] = HasMenuItemAction(menuItem, "Editar"); // Details uses Edit permission
-                permissions["ToggleEstado"] = HasMenuItemAction(menuItem, "Desactivar"); // Toggle uses Desactivar permission (now consolidated)
+
+                // Toggle permission: allow if user has Desactivar permission OR if they have any other action permission
+                bool hasDesactivarPermission = HasMenuItemAction(menuItem, "Desactivar");
+                bool hasAnyActionPermission = permissions["Editar"] || permissions["Eliminar"] || permissions["Detalles"];
+                permissions["ToggleEstado"] = hasDesactivarPermission || hasAnyActionPermission;
+
                 actionPermissions[menuItem.Id] = permissions;
             }
 
@@ -59,6 +64,19 @@ namespace BibliotecaDB.Controllers
             {
                 return NotFound();
             }
+
+            // Prepare action names for display
+            var actionNames = _dataService.GetActionNamesFromIds(menuItem.ActionIds);
+            ViewBag.ActionNames = actionNames;
+
+            // Prepare profile names for display
+            var profileNames = _dataService.GetProfileNamesFromIds(menuItem.Profiles);
+            ViewBag.ProfileNames = profileNames;
+
+            // Prepare role names for display
+            var roleNames = _dataService.GetRoleNamesFromIds(menuItem.Roles);
+            ViewBag.RoleNames = roleNames;
+
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_DetailsPartial", menuItem);

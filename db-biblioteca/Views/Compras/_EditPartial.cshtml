@@ -3,21 +3,74 @@
 <form asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="IdUsuario" class="control-label"></label>
-        <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
-        <span asp-validation-for="IdUsuario" class="text-danger"></span>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="IdUsuario" class="control-label">Usuario</label>
+                <select asp-for="IdUsuario" class="form-control" asp-items="ViewBag.IdUsuario"></select>
+                <span asp-validation-for="IdUsuario" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label">Proveedor</label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.IdProveedor">
+                    <option value="">Seleccionar proveedor</option>
+                </select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="FechaCompra" class="control-label"></label>
-        <input asp-for="FechaCompra" class="form-control" type="datetime-local" />
-        <span asp-validation-for="FechaCompra" class="text-danger"></span>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="IdCondicionPago" class="control-label">Condición de Pago</label>
+                <select asp-for="IdCondicionPago" class="form-control" asp-items="ViewBag.IdCondicionPago">
+                    <option value="">Seleccionar condición</option>
+                </select>
+                <span asp-validation-for="IdCondicionPago" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NumeroOrdenCompra" class="control-label">Número de Orden</label>
+                <input asp-for="NumeroOrdenCompra" class="form-control" />
+                <span asp-validation-for="NumeroOrdenCompra" class="text-danger"></span>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="FechaCompra" class="control-label">Fecha de Compra</label>
+                <input asp-for="FechaCompra" class="form-control" type="datetime-local" />
+                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="FechaEntrega" class="control-label">Fecha de Entrega</label>
+                <input asp-for="FechaEntrega" class="form-control" type="date" />
+                <span asp-validation-for="FechaEntrega" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group">
-        <label asp-for="Total" class="control-label"></label>
+        <label asp-for="Total" class="control-label">Total</label>
         <input asp-for="Total" class="form-control" />
         <span asp-validation-for="Total" class="text-danger"></span>
     </div>
+
+    <div class="form-group">
+        <label asp-for="Observaciones" class="control-label">Observaciones</label>
+        <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
         <input type="submit" value="Guardar" class="btn btn-primary" />
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

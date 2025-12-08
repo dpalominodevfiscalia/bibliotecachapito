@@ -9,7 +9,7 @@
         @if (ViewContext.HttpContext.Items["HasCreateUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">
-                <i class="fas fa-plus"></i> Crear Nuevo
+                <i class="fas fa-plus"></i> 
             </button>
         }
     </div>
@@ -17,25 +17,25 @@
         @if (ViewContext.HttpContext.Items["HasEditUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDetailsUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled>
-                <i class="fas fa-info-circle"></i> Detalles
+                <i class="fas fa-info-circle"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDeleteUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
-                <i class="fas fa-trash"></i> Eliminar
+                <i class="fas fa-trash"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasToggleUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled>
-                <i class="fas fa-power-off"></i> <span id="toggleButtonText">Desactivar</span>
+                <i class="fas fa-power-off"></i> <span id="toggleButtonText"> </span>
             </button>
         }
     </div>

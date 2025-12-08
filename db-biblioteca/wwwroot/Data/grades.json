@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Primer Grado",
+    "Descripcion": "fvcxvxcv",
+    "Estado": "Activo",
+    "NivelId": 2,
+    "Nivel": {
+      "Id": 2,
+      "Nombre": "Primaria",
+      "Descripcion": "sadfffs",
+      "Estado": "Activo",
+      "TipoClienteId": 0,
+      "TipoCliente": null,
+      "Grados": null
+    },
+    "LibrosGrados": null
+  },
+  {
+    "Id": 2,
+    "Nombre": "Primer Grado",
+    "Descripcion": "aaaaaaaaaaa",
+    "Estado": "Activo",
+    "NivelId": 1,
+    "Nivel": {
+      "Id": 1,
+      "Nombre": "Inicial",
+      "Descripcion": "AAAAAAAAA",
+      "Estado": "Activo",
+      "TipoClienteId": 1,
+      "TipoCliente": {
+        "Id": 1,
+        "Nombre": "Colegio",
+        "Descripcion": "aaaaaaa",
+        "Estado": "Activo",
+        "Clientes": null
+      },
+      "Grados": null
+    },
+    "LibrosGrados": null
+  },
+  {
+    "Id": 3,
+    "Nombre": "Secundaria",
+    "Descripcion": "swaaaaaaaa",
+    "Estado": "Activo",
+    "NivelId": 1,
+    "Nivel": null,
+    "LibrosGrados": null
+  }
+]

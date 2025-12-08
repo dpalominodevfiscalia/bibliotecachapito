@@ -9,7 +9,7 @@
         @if (ViewContext.HttpContext.Items["HasCreateRolePermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" title="Crear Nuevo Rol">
-                <i class="fas fa-plus"></i> Crear Nuevo
+                <i class="fas fa-plus"></i> 
             </button>
         }
     </div>
@@ -17,19 +17,19 @@
         @if (ViewContext.HttpContext.Items["HasEditRolePermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled title="Editar Rol Seleccionado">
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDetailsRolePermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled title="Ver Detalles del Rol">
-                <i class="fas fa-info-circle"></i> Detalles
+                <i class="fas fa-info-circle"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDeleteRolePermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled title="Eliminar Rol Seleccionado">
-                <i class="fas fa-trash"></i> Eliminar
+                <i class="fas fa-trash"></i> 
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasToggleRolePermission"] as bool? ?? false)

@@ -1,0 +1,118 @@
+@{
+    ViewData["Title"] = "Test de Integración CRUD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Test de Integración CRUD</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Test de Integración</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Resultados del Test de Integración</h3>
+                        </div>
+                        <div class="card-body">
+                            @if (ViewBag.Error != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <h4>Error en el test:</h4>
+                                    <p>@ViewBag.Error</p>
+                                </div>
+                            }
+                            else if (ViewBag.TestResults != null)
+                            {
+                                <div class="alert alert-success">
+                                    <h4>Test completado exitosamente!</h4>
+                                </div>
+
+                                <h5>Resultados detallados:</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item @(ViewBag.TestResults.ProveedorCreated ? "list-group-item-success" : "list-group-item-danger")">
+                                        Proveedor creado: @(ViewBag.TestResults.ProveedorCreated ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CondicionPagoCreated ? "list-group-item-success" : "list-group-item-danger")">
+                                        Condición de pago creada: @(ViewBag.TestResults.CondicionPagoCreated ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CompraCreated ? "list-group-item-success" : "list-group-item-danger")">
+                                        Compra creada: @(ViewBag.TestResults.CompraCreated ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CompraDetalleCreated ? "list-group-item-success" : "list-group-item-danger")">
+                                        Detalle de compra creado: @(ViewBag.TestResults.CompraDetalleCreated ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CompraHasProveedor ? "list-group-item-success" : "list-group-item-danger")">
+                                        Compra tiene proveedor: @(ViewBag.TestResults.CompraHasProveedor ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CompraHasCondicionPago ? "list-group-item-success" : "list-group-item-danger")">
+                                        Compra tiene condición de pago: @(ViewBag.TestResults.CompraHasCondicionPago ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.CompraHasDetalles ? "list-group-item-success" : "list-group-item-danger")">
+                                        Compra tiene detalles: @(ViewBag.TestResults.CompraHasDetalles ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.DetalleHasProducto ? "list-group-item-success" : "list-group-item-danger")">
+                                        Detalle tiene producto: @(ViewBag.TestResults.DetalleHasProducto ? "✓" : "✗")
+                                    </li>
+                                    <li class="list-group-item @(ViewBag.TestResults.DetalleHasCompra ? "list-group-item-success" : "list-group-item-danger")">
+                                        Detalle tiene compra: @(ViewBag.TestResults.DetalleHasCompra ? "✓" : "✗")
+                                    </li>
+                                </ul>
+
+                                <div class="mt-4">
+                                    <h5>Resumen:</h5>
+                                    @{
+                                        var allPassed = ViewBag.TestResults.ProveedorCreated &&
+                                                      ViewBag.TestResults.CondicionPagoCreated &&
+                                                      ViewBag.TestResults.CompraCreated &&
+                                                      ViewBag.TestResults.CompraDetalleCreated &&
+                                                      ViewBag.TestResults.CompraHasProveedor &&
+                                                      ViewBag.TestResults.CompraHasCondicionPago &&
+                                                      ViewBag.TestResults.CompraHasDetalles &&
+                                                      ViewBag.TestResults.DetalleHasProducto &&
+                                                      ViewBag.TestResults.DetalleHasCompra;
+                                    }
+
+                                    @if (allPassed)
+                                    {
+                                        <div class="alert alert-success mt-3">
+                                            <h4>¡Todos los tests pasaron! ✓</h4>
+                                            <p>La integración CRUD está funcionando correctamente.</p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-warning mt-3">
+                                            <h4>Algunos tests fallaron ✗</h4>
+                                            <p>Revisa los resultados detallados para identificar problemas.</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <p>El test aún no se ha ejecutado.</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

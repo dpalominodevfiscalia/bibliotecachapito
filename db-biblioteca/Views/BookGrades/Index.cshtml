@@ -1,0 +1,240 @@
+@model BibliotecaDB.Models.BookGradesViewModel
+
+@{
+    ViewData["Title"] = "Libros por Grado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Libros por Grado</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Libros por Grado</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Libros por Grado</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @if (Model.CurrentGradoId.HasValue)
+                            {
+                                <div class="alert alert-info">
+                                    Mostrando libros para el grado: <strong>@Model.CurrentGradoNombre</strong>
+                                </div>
+                            }
+
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                                    <i class="fas fa-plus"></i> Nuevo Libro por Grado
+                                </button>
+                            </div>
+
+                            <table id="bookGradesTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Libro</th>
+                                        <th>Grado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var bookGrade in Model.LibroGrados)
+                                    {
+                                        <tr>
+                                            <td>@bookGrade.Id</td>
+                                            <td>@bookGrade.Libro.Titulo</td>
+                                            <td>@bookGrade.Grado.Nombre</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-info edit-btn" data-id="@bookGrade.Id"
+                                                        data-libro-id="@bookGrade.LibroId"
+                                                        data-grado-id="@bookGrade.GradoId">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger delete-btn" data-id="@bookGrade.Id">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Nuevo Libro por Grado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_CreatePartial" model="new BibliotecaDB.Models.LibroGrado()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Libro por Grado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_EditPartial" model="new BibliotecaDB.Models.LibroGrado()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Libro por Grado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_DeletePartial" model="new BibliotecaDB.Models.LibroGrado()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            $('#bookGradesTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                },
+                "responsive": true,
+                "autoWidth": false
+            });
+
+            // Handle create modal loading
+            $('#createModal').on('show.bs.modal', function (event) {
+                var modal = $(this);
+                var url = '@Url.Action("Create")';
+                // Pass gradoId parameter if filtering by grade is active
+                @if (Model.CurrentGradoId.HasValue && Model.CurrentGradoId.Value > 0) {
+                    <text>
+                    url += '?gradoId=' + @Model.CurrentGradoId.Value;
+                    </text>
+                }
+                $.get(url, function(data) {
+                    modal.find('.modal-body').html(data);
+                });
+            });
+
+            // Handle edit button click
+            $('.edit-btn').click(function() {
+                var id = $(this).data('id');
+                var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', id);
+
+                $.get(url, function(data) {
+                    $('#editModal .modal-body').html(data);
+                    $('#editModal').modal('show');
+                });
+            });
+
+            // Handle delete button click
+            $('.delete-btn').click(function() {
+                var id = $(this).data('id');
+                var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', id);
+
+                $.get(url, function(data) {
+                    $('#deleteModal .modal-body').html(data);
+                    $('#deleteModal').modal('show');
+                });
+            });
+        });
+
+        // Handle form submission via AJAX
+        $(document).on('submit', 'form', function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr('action');
+            var method = form.attr('method') || 'POST';
+
+            // Get form data including anti-forgery token
+            var formData = new FormData(form[0]);
+
+            $.ajax({
+                url: url,
+                type: method,
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                success: function(result) {
+                    if (result.success) {
+                        // Show success message
+                        if (result.message) {
+                            alert(result.message);
+                        }
+                        // Close modal and refresh page after delay
+                        $('.modal').modal('hide');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        // Show validation errors
+                        form.replaceWith(result);
+                    }
+                },
+                error: function(xhr) {
+                    // Handle error
+                    console.log(xhr.responseText);
+                    if (xhr.status == 200 && xhr.responseText) {
+                        // This might be HTML with validation errors
+                        form.replaceWith(xhr.responseText);
+                    } else if (xhr.status == 400 && xhr.responseText) {
+                        // Handle validation errors
+                        form.replaceWith(xhr.responseText);
+                    }
+                }
+            });
+        });
+    </script>
+}

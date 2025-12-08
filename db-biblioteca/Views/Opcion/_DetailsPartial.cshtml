@@ -29,13 +29,48 @@
         Perfiles
     </dt>
     <dd class="col-sm-10">
-        @if (Model.Profiles != null && Model.Profiles.Any())
-        {
-            @string.Join(", ", Model.Profiles)
+        @{
+            var profileNames = ViewBag.ProfileNames as string;
+            if (!string.IsNullOrEmpty(profileNames) && profileNames != "N/A")
+            {
+                @profileNames
+            }
+            else
+            {
+                <text>Ninguno</text>
+            }
         }
-        else
-        {
-            <text>Ninguno</text>
+    </dd>
+    <dt class="col-sm-2">
+        Roles
+    </dt>
+    <dd class="col-sm-10">
+        @{
+            var roleNames = ViewBag.RoleNames as string;
+            if (!string.IsNullOrEmpty(roleNames) && roleNames != "N/A")
+            {
+                @roleNames
+            }
+            else
+            {
+                <text>Ninguno</text>
+            }
+        }
+    </dd>
+    <dt class="col-sm-2">
+        Acciones
+    </dt>
+    <dd class="col-sm-10">
+        @{
+            var actionNames = ViewBag.ActionNames as string;
+            if (!string.IsNullOrEmpty(actionNames) && actionNames != "N/A")
+            {
+                @actionNames
+            }
+            else
+            {
+                <text>Ninguno</text>
+            }
         }
     </dd>
 </dl>

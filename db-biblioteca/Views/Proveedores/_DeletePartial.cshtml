@@ -1,0 +1,17 @@
+@model BibliotecaDB.Models.Proveedor
+
+<form asp-action="Delete">
+    <div class="modal-body">
+        <h5>¿Estás seguro de que deseas eliminar este proveedor?</h5>
+        <div class="alert alert-warning">
+            <p><strong>Nombre:</strong> @Model.Nombre</p>
+            <p><strong>RUC:</strong> @Model.RUC</p>
+            <p><strong>Razón Social:</strong> @Model.RazonSocial</p>
+        </div>
+        <input type="hidden" asp-for="Id" />
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

@@ -13,5 +13,8 @@ namespace BibliotecaDB.Models
         public string ISBN { get; set; }
         public int Cantidad { get; set; }
         public string Estado { get; set; } = "Activo";
+
+        // Navigation property for BookGrade relationship
+        public virtual ICollection<LibroGrado> LibrosGrados { get; set; }
     }
 }

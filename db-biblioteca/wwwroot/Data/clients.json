@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Inmaculado SCHOOL",
+    "Apellido": "AAA",
+    "Email": "DD@HOTMIAL.COM",
+    "Telefono": "3424234324",
+    "Direccion": "123 Calle Principal",
+    "TipoDocumento": "RUC",
+    "NumeroDocumento": "20246546546",
+    "FechaNacimiento": "2025-05-15T00:00:00",
+    "Estado": "Activo",
+    "TipoClienteId": 1,
+    "TipoCliente": null,
+    "Niveles": null
+  }
+]
