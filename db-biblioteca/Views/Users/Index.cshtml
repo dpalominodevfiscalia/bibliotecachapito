@@ -1,5 +1,4 @@
 @model IEnumerable<BibliotecaDB.Models.Usuario>
-
 @{
     ViewData["Title"] = "Usuarios";
 }
@@ -8,8 +7,8 @@
     <div>
         @if (ViewContext.HttpContext.Items["HasCreateUserPermission"] as bool? ?? false)
         {
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">
-                <i class="fas fa-plus"></i> 
+            <button title="Crear Nuevo" type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+                <i class="fas fa-plus"></i>
             </button>
         }
     </div>
@@ -17,25 +16,25 @@
         @if (ViewContext.HttpContext.Items["HasEditUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
-                <i class="fas fa-edit"></i> 
+                <i class="fas fa-edit"></i>
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDetailsUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled>
-                <i class="fas fa-info-circle"></i> 
+                <i class="fas fa-info-circle"></i>
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasDeleteUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
-                <i class="fas fa-trash"></i> 
+                <i class="fas fa-trash"></i>
             </button>
         }
         @if (ViewContext.HttpContext.Items["HasToggleUserPermission"] as bool? ?? false)
         {
             <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled>
-                <i class="fas fa-power-off"></i> <span id="toggleButtonText"> </span>
+                <i class="fas fa-power-off"></i> <span id="toggleButtonText"></span>
             </button>
         }
     </div>
@@ -47,57 +46,40 @@
             <th>
                 <input type="radio" name="selectUser" id="selectAll" onchange="toggleSelectAll()">
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Correo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rol)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Perfil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
+            <th>Nombre de Usuario</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Perfil</th>
+            <th>Estado</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <input type="radio" name="selectUser" class="user-radio" value="@item.Id" data-username="@item.NombreUsuario" data-state="@item.Estado" onchange="handleUserSelection()">
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rol.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfil.Nombre)
-            </td>
-            <td>
-               @if (item.Estado == "Activo")
-            {
-                <span class="badge badge-success">
-                    <i class="fas fa-check-circle"></i> @item.Estado
-                </span>
-            }
-            else
-            {
-                <span class="badge badge-danger">
-                    <i class="fas fa-times-circle"></i> @item.Estado
-                </span>
-            }
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="radio" name="selectUser" class="user-radio" value="@item.Id" data-username="@item.NombreUsuario" data-state="@item.Estado" onchange="handleUserSelection()">
+                </td>
+                <td>@item.NombreUsuario</td>
+                <td>@item.Correo</td>
+                <td>@item.Rol?.Nombre</td>
+                <td>@item.Perfil?.Nombre</td>
+                <td>
+                    @if (item.Estado == "Activo")
+                    {
+                        <span class="badge badge-success">
+                            <i class="fas fa-check-circle"></i> @item.Estado
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">
+                            <i class="fas fa-times-circle"></i> @item.Estado
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
@@ -199,14 +181,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         var selectedUserId = null;
-        var selectedUserName = null;
+        var selectedUsername = null;
         var selectedUserState = null;
 
         function handleUserSelection() {
             var radio = event.target;
             if (radio.checked) {
                 selectedUserId = radio.value;
-                selectedUserName = radio.dataset.username;
+                selectedUsername = radio.dataset.username;
                 selectedUserState = radio.dataset.state;
 
                 // Update toggle button text based on user state
@@ -226,7 +208,7 @@
                 radio.checked = false;
             });
             selectedUserId = null;
-            selectedUserName = null;
+            selectedUsername = null;
             selectedUserState = null;
 
             // Disable action buttons

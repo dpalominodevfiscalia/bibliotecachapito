@@ -1,0 +1,379 @@
+@model IEnumerable<BibliotecaDB.Models.Importacion>
+
+@{
+    ViewData["Title"] = "Importaciones";
+
+    // Helper functions for badge classes - defined here so they're available in Razor
+    Func<string, string> GetEstadoBadgeClass = (estado) =>
+    {
+        switch(estado?.ToLower())
+        {
+            case "activo": return "badge-success";
+            case "inactivo": return "badge-danger";
+            default: return "badge-secondary";
+        }
+    };
+
+    Func<string, string> GetEstadoAduanaBadgeClass = (estado) =>
+    {
+        switch(estado?.ToLower())
+        {
+            case "en trámite": return "badge-warning";
+            case "aprobado": return "badge-success";
+            case "rechazado": return "badge-danger";
+            case "despachado": return "badge-info";
+            default: return "badge-secondary";
+        }
+    };
+}
+
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" title="Crear Nueva Importación">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <div class="action-buttons">
+        @if (ViewContext.HttpContext.Items["HasEditImportacionPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled title="Editar Importación Seleccionada">
+                <i class="fas fa-edit"></i>
+            </button>
+        }
+        @if (ViewContext.HttpContext.Items["HasDetailsImportacionPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled title="Ver Detalles de la Importación">
+                <i class="fas fa-info-circle"></i>
+            </button>
+        }
+        @if (ViewContext.HttpContext.Items["HasDeleteImportacionPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled title="Eliminar Importación Seleccionada">
+                <i class="fas fa-trash"></i>
+            </button>
+        }
+        @if (ViewContext.HttpContext.Items["HasToggleImportacionPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled title="Cambiar Estado de la Importación">
+                <i class="fas fa-toggle-on"></i> Cambiar Estado
+            </button>
+        }
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <input type="radio" name="selectImportacion" id="selectAll" onchange="toggleSelectAll()">
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroImportacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedor.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisOrigen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoAduana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaImportacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <input type="radio" name="selectImportacion" class="importacion-radio" value="@item.Id" data-importacionname="Importación @item.NumeroImportacion" onchange="handleImportacionSelection()">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroImportacion)
+            </td>
+            <td>
+                @(item.Proveedor != null ? Html.DisplayFor(modelItem => item.Proveedor.Nombre) : Html.DisplayFor(modelItem => ""))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaisOrigen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                <span class="badge @GetEstadoAduanaBadgeClass(item.EstadoAduana)">
+                    @Html.DisplayFor(modelItem => item.EstadoAduana)
+                </span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaImportacion)
+            </td>
+            <td>
+               @if (item.Estado == "Activo")
+            {
+                <span class="badge badge-success">
+                    <i class="fas fa-check-circle"></i> @item.Estado
+                </span>
+            }
+            else
+            {
+                <span class="badge badge-danger">
+                    <i class="fas fa-times-circle"></i> @item.Estado
+                </span>
+            }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Crear Importación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="createModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Importación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="editModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Detalles de Importación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="detailsModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Importación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="deleteModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        var selectedImportacionId = null;
+        var selectedImportacionName = null;
+
+        function handleImportacionSelection() {
+            var radio = event.target;
+            if (radio.checked) {
+                selectedImportacionId = radio.value;
+                selectedImportacionName = radio.dataset.importacionname;
+
+                // Get the status of the selected importacion
+                var row = $(radio).closest('tr');
+                var status = row.find('td:eq(7)').text().trim(); // Estado is the 8th column (index 7)
+
+                // Enable action buttons only if status is "Activo"
+                var isActive = status === 'Activo';
+                $('#editSelected').prop('disabled', !isActive);
+                $('#detailsSelected').prop('disabled', false); // Always allow details
+                $('#deleteSelected').prop('disabled', !isActive);
+                $('#toggleSelected').prop('disabled', false); // Always allow toggle
+
+                // Add visual feedback
+                console.log('Importación selected: ' + selectedImportacionName + ' (ID: ' + selectedImportacionId + ', Status: ' + status + ')');
+                toastr.info('Importación seleccionada: ' + selectedImportacionName + ' (Estado: ' + status + ')');
+            }
+        }
+
+        function toggleSelectAll() {
+            var radios = document.querySelectorAll('.importacion-radio');
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
+            selectedImportacionId = null;
+            selectedImportacionName = null;
+
+            // Disable action buttons
+            $('#editSelected').prop('disabled', true);
+            $('#detailsSelected').prop('disabled', true);
+            $('#deleteSelected').prop('disabled', true);
+            $('#toggleSelected').prop('disabled', true);
+        }
+
+        $(document).ready(function() {
+            // Handle modal loading via AJAX
+            $('#createModal').on('show.bs.modal', function (event) {
+                var modal = $(this);
+                $.get('@Url.Action("Create")', function(data) {
+                    modal.find('#createModalContent').html(data);
+                });
+            });
+
+            // Handle action buttons
+            $('#editSelected').click(function(e) {
+                e.preventDefault(); // Prevent default button behavior
+                e.stopPropagation(); // Stop event propagation
+
+                if (selectedImportacionId) {
+                    var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedImportacionId);
+                    $.get(url, function(data) {
+                        $('#editModalContent').html(data);
+                        $('#editModal').modal('show');
+                        console.log('Edit modal loaded with data:', data);
+                    }).fail(function(xhr) {
+                        console.error('Error loading edit modal:', xhr.responseText);
+                        toastr.error('Error al cargar el formulario de edición');
+                    });
+                } else {
+                    toastr.warning('Por favor seleccione una importación para editar');
+                }
+            });
+
+            $('#detailsSelected').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (selectedImportacionId) {
+                    var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedImportacionId);
+                    $.get(url, function(data) {
+                        $('#detailsModalContent').html(data);
+                        $('#detailsModal').modal('show');
+                    });
+                }
+            });
+
+            $('#deleteSelected').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (selectedImportacionId) {
+                    var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedImportacionId);
+                    $.get(url, function(data) {
+                        $('#deleteModalContent').html(data);
+                        $('#deleteModal').modal('show');
+                    });
+                }
+            });
+
+            $('#toggleSelected').click(function() {
+                if (selectedImportacionId) {
+                    if (confirm('¿Estás seguro de que quieres cambiar el estado de esta importación?')) {
+                        var url = '@Url.Action("ToggleEstado", new { id = "__id__" })'.replace('__id__', selectedImportacionId);
+                        $.post(url, function(data) {
+                            if (data.success) {
+                                toastr.success('Estado de la importación cambiado exitosamente');
+                                // Refresh the page to update the status
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 2000);
+                            } else {
+                                toastr.error('Error al cambiar el estado de la importación');
+                            }
+                        });
+                    }
+                }
+            });
+
+            // Handle form submission via AJAX
+            $(document).on('submit', 'form', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                var method = form.attr('method') || 'POST';
+
+                // Get form data including anti-forgery token
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: url,
+                    type: method,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    success: function(result) {
+                        if (result.success) {
+                            // Show success message
+                            if (result.message) {
+                                toastr.success(result.message);
+                            }
+                            // Close modal and refresh page after delay
+                            $('.modal').modal('hide');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            // Show validation errors
+                            form.replaceWith(result);
+                        }
+                    },
+                    error: function(xhr) {
+                        // Handle error
+                        console.log(xhr.responseText);
+                        if (xhr.status == 200 && xhr.responseText) {
+                            // This might be HTML with validation errors
+                            form.replaceWith(xhr.responseText);
+                        } else if (xhr.status == 400 && xhr.responseText) {
+                            // Handle validation errors
+                            form.replaceWith(xhr.responseText);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

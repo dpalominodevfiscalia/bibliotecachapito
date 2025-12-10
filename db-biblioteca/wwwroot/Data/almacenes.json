@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Almacén Principal",
+    "Descripcion": "Almacén principal de la empresa",
+    "Ubicacion": "Av. Principal 123",
+    "Responsable": "Juan Pérez",
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Nombre": "Almacén Secundario",
+    "Descripcion": "Almacén secundario para productos de menor rotación",
+    "Ubicacion": "Calle Secundaria 456",
+    "Responsable": "María Gómez",
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  }
+]

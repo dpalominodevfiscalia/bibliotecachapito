@@ -1,3 +1,6 @@
+@{
+    var layoutModel = Context.Items["LayoutViewModel"] as BibliotecaDB.Models.LayoutViewModel;
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,94 +8,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title - BibliotecaDB</title>
     <link href="~/adminlte/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
-    <link href="~/adminlte/css/adminlte.min.css" rel="stylesheet" /> 
+    <link href="~/adminlte/css/adminlte.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
 
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                @using (Html.BeginForm("Logout", "Account", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-link nav-link" style="padding: 0;">
-                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                    </button>
-                }
-            </li>
-        </ul>
-    </nav>
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="@Url.Action("Index", "Home")" class="brand-link">
-            <span class="brand-text font-weight-light">BibliotecaDB</span>
-        </a>
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                @if (ViewBag.CurrentUser != null)
-                {
-                    <a href="#" class="d-block">@ViewBag.CurrentUser.NombreUsuario</a>
-                    <small class="text-muted">@ViewBag.CurrentUser.Perfil?.Nombre @ViewBag.CurrentUser.Perfil?.Apellido</small>
-                }
-                else
-                {
-                    <a href="#" class="d-block">Usuario</a>
-                    <small class="text-muted">No autenticado</small>
-                }
-            </div>
-        </div>
-        <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    @if (ViewBag.OpcionItems != null && ViewBag.OpcionItems.Count > 0)
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="button" class="btn btn-link nav-link" style="padding: 0;" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="@Url.Action("Index", "Home")" class="brand-link">
+                <span class="brand-text font-weight-light">BibliotecaDB</span>
+            </a>
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                    @if (layoutModel?.CurrentUser != null)
                     {
-                        @foreach (var item in ViewBag.OpcionItems)
-                        {
-                            <li class="nav-item">
-                                <a href="@item.Url" class="nav-link">
-                                    <i class="nav-icon @item.Icon"></i>
-                                    <p>@item.Title</p>
-                                </a>
-                            </li>
-                        }
+                        <a href="#" class="d-block">@layoutModel.CurrentUser.NombreUsuario</a>
+                        <small class="text-muted">@layoutModel.CurrentUser.Perfil?.Nombre @layoutModel.CurrentUser.Perfil?.Apellido</small>
                     }
-                </ul>
-            </nav>
-        </div>
-    </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">@ViewBag.Title</h1>
+                    else
+                    {
+                        <a href="#" class="d-block">Usuario</a>
+                        <small class="text-muted">No autenticado</small>
+                    }
+                </div>
+            </div>
+            <div class="sidebar">
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        @if (layoutModel?.ModuleNavigation != null && layoutModel.ModuleNavigation.Count > 0)
+                        {
+                            @foreach (var modulo in layoutModel.ModuleNavigation.Where(m => m.Estado == "Activo").OrderBy(m => m.Orden))
+                            {
+                                var moduloOpciones = layoutModel.OpcionItems.Where(o => o.ModuloId == modulo.Id && o.Estado == "Activo");
+                                if (moduloOpciones.Any())
+                                {
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="nav-icon @modulo.Icono"></i>
+                                            <p>
+                                                @modulo.Nombre
+                                                <i class="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview" style="padding-left: 15px;">
+                                            @if (layoutModel?.OpcionItems != null)
+                                            {
+                                                @foreach (var opcion in moduloOpciones)
+                                                {
+                                                    <li class="nav-item" style="font-size:10px;">
+                                                        <a href="@opcion.Url" class="nav-link">
+                                                            <i class="@opcion.Icon"></i>
+                                                            <p>@opcion.Title</p>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">@ViewBag.Title</h1>
+                        </div>
                     </div>
                 </div>
             </div>
+            <section class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </section>
         </div>
-        <section class="content">
-            <div class="container-fluid">
-                @RenderBody()
-            </div>
-        </section>
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2025</strong>
+        </footer>
     </div>
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2025</strong>
-    </footer>
-</div>
-<script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
-<script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/adminlte/js/adminlte.min.js"></script>
-@RenderSection("scripts", required: false)
+    <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/adminlte/js/adminlte.min.js"></script>
+
+    <script>
+        function logout() {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Submit form via AJAX
+            $.ajax({
+                url: '@Url.Action("Logout", "Account")',
+                type: 'POST',
+                data: $('#logoutForm').serialize(),
+                success: function() {
+                    // Redirect to login page and force refresh
+                    window.location.href = '@Url.Action("Login", "Account")';
+                    // The redirect will automatically refresh the page
+                },
+                error: function() {
+                    // Even on error, redirect to login
+                    window.location.href = '@Url.Action("Login", "Account")';
+                }
+            });
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

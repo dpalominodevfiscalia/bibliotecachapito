@@ -34,12 +34,28 @@ namespace BibliotecaDB.Services
         private List<Proveedor> _proveedores;
         private List<CondicionPago> _condicionesPago;
         private List<CompraDetalle> _comprasDetalles;
+        private List<Importacion> _importaciones;
+        private List<ImportacionDetalle> _importacionesDetalles;
+        private List<FacturacionProveedor> _facturacionesProveedores;
+        private List<FacturacionDetalle> _facturacionesDetalles;
+        private List<PagoProveedor> _pagosProveedores;
+        private List<Modulo> _modulos;
+        private List<Opcion> _opciones;
+        private List<Almacen> _almacenes;
+        private List<TipoMovimiento> _tiposMovimientos;
+        private List<MovimientoAlmacen> _movimientosAlmacenes;
+        private List<Stock> _stocks;
+        private List<Cotizacion> _cotizaciones;
+        private List<PedidoVenta> _pedidosVenta;
+        private List<Cobranza> _cobranzas;
+        private List<Catalogo> _catalogos;
+        private List<ProgramacionOrdenProduccion> _programacionesOrdenesProduccion;
 
-        public DataService(IWebHostEnvironment env)
-        {
-            _dataPath = Path.Combine(env.WebRootPath, "Data");
-            LoadData();
-        }
+    public DataService(IWebHostEnvironment env)
+    {
+        _dataPath = Path.Combine(env.WebRootPath, "Data");
+        LoadData();
+    }
 
         private void LoadData()
         {
@@ -56,6 +72,15 @@ namespace BibliotecaDB.Services
             _menuItems = LoadFromFile<MenuItem>("opcion.json");
             _acciones = LoadFromFile<Accion>("actions.json");
             _productos = LoadFromFile<Producto>("products.json");
+            _modulos = LoadFromFile<Modulo>("modulos.json");
+            _opciones = LoadFromFile<Opcion>("opciones.json");
+            _almacenes = LoadFromFile<Almacen>("almacenes.json");
+            _tiposMovimientos = LoadFromFile<TipoMovimiento>("tiposMovimientos.json");
+            _movimientosAlmacenes = LoadFromFile<MovimientoAlmacen>("movimientosAlmacenes.json");
+            _stocks = LoadFromFile<Stock>("stocks.json");
+            _cotizaciones = LoadFromFile<Cotizacion>("cotizaciones.json");
+            _pedidosVenta = LoadFromFile<PedidoVenta>("pedidosVenta.json");
+            _cobranzas = LoadFromFile<Cobranza>("cobranzas.json");
             _categorias = LoadFromFile<Categoria>("categories.json");
             _clientes = LoadFromFile<Cliente>("clients.json");
             _tiposClientes = LoadFromFile<TipoCliente>("clientTypes.json");
@@ -65,6 +90,14 @@ namespace BibliotecaDB.Services
             _proveedores = LoadFromFile<Proveedor>("proveedores.json");
             _condicionesPago = LoadFromFile<CondicionPago>("condicionesPago.json");
             _comprasDetalles = LoadFromFile<CompraDetalle>("comprasDetalles.json");
+            _importaciones = LoadFromFile<Importacion>("importaciones.json");
+            _importacionesDetalles = LoadFromFile<ImportacionDetalle>("importacionesDetalles.json");
+            _facturacionesProveedores = LoadFromFile<FacturacionProveedor>("facturacionesProveedores.json");
+            _facturacionesDetalles = LoadFromFile<FacturacionDetalle>("facturacionesDetalles.json");
+            _pagosProveedores = LoadFromFile<PagoProveedor>("pagosProveedores.json");
+            _catalogos = LoadFromFile<Catalogo>("catalogos.json");
+            _recetas = LoadFromFile<Receta>("recetas.json");
+            _programacionesOrdenesProduccion = LoadFromFile<ProgramacionOrdenProduccion>("programacionesOrdenesProduccion.json");
             PopulateUsuarioDetails();
             PopulateSolicitudUsuario();
             PopulateAccionRelations();
@@ -157,7 +190,51 @@ namespace BibliotecaDB.Services
                     detalle.Compra = compra;
                     detalle.Producto = _productos.FirstOrDefault(p => p.Id == detalle.IdProducto);
                 }
-            }
+   
+                // Populate importacion relationships
+               foreach (var importacion in _importaciones)
+               {
+                   importacion.Proveedor = _proveedores.FirstOrDefault(p => p.Id == importacion.IdProveedor);
+                   importacion.Detalles = _importacionesDetalles.Where(id => id.IdImportacion == importacion.Id).ToList();
+                   foreach (var detalle in importacion.Detalles)
+                   {
+                       detalle.Importacion = importacion;
+                       detalle.Producto = _productos.FirstOrDefault(p => p.Id == detalle.IdProducto);
+                   }
+               }
+   
+               // Populate importacion detalle relationships
+               foreach (var detalle in _importacionesDetalles)
+               {
+                   detalle.Producto = _productos.FirstOrDefault(p => p.Id == detalle.IdProducto);
+               }
+   
+               // Populate facturacion relationships
+               foreach (var facturacion in _facturacionesProveedores)
+               {
+                   facturacion.Proveedor = _proveedores.FirstOrDefault(p => p.Id == facturacion.IdProveedor);
+                   facturacion.Compra = _compras.FirstOrDefault(c => c.Id == facturacion.IdCompra);
+                   facturacion.Importacion = _importaciones.FirstOrDefault(i => i.Id == facturacion.IdImportacion);
+                   facturacion.Detalles = _facturacionesDetalles.Where(fd => fd.IdFacturacion == facturacion.Id).ToList();
+                   foreach (var detalle in facturacion.Detalles)
+                   {
+                       detalle.Facturacion = facturacion;
+                       detalle.Producto = _productos.FirstOrDefault(p => p.Id == detalle.IdProducto);
+                   }
+               }
+   
+               // Populate facturacion detalle relationships
+               foreach (var detalle in _facturacionesDetalles)
+               {
+                   detalle.Producto = _productos.FirstOrDefault(p => p.Id == detalle.IdProducto);
+               }
+
+               // Populate pago proveedor relationships
+               foreach (var pago in _pagosProveedores)
+               {
+                   pago.Proveedor = _proveedores.FirstOrDefault(p => p.Id == pago.IdProveedor);
+               }
+           }
 
             // Populate compra detalle relationships
             foreach (var detalle in _comprasDetalles)
@@ -366,6 +443,277 @@ namespace BibliotecaDB.Services
             }
         }
 
+        // Almacenes
+        public List<Almacen> GetAlmacenes() => _almacenes;
+        public Almacen GetAlmacenById(int id) => _almacenes.FirstOrDefault(a => a.Id == id);
+        public void AddAlmacen(Almacen almacen)
+        {
+            almacen.Id = _almacenes.Any() ? _almacenes.Max(a => a.Id) + 1 : 1;
+            almacen.Estado = true;
+            almacen.FechaCreacion = DateTime.Now;
+            _almacenes.Add(almacen);
+            SaveToFile("almacenes.json", _almacenes);
+        }
+        public void UpdateAlmacen(Almacen almacen)
+        {
+            var index = _almacenes.FindIndex(a => a.Id == almacen.Id);
+            if (index != -1)
+            {
+                _almacenes[index] = almacen;
+                SaveToFile("almacenes.json", _almacenes);
+            }
+        }
+        public void DeleteAlmacen(int id)
+        {
+            _almacenes.RemoveAll(a => a.Id == id);
+            SaveToFile("almacenes.json", _almacenes);
+        }
+
+        public void ToggleAlmacenEstado(int id)
+        {
+            var almacen = _almacenes.FirstOrDefault(a => a.Id == id);
+            if (almacen != null)
+            {
+                almacen.Estado = !almacen.Estado;
+                SaveToFile("almacenes.json", _almacenes);
+            }
+        }
+
+        // TiposMovimientos
+        public List<TipoMovimiento> GetTiposMovimientos() => _tiposMovimientos;
+        public TipoMovimiento GetTipoMovimientoById(int id) => _tiposMovimientos.FirstOrDefault(t => t.Id == id);
+        public void AddTipoMovimiento(TipoMovimiento tipoMovimiento)
+        {
+            tipoMovimiento.Id = _tiposMovimientos.Any() ? _tiposMovimientos.Max(t => t.Id) + 1 : 1;
+            tipoMovimiento.Estado = true;
+            tipoMovimiento.FechaCreacion = DateTime.Now;
+            _tiposMovimientos.Add(tipoMovimiento);
+            SaveToFile("tiposMovimientos.json", _tiposMovimientos);
+        }
+        public void UpdateTipoMovimiento(TipoMovimiento tipoMovimiento)
+        {
+            var index = _tiposMovimientos.FindIndex(t => t.Id == tipoMovimiento.Id);
+            if (index != -1)
+            {
+                _tiposMovimientos[index] = tipoMovimiento;
+                SaveToFile("tiposMovimientos.json", _tiposMovimientos);
+            }
+        }
+        public void DeleteTipoMovimiento(int id)
+        {
+            _tiposMovimientos.RemoveAll(t => t.Id == id);
+            SaveToFile("tiposMovimientos.json", _tiposMovimientos);
+        }
+
+        public void ToggleTipoMovimientoEstado(int id)
+        {
+            var tipoMovimiento = _tiposMovimientos.FirstOrDefault(t => t.Id == id);
+            if (tipoMovimiento != null)
+            {
+                tipoMovimiento.Estado = !tipoMovimiento.Estado;
+                SaveToFile("tiposMovimientos.json", _tiposMovimientos);
+            }
+        }
+
+        // MovimientosAlmacenes
+        public List<MovimientoAlmacen> GetMovimientosAlmacenes() => _movimientosAlmacenes;
+        public MovimientoAlmacen GetMovimientoAlmacenById(int id) => _movimientosAlmacenes.FirstOrDefault(m => m.Id == id);
+        public void AddMovimientoAlmacen(MovimientoAlmacen movimiento)
+        {
+            movimiento.Id = _movimientosAlmacenes.Any() ? _movimientosAlmacenes.Max(m => m.Id) + 1 : 1;
+            movimiento.Estado = true;
+            movimiento.FechaMovimiento = DateTime.Now;
+            _movimientosAlmacenes.Add(movimiento);
+            SaveToFile("movimientosAlmacenes.json", _movimientosAlmacenes);
+        }
+        public void UpdateMovimientoAlmacen(MovimientoAlmacen movimiento)
+        {
+            var index = _movimientosAlmacenes.FindIndex(m => m.Id == movimiento.Id);
+            if (index != -1)
+            {
+                _movimientosAlmacenes[index] = movimiento;
+                SaveToFile("movimientosAlmacenes.json", _movimientosAlmacenes);
+            }
+        }
+        public void DeleteMovimientoAlmacen(int id)
+        {
+            _movimientosAlmacenes.RemoveAll(m => m.Id == id);
+            SaveToFile("movimientosAlmacenes.json", _movimientosAlmacenes);
+        }
+
+        public void ToggleMovimientoAlmacenEstado(int id)
+        {
+            var movimiento = _movimientosAlmacenes.FirstOrDefault(m => m.Id == id);
+            if (movimiento != null)
+            {
+                movimiento.Estado = !movimiento.Estado;
+                SaveToFile("movimientosAlmacenes.json", _movimientosAlmacenes);
+            }
+        }
+
+        // Stocks
+        public List<Stock> GetStocks() => _stocks;
+        public Stock GetStockById(int id) => _stocks.FirstOrDefault(s => s.Id == id);
+        public void AddStock(Stock stock)
+        {
+            stock.Id = _stocks.Any() ? _stocks.Max(s => s.Id) + 1 : 1;
+            stock.FechaActualizacion = DateTime.Now;
+            _stocks.Add(stock);
+            SaveToFile("stocks.json", _stocks);
+        }
+        public void UpdateStock(Stock stock)
+        {
+            var index = _stocks.FindIndex(s => s.Id == stock.Id);
+            if (index != -1)
+            {
+                _stocks[index] = stock;
+                SaveToFile("stocks.json", _stocks);
+            }
+        }
+        public void DeleteStock(int id)
+        {
+            _stocks.RemoveAll(s => s.Id == id);
+            SaveToFile("stocks.json", _stocks);
+        }
+
+        // Cotizaciones
+        public List<Cotizacion> GetCotizaciones() => _cotizaciones;
+        public Cotizacion GetCotizacionById(int id) => _cotizaciones.FirstOrDefault(c => c.Id == id);
+        public void AddCotizacion(Cotizacion cotizacion)
+        {
+            cotizacion.Id = _cotizaciones.Any() ? _cotizaciones.Max(c => c.Id) + 1 : 1;
+            cotizacion.FechaCotizacion = DateTime.Now;
+            cotizacion.Estado = "Pendiente";
+            _cotizaciones.Add(cotizacion);
+            SaveToFile("cotizaciones.json", _cotizaciones);
+        }
+        public void UpdateCotizacion(Cotizacion cotizacion)
+        {
+            var index = _cotizaciones.FindIndex(c => c.Id == cotizacion.Id);
+            if (index != -1)
+            {
+                _cotizaciones[index] = cotizacion;
+                SaveToFile("cotizaciones.json", _cotizaciones);
+            }
+        }
+        public void DeleteCotizacion(int id)
+        {
+            _cotizaciones.RemoveAll(c => c.Id == id);
+            SaveToFile("cotizaciones.json", _cotizaciones);
+        }
+
+        public void ToggleCotizacionEstado(int id)
+        {
+            var cotizacion = _cotizaciones.FirstOrDefault(c => c.Id == id);
+            if (cotizacion != null)
+            {
+                cotizacion.Estado = cotizacion.Estado == "Pendiente" ? "Aprobada" : "Pendiente";
+                SaveToFile("cotizaciones.json", _cotizaciones);
+            }
+        }
+
+        // PedidosVenta
+        public List<PedidoVenta> GetPedidosVenta() => _pedidosVenta;
+        public PedidoVenta GetPedidoVentaById(int id) => _pedidosVenta.FirstOrDefault(p => p.Id == id);
+        public void AddPedidoVenta(PedidoVenta pedido)
+        {
+            pedido.Id = _pedidosVenta.Any() ? _pedidosVenta.Max(p => p.Id) + 1 : 1;
+            pedido.FechaPedido = DateTime.Now;
+            pedido.Estado = "Pendiente";
+            _pedidosVenta.Add(pedido);
+            SaveToFile("pedidosVenta.json", _pedidosVenta);
+        }
+        public void UpdatePedidoVenta(PedidoVenta pedido)
+        {
+            var index = _pedidosVenta.FindIndex(p => p.Id == pedido.Id);
+            if (index != -1)
+            {
+                _pedidosVenta[index] = pedido;
+                SaveToFile("pedidosVenta.json", _pedidosVenta);
+            }
+        }
+        public void DeletePedidoVenta(int id)
+        {
+            _pedidosVenta.RemoveAll(p => p.Id == id);
+            SaveToFile("pedidosVenta.json", _pedidosVenta);
+        }
+
+        public void TogglePedidoVentaEstado(int id)
+        {
+            var pedido = _pedidosVenta.FirstOrDefault(p => p.Id == id);
+            if (pedido != null)
+            {
+                // Cycle through states: Pendiente -> Aprobado -> Entregado -> Pendiente
+                switch (pedido.Estado)
+                {
+                    case "Pendiente":
+                        pedido.Estado = "Aprobado";
+                        break;
+                    case "Aprobado":
+                        pedido.Estado = "Entregado";
+                        break;
+                    case "Entregado":
+                        pedido.Estado = "Pendiente";
+                        break;
+                    default:
+                        pedido.Estado = "Pendiente";
+                        break;
+                }
+                SaveToFile("pedidosVenta.json", _pedidosVenta);
+            }
+        }
+
+        // Cobranzas
+        public List<Cobranza> GetCobranzas() => _cobranzas;
+        public Cobranza GetCobranzaById(int id) => _cobranzas.FirstOrDefault(c => c.Id == id);
+        public void AddCobranza(Cobranza cobranza)
+        {
+            cobranza.Id = _cobranzas.Any() ? _cobranzas.Max(c => c.Id) + 1 : 1;
+            cobranza.FechaCobranza = DateTime.Now;
+            cobranza.Estado = "Pendiente";
+            _cobranzas.Add(cobranza);
+            SaveToFile("cobranzas.json", _cobranzas);
+        }
+        public void UpdateCobranza(Cobranza cobranza)
+        {
+            var index = _cobranzas.FindIndex(c => c.Id == cobranza.Id);
+            if (index != -1)
+            {
+                _cobranzas[index] = cobranza;
+                SaveToFile("cobranzas.json", _cobranzas);
+            }
+        }
+        public void DeleteCobranza(int id)
+        {
+            _cobranzas.RemoveAll(c => c.Id == id);
+            SaveToFile("cobranzas.json", _cobranzas);
+        }
+
+        public void ToggleCobranzaEstado(int id)
+        {
+            var cobranza = _cobranzas.FirstOrDefault(c => c.Id == id);
+            if (cobranza != null)
+            {
+                // Cycle through states: Pendiente -> Cobrado -> Anulado -> Pendiente
+                switch (cobranza.Estado)
+                {
+                    case "Pendiente":
+                        cobranza.Estado = "Cobrado";
+                        break;
+                    case "Cobrado":
+                        cobranza.Estado = "Anulado";
+                        break;
+                    case "Anulado":
+                        cobranza.Estado = "Pendiente";
+                        break;
+                    default:
+                        cobranza.Estado = "Pendiente";
+                        break;
+                }
+                SaveToFile("cobranzas.json", _cobranzas);
+            }
+        }
+
         // Compra Detalles
         public List<CompraDetalle> GetCompraDetalles() => _comprasDetalles;
         public CompraDetalle GetCompraDetalleById(int id) => _comprasDetalles.FirstOrDefault(cd => cd.Id == id);
@@ -434,6 +782,63 @@ namespace BibliotecaDB.Services
         {
             _pagos.RemoveAll(p => p.Id == id);
             SaveToFile("payments.json", _pagos);
+        }
+
+        // Pago Proveedor
+        public List<PagoProveedor> GetPagosProveedores() => _pagosProveedores;
+        public PagoProveedor GetPagoProveedorById(int id) => _pagosProveedores.FirstOrDefault(p => p.Id == id);
+        public void AddPagoProveedor(PagoProveedor pagoProveedor)
+        {
+            pagoProveedor.Id = _pagosProveedores.Any() ? _pagosProveedores.Max(p => p.Id) + 1 : 1;
+            pagoProveedor.Estado = "Activo";
+            pagoProveedor.FechaPago = pagoProveedor.FechaPago == default ? DateTime.Now : pagoProveedor.FechaPago;
+
+            // Calculate amount in soles if currency is not PEN
+            if (pagoProveedor.Moneda != "PEN" && pagoProveedor.TipoCambio.HasValue && pagoProveedor.TipoCambio > 0)
+            {
+                pagoProveedor.MontoSoles = pagoProveedor.Monto * pagoProveedor.TipoCambio.Value;
+            }
+            else
+            {
+                pagoProveedor.MontoSoles = pagoProveedor.Monto;
+            }
+
+            _pagosProveedores.Add(pagoProveedor);
+            SaveToFile("pagosProveedores.json", _pagosProveedores);
+        }
+        public void UpdatePagoProveedor(PagoProveedor pagoProveedor)
+        {
+            var index = _pagosProveedores.FindIndex(p => p.Id == pagoProveedor.Id);
+            if (index != -1)
+            {
+                // Calculate amount in soles if currency is not PEN
+                if (pagoProveedor.Moneda != "PEN" && pagoProveedor.TipoCambio.HasValue && pagoProveedor.TipoCambio > 0)
+                {
+                    pagoProveedor.MontoSoles = pagoProveedor.Monto * pagoProveedor.TipoCambio.Value;
+                }
+                else
+                {
+                    pagoProveedor.MontoSoles = pagoProveedor.Monto;
+                }
+
+                _pagosProveedores[index] = pagoProveedor;
+                SaveToFile("pagosProveedores.json", _pagosProveedores);
+            }
+        }
+        public void DeletePagoProveedor(int id)
+        {
+            _pagosProveedores.RemoveAll(p => p.Id == id);
+            SaveToFile("pagosProveedores.json", _pagosProveedores);
+        }
+
+        public void TogglePagoProveedorEstado(int id)
+        {
+            var pagoProveedor = _pagosProveedores.FirstOrDefault(p => p.Id == id);
+            if (pagoProveedor != null)
+            {
+                pagoProveedor.Estado = pagoProveedor.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("pagosProveedores.json", _pagosProveedores);
+            }
         }
 
         // Perfiles
@@ -661,7 +1066,7 @@ namespace BibliotecaDB.Services
             opcionItem.Profiles = opcionItem.Profiles ?? new List<int>();
             opcionItem.Roles = opcionItem.Roles ?? new List<int>();
             opcionItem.ActionIds = opcionItem.ActionIds ?? new List<int>();
-
+            opcionItem.ModuloId = opcionItem.ModuloId;
             var index = _menuItems.FindIndex(m => m.Id == opcionItem.Id);
             if (index != -1)
             {
@@ -1287,6 +1692,419 @@ namespace BibliotecaDB.Services
             {
                 libroGrado.Estado = libroGrado.Estado == "Activo" ? "Inactivo" : "Activo";
                 SaveToFile("bookGrades.json", _librosGrados);
+            }
+        }
+
+        // Modulos CRUD methods
+        public List<Modulo> GetModulos() => _modulos;
+        public Modulo GetModuloById(int id) => _modulos.FirstOrDefault(m => m.Id == id);
+        public void AddModulo(Modulo modulo)
+        {
+            modulo.Id = _modulos.Any() ? _modulos.Max(m => m.Id) + 1 : 1;
+            modulo.Estado = "Activo";
+            _modulos.Add(modulo);
+            SaveToFile("modulos.json", _modulos);
+        }
+        public void UpdateModulo(Modulo modulo)
+        {
+            var index = _modulos.FindIndex(m => m.Id == modulo.Id);
+            if (index != -1)
+            {
+                _modulos[index] = modulo;
+                SaveToFile("modulos.json", _modulos);
+            }
+        }
+        public void DeleteModulo(int id)
+        {
+            _modulos.RemoveAll(m => m.Id == id);
+            SaveToFile("modulos.json", _modulos);
+        }
+        public void ToggleModuloEstado(int id)
+        {
+            var modulo = _modulos.FirstOrDefault(m => m.Id == id);
+            if (modulo != null)
+            {
+                modulo.Estado = modulo.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("modulos.json", _modulos);
+            }
+        }
+
+        // Module reordering method
+        public void ReorderModulos(List<int> moduleIds)
+        {
+            // Update the order of modules based on the provided list
+            for (int i = 0; i < moduleIds.Count; i++)
+            {
+                var modulo = _modulos.FirstOrDefault(m => m.Id == moduleIds[i]);
+                if (modulo != null)
+                {
+                    modulo.Orden = i + 1; // Orders start from 1
+                }
+            }
+
+            // Sort modules by the new order
+            _modulos = _modulos.OrderBy(m => m.Orden).ToList();
+            SaveToFile("modulos.json", _modulos);
+        }
+
+        // Opciones CRUD methods
+        public List<Opcion> GetOpciones() => _opciones;
+        public Opcion GetOpcionById(int id) => _opciones.FirstOrDefault(o => o.Id == id);
+        public List<Opcion> GetOpcionesWithModulos()
+        {
+            foreach (var opcion in _opciones)
+            {
+                opcion.Modulo = _modulos.FirstOrDefault(m => m.Id == opcion.ModuloId);
+            }
+            return _opciones;
+        }
+        public void AddOpcion(Opcion opcion)
+        {
+            opcion.Id = _opciones.Any() ? _opciones.Max(o => o.Id) + 1 : 1;
+            opcion.Estado = "Activo";
+            _opciones.Add(opcion);
+            SaveToFile("opciones.json", _opciones);
+        }
+        public void UpdateOpcion(Opcion opcion)
+        {
+            var index = _opciones.FindIndex(o => o.Id == opcion.Id);
+            if (index != -1)
+            {
+                _opciones[index] = opcion;
+                SaveToFile("opciones.json", _opciones);
+            }
+        }
+        public void DeleteOpcion(int id)
+        {
+            _opciones.RemoveAll(o => o.Id == id);
+            SaveToFile("opciones.json", _opciones);
+        }
+        public void ToggleOpcionEstado(int id)
+        {
+            var opcion = _opciones.FirstOrDefault(o => o.Id == id);
+            if (opcion != null)
+            {
+                opcion.Estado = opcion.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("opciones.json", _opciones);
+            }
+        }
+
+        // Helper methods for Opciones
+        public List<string> GetAvailableControllers()
+        {
+            return new List<string> { "Home", "Usuarios", "Libros", "Compras", "Ventas", "Solicitudes", "Roles", "Perfiles", "Modulos", "Opciones" };
+        }
+
+        public List<string> GetAvailableActions()
+        {
+            return new List<string> { "Index", "Create", "Edit", "Delete", "Details" };
+        }
+
+        // Importaciones
+        public List<Importacion> GetImportaciones() => _importaciones;
+        public Importacion GetImportacionById(int id) => _importaciones.FirstOrDefault(i => i.Id == id);
+        public void AddImportacion(Importacion importacion)
+        {
+            importacion.Id = _importaciones.Any() ? _importaciones.Max(i => i.Id) + 1 : 1;
+            importacion.Estado = "Activo";
+            importacion.FechaImportacion = importacion.FechaImportacion == default ? DateTime.Now : importacion.FechaImportacion;
+
+            // Calculate totals
+            if (importacion.Detalles != null && importacion.Detalles.Any())
+            {
+                importacion.ValorTotal = importacion.Detalles.Sum(d => d.ValorTotalConImpuestos);
+            }
+
+            _importaciones.Add(importacion);
+            SaveToFile("importaciones.json", _importaciones);
+        }
+        public void UpdateImportacion(Importacion importacion)
+        {
+            var index = _importaciones.FindIndex(i => i.Id == importacion.Id);
+            if (index != -1)
+            {
+                // Calculate totals
+                if (importacion.Detalles != null && importacion.Detalles.Any())
+                {
+                    importacion.ValorTotal = importacion.Detalles.Sum(d => d.ValorTotalConImpuestos);
+                }
+
+                _importaciones[index] = importacion;
+                SaveToFile("importaciones.json", _importaciones);
+            }
+        }
+        public void DeleteImportacion(int id)
+        {
+            _importaciones.RemoveAll(i => i.Id == id);
+            SaveToFile("importaciones.json", _importaciones);
+        }
+
+        public void ToggleImportacionEstado(int id)
+        {
+            var importacion = _importaciones.FirstOrDefault(i => i.Id == id);
+            if (importacion != null)
+            {
+                importacion.Estado = importacion.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("importaciones.json", _importaciones);
+            }
+        }
+
+        // Importacion Detalles
+        public List<ImportacionDetalle> GetImportacionDetalles() => _importacionesDetalles;
+        public ImportacionDetalle GetImportacionDetalleById(int id) => _importacionesDetalles.FirstOrDefault(d => d.Id == id);
+        public void AddImportacionDetalle(ImportacionDetalle importacionDetalle)
+        {
+            // Business logic validation
+            if (importacionDetalle.Cantidad <= 0)
+                throw new ArgumentException("La cantidad debe ser mayor que 0");
+
+            if (importacionDetalle.PrecioUnitario <= 0)
+                throw new ArgumentException("El precio unitario debe ser mayor que 0");
+
+            // Calculate totals
+            importacionDetalle.ValorTotal = importacionDetalle.Cantidad * importacionDetalle.PrecioUnitario;
+            importacionDetalle.ValorArancel = importacionDetalle.ValorTotal * (importacionDetalle.PorcentajeArancel / 100);
+            importacionDetalle.ValorIGV = (importacionDetalle.ValorTotal + importacionDetalle.ValorArancel) * (importacionDetalle.PorcentajeIGV / 100);
+            importacionDetalle.ValorTotalConImpuestos = importacionDetalle.ValorTotal + importacionDetalle.ValorArancel + importacionDetalle.ValorIGV;
+
+            importacionDetalle.Id = _importacionesDetalles.Any() ? _importacionesDetalles.Max(id => id.Id) + 1 : 1;
+            importacionDetalle.Estado = "Activo";
+            _importacionesDetalles.Add(importacionDetalle);
+            SaveToFile("importacionesDetalles.json", _importacionesDetalles);
+        }
+        public void UpdateImportacionDetalle(ImportacionDetalle importacionDetalle)
+        {
+            var index = _importacionesDetalles.FindIndex(id => id.Id == importacionDetalle.Id);
+            if (index != -1)
+            {
+                _importacionesDetalles[index] = importacionDetalle;
+                SaveToFile("importacionesDetalles.json", _importacionesDetalles);
+            }
+        }
+        public void DeleteImportacionDetalle(int id)
+        {
+            _importacionesDetalles.RemoveAll(d => d.Id == id);
+            SaveToFile("importacionesDetalles.json", _importacionesDetalles);
+        }
+
+        public void ToggleImportacionDetalleEstado(int id)
+        {
+            var importacionDetalle = _importacionesDetalles.FirstOrDefault(d => d.Id == id);
+            if (importacionDetalle != null)
+            {
+                importacionDetalle.Estado = importacionDetalle.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("importacionesDetalles.json", _importacionesDetalles);
+            }
+        }
+
+        // Facturaciones Proveedor
+        public List<FacturacionProveedor> GetFacturacionesProveedores() => _facturacionesProveedores;
+        public FacturacionProveedor GetFacturacionProveedorById(int id) => _facturacionesProveedores.FirstOrDefault(f => f.Id == id);
+        public void AddFacturacionProveedor(FacturacionProveedor facturacion)
+        {
+            facturacion.Id = _facturacionesProveedores.Any() ? _facturacionesProveedores.Max(f => f.Id) + 1 : 1;
+            facturacion.Estado = "Activo";
+            facturacion.FechaFactura = facturacion.FechaFactura == default ? DateTime.Now : facturacion.FechaFactura;
+            facturacion.FechaVencimiento = facturacion.FechaVencimiento == default ? DateTime.Now.AddDays(30) : facturacion.FechaVencimiento;
+
+            // Calculate totals
+            if (facturacion.Detalles != null && facturacion.Detalles.Any())
+            {
+                facturacion.Subtotal = facturacion.Detalles.Sum(d => d.Subtotal);
+                facturacion.ValorIGV = facturacion.Subtotal * (facturacion.PorcentajeIGV / 100);
+                facturacion.Total = facturacion.Subtotal + facturacion.ValorIGV;
+            }
+
+            _facturacionesProveedores.Add(facturacion);
+            SaveToFile("facturacionesProveedores.json", _facturacionesProveedores);
+        }
+        public void UpdateFacturacionProveedor(FacturacionProveedor facturacion)
+        {
+            var index = _facturacionesProveedores.FindIndex(f => f.Id == facturacion.Id);
+            if (index != -1)
+            {
+                // Calculate totals
+                if (facturacion.Detalles != null && facturacion.Detalles.Any())
+                {
+                    facturacion.Subtotal = facturacion.Detalles.Sum(d => d.Subtotal);
+                    facturacion.ValorIGV = facturacion.Subtotal * (facturacion.PorcentajeIGV / 100);
+                    facturacion.Total = facturacion.Subtotal + facturacion.ValorIGV;
+                }
+
+                _facturacionesProveedores[index] = facturacion;
+                SaveToFile("facturacionesProveedores.json", _facturacionesProveedores);
+            }
+        }
+        public void DeleteFacturacionProveedor(int id)
+        {
+            _facturacionesProveedores.RemoveAll(f => f.Id == id);
+            SaveToFile("facturacionesProveedores.json", _facturacionesProveedores);
+        }
+
+        public void ToggleFacturacionProveedorEstado(int id)
+        {
+            var facturacion = _facturacionesProveedores.FirstOrDefault(f => f.Id == id);
+            if (facturacion != null)
+            {
+                facturacion.Estado = facturacion.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("facturacionesProveedores.json", _facturacionesProveedores);
+            }
+        }
+
+        // Facturacion Detalles
+        public List<FacturacionDetalle> GetFacturacionDetalles() => _facturacionesDetalles;
+        public FacturacionDetalle GetFacturacionDetalleById(int id) => _facturacionesDetalles.FirstOrDefault(fd => fd.Id == id);
+        public void AddFacturacionDetalle(FacturacionDetalle facturacionDetalle)
+        {
+            // Business logic validation
+            if (facturacionDetalle.Cantidad <= 0)
+                throw new ArgumentException("La cantidad debe ser mayor que 0");
+
+            if (facturacionDetalle.PrecioUnitario <= 0)
+                throw new ArgumentException("El precio unitario debe ser mayor que 0");
+
+            // Calculate totals
+            facturacionDetalle.Subtotal = facturacionDetalle.Cantidad * facturacionDetalle.PrecioUnitario;
+            facturacionDetalle.ValorIGV = facturacionDetalle.Subtotal * (facturacionDetalle.PorcentajeIGV / 100);
+            facturacionDetalle.Total = facturacionDetalle.Subtotal + facturacionDetalle.ValorIGV;
+
+            facturacionDetalle.Id = _facturacionesDetalles.Any() ? _facturacionesDetalles.Max(fd => fd.Id) + 1 : 1;
+            facturacionDetalle.Estado = "Activo";
+            _facturacionesDetalles.Add(facturacionDetalle);
+            SaveToFile("facturacionesDetalles.json", _facturacionesDetalles);
+        }
+        public void UpdateFacturacionDetalle(FacturacionDetalle facturacionDetalle)
+        {
+            var index = _facturacionesDetalles.FindIndex(fd => fd.Id == facturacionDetalle.Id);
+            if (index != -1)
+            {
+                _facturacionesDetalles[index] = facturacionDetalle;
+                SaveToFile("facturacionesDetalles.json", _facturacionesDetalles);
+            }
+        }
+        public void DeleteFacturacionDetalle(int id)
+        {
+            _facturacionesDetalles.RemoveAll(fd => fd.Id == id);
+            SaveToFile("facturacionesDetalles.json", _facturacionesDetalles);
+        }
+
+        public void ToggleFacturacionDetalleEstado(int id)
+        {
+            var facturacionDetalle = _facturacionesDetalles.FirstOrDefault(fd => fd.Id == id);
+            if (facturacionDetalle != null)
+            {
+                facturacionDetalle.Estado = facturacionDetalle.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("facturacionesDetalles.json", _facturacionesDetalles);
+            }
+        }
+
+        // Catalogos
+        public List<Catalogo> GetCatalogos() => _catalogos;
+        public Catalogo GetCatalogoById(int id) => _catalogos.FirstOrDefault(c => c.Id == id);
+        public void AddCatalogo(Catalogo catalogo)
+        {
+            catalogo.Id = _catalogos.Any() ? _catalogos.Max(c => c.Id) + 1 : 1;
+            catalogo.Estado = string.IsNullOrEmpty(catalogo.Estado) ? "Activo" : catalogo.Estado;
+            catalogo.FechaRegistro = catalogo.FechaRegistro == default ? DateTime.Now : catalogo.FechaRegistro;
+            _catalogos.Add(catalogo);
+            SaveToFile("catalogos.json", _catalogos);
+        }
+        public void UpdateCatalogo(Catalogo catalogo)
+        {
+            var index = _catalogos.FindIndex(c => c.Id == catalogo.Id);
+            if (index != -1)
+            {
+                _catalogos[index] = catalogo;
+                SaveToFile("catalogos.json", _catalogos);
+            }
+        }
+        public void DeleteCatalogo(int id)
+        {
+            _catalogos.RemoveAll(c => c.Id == id);
+            SaveToFile("catalogos.json", _catalogos);
+        }
+
+        public void ToggleCatalogoEstado(int id)
+        {
+            var catalogo = _catalogos.FirstOrDefault(c => c.Id == id);
+            if (catalogo != null)
+            {
+                catalogo.Estado = catalogo.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("catalogos.json", _catalogos);
+            }
+        }
+
+        // Recetas
+        private List<Receta> _recetas;
+
+        public List<Receta> GetRecetas() => _recetas;
+        public Receta GetRecetaById(int id) => _recetas.FirstOrDefault(r => r.Id == id);
+        public void AddReceta(Receta receta)
+        {
+            receta.Id = _recetas.Any() ? _recetas.Max(r => r.Id) + 1 : 1;
+            receta.Estado = string.IsNullOrEmpty(receta.Estado) ? "Activo" : receta.Estado;
+            receta.FechaCreacion = receta.FechaCreacion == default ? DateTime.Now : receta.FechaCreacion;
+            _recetas.Add(receta);
+            SaveToFile("recetas.json", _recetas);
+        }
+        public void UpdateReceta(Receta receta)
+        {
+            var index = _recetas.FindIndex(r => r.Id == receta.Id);
+            if (index != -1)
+            {
+                _recetas[index] = receta;
+                SaveToFile("recetas.json", _recetas);
+            }
+        }
+        public void DeleteReceta(int id)
+        {
+            _recetas.RemoveAll(r => r.Id == id);
+            SaveToFile("recetas.json", _recetas);
+        }
+
+        public void ToggleRecetaEstado(int id)
+        {
+            var receta = _recetas.FirstOrDefault(r => r.Id == id);
+            if (receta != null)
+            {
+                receta.Estado = receta.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("recetas.json", _recetas);
+            }
+        }
+
+        // ProgramacionesOrdenesProduccion
+        public List<ProgramacionOrdenProduccion> GetProgramacionesOrdenesProduccion() => _programacionesOrdenesProduccion;
+        public ProgramacionOrdenProduccion GetProgramacionOrdenProduccionById(int id) => _programacionesOrdenesProduccion.FirstOrDefault(p => p.Id == id);
+        public void AddProgramacionOrdenProduccion(ProgramacionOrdenProduccion programacion)
+        {
+            programacion.Id = _programacionesOrdenesProduccion.Any() ? _programacionesOrdenesProduccion.Max(p => p.Id) + 1 : 1;
+            programacion.Estado = string.IsNullOrEmpty(programacion.Estado) ? "Activo" : programacion.Estado;
+            programacion.FechaCreacion = programacion.FechaCreacion == default ? DateTime.Now : programacion.FechaCreacion;
+            _programacionesOrdenesProduccion.Add(programacion);
+            SaveToFile("programacionesOrdenesProduccion.json", _programacionesOrdenesProduccion);
+        }
+        public void UpdateProgramacionOrdenProduccion(ProgramacionOrdenProduccion programacion)
+        {
+            var index = _programacionesOrdenesProduccion.FindIndex(p => p.Id == programacion.Id);
+            if (index != -1)
+            {
+                _programacionesOrdenesProduccion[index] = programacion;
+                SaveToFile("programacionesOrdenesProduccion.json", _programacionesOrdenesProduccion);
+            }
+        }
+        public void DeleteProgramacionOrdenProduccion(int id)
+        {
+            _programacionesOrdenesProduccion.RemoveAll(p => p.Id == id);
+            SaveToFile("programacionesOrdenesProduccion.json", _programacionesOrdenesProduccion);
+        }
+
+        public void ToggleProgramacionOrdenProduccionEstado(int id)
+        {
+            var programacion = _programacionesOrdenesProduccion.FirstOrDefault(p => p.Id == id);
+            if (programacion != null)
+            {
+                programacion.Estado = programacion.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("programacionesOrdenesProduccion.json", _programacionesOrdenesProduccion);
             }
         }
     }

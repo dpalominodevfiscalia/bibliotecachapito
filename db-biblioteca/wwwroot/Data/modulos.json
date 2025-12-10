@@ -1,0 +1,112 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Configuracion",
+    "Descripcion": "Módulo de configuracion del sistema",
+    "Icono": "fas fa-cogs",
+    "Ruta": "#",
+    "Orden": 1,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 2,
+    "Nombre": "Administración",
+    "Descripcion": "Módulo de administración del sistema",
+    "Icono": "fas fa-cogs",
+    "Ruta": "#",
+    "Orden": 1,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 3,
+    "Nombre": "Colegios",
+    "Descripcion": "Módulo de gestión de colegios",
+    "Icono": "fas fa-school",
+    "Ruta": "#",
+    "Orden": 2,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 4,
+    "Nombre": "Compras",
+    "Descripcion": "Módulo de gestión de compras",
+    "Icono": "fas fa-shopping-cart",
+    "Ruta": "#",
+    "Orden": 3,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 5,
+    "Nombre": "Almacen",
+    "Descripcion": "Módulo de gestión de almacen",
+    "Icono": "fas fa-warehouse",
+    "Ruta": "#",
+    "Orden": 4,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 6,
+    "Nombre": "Ventas",
+    "Descripcion": "Módulo de gestión de ventas",
+    "Icono": "fas fa-cash-register",
+    "Ruta": "#",
+    "Orden": 5,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 7,
+    "Nombre": "Tesoreria",
+    "Descripcion": "Módulo de gestión de tesorería",
+    "Icono": "fas fa-money-bill-wave",
+    "Ruta": "#",
+    "Orden": 6,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 8,
+    "Nombre": "Contabilidad",
+    "Descripcion": "Módulo de gestión contable",
+    "Icono": "fas fa-calculator",
+    "Ruta": "#",
+    "Orden": 7,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 9,
+    "Nombre": "Produccion",
+    "Descripcion": "Módulo de gestión de producción",
+    "Icono": "fas fa-industry",
+    "Ruta": "#",
+    "Orden": 8,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 10,
+    "Nombre": "Planillas",
+    "Descripcion": "Módulo de gestión de planillas",
+    "Icono": "fas fa-file-invoice",
+    "Ruta": "#",
+    "Orden": 9,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  },
+  {
+    "Id": 11,
+    "Nombre": "Facturacion",
+    "Descripcion": "Módulo de gestión de facturación",
+    "Icono": "fas fa-receipt",
+    "Ruta": "#",
+    "Orden": 10,
+    "Estado": "Activo",
+    "Permisos": [ "Crear", "Editar", "Eliminar", "Ver" ]
+  }
+]

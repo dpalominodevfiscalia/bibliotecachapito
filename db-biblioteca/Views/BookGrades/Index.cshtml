@@ -43,37 +43,78 @@
                                 </div>
                             }
 
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
-                                    <i class="fas fa-plus"></i> Nuevo Libro por Grado
-                                </button>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    @if (ViewContext.HttpContext.Items["HasCreateBookGradePermission"] as bool? ?? false)
+                                    {
+                                        <button title="Crear Nuevo" type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    }
+                                </div>
+                                <div class="action-buttons">
+                                    @if (ViewContext.HttpContext.Items["HasEditBookGradePermission"] as bool? ?? false)
+                                    {
+                                        <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    }
+                                    @if (ViewContext.HttpContext.Items["HasDetailsBookGradePermission"] as bool? ?? false)
+                                    {
+                                        <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled>
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    }
+                                    @if (ViewContext.HttpContext.Items["HasDeleteBookGradePermission"] as bool? ?? false)
+                                    {
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    }
+                                    @if (ViewContext.HttpContext.Items["HasToggleBookGradePermission"] as bool? ?? false)
+                                    {
+                                        <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled>
+                                            <i class="fas fa-power-off"></i> <span id="toggleButtonText"></span>
+                                        </button>
+                                    }
+                                </div>
                             </div>
 
-                            <table id="bookGradesTable" class="table table-bordered table-striped">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>
+                                            <input type="radio" name="selectBookGrade" id="selectAll" onchange="toggleSelectAll()">
+                                        </th>
                                         <th>Libro</th>
                                         <th>Grado</th>
-                                        <th>Acciones</th>
+                                        <th>Cantidad</th>
+                                        <th>Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var bookGrade in Model.LibroGrados)
                                     {
                                         <tr>
-                                            <td>@bookGrade.Id</td>
+                                            <td>
+                                                <input type="radio" name="selectBookGrade" class="bookgrade-radio" value="@bookGrade.Id" data-bookgradename="@bookGrade.Libro.Titulo - @bookGrade.Grado.Nombre" data-state="@bookGrade.Estado" onchange="handleBookGradeSelection()">
+                                            </td>
                                             <td>@bookGrade.Libro.Titulo</td>
                                             <td>@bookGrade.Grado.Nombre</td>
+                                            <td>@bookGrade.Cantidad</td>
                                             <td>
-                                                <button class="btn btn-sm btn-info edit-btn" data-id="@bookGrade.Id"
-                                                        data-libro-id="@bookGrade.LibroId"
-                                                        data-grado-id="@bookGrade.GradoId">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-danger delete-btn" data-id="@bookGrade.Id">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                                @if (bookGrade.Estado == "Activo")
+                                                {
+                                                    <span class="badge badge-success">
+                                                        <i class="fas fa-check-circle"></i> @bookGrade.Estado
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">
+                                                        <i class="fas fa-times-circle"></i> @bookGrade.Estado
+                                                    </span>
+                                                }
                                             </td>
                                         </tr>
                                     }
@@ -92,13 +133,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Nuevo Libro por Grado</h5>
+                <h5 class="modal-title" id="createModalLabel">Crear Libro por Grado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <partial name="_CreatePartial" model="new BibliotecaDB.Models.LibroGrado()" />
+                <!-- Content will be loaded via AJAX -->
+                <div id="createModalContent"></div>
             </div>
         </div>
     </div>
@@ -115,7 +157,47 @@
                 </button>
             </div>
             <div class="modal-body">
-                <partial name="_EditPartial" model="new BibliotecaDB.Models.LibroGrado()" />
+                <!-- Content will be loaded via AJAX -->
+                <div id="editModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Detalles de Libro por Grado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="detailsModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toggle Modal -->
+<div class="modal fade" id="toggleModal" tabindex="-1" role="dialog" aria-labelledby="toggleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="toggleModalLabel">Confirmar Cambio de Estado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="toggleModalMessage">¿Está seguro de que desea <span id="toggleActionText"></span> este libro por grado?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmToggle">Confirmar</button>
             </div>
         </div>
     </div>
@@ -132,25 +214,57 @@
                 </button>
             </div>
             <div class="modal-body">
-                <partial name="_DeletePartial" model="new BibliotecaDB.Models.LibroGrado()" />
+                <!-- Content will be loaded via AJAX -->
+                <div id="deleteModalContent"></div>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Initialize DataTable
-            $('#bookGradesTable').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-                },
-                "responsive": true,
-                "autoWidth": false
-            });
+        var selectedBookGradeId = null;
+        var selectedBookGradeName = null;
+        var selectedBookGradeState = null;
 
-            // Handle create modal loading
+        function handleBookGradeSelection() {
+            var radio = event.target;
+            if (radio.checked) {
+                selectedBookGradeId = radio.value;
+                selectedBookGradeName = radio.dataset.bookgradename;
+                selectedBookGradeState = radio.dataset.state;
+
+                // Update toggle button text based on bookgrade state
+                $('#toggleButtonText').text(selectedBookGradeState === "Activo" ? "Desactivar" : "Activar");
+
+                // Enable action buttons
+                $('#editSelected').prop('disabled', false);
+                $('#detailsSelected').prop('disabled', false);
+                $('#deleteSelected').prop('disabled', false);
+                $('#toggleSelected').prop('disabled', false);
+            }
+        }
+
+        function toggleSelectAll() {
+            var radios = document.querySelectorAll('.bookgrade-radio');
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
+            selectedBookGradeId = null;
+            selectedBookGradeName = null;
+            selectedBookGradeState = null;
+
+            // Disable action buttons
+            $('#editSelected').prop('disabled', true);
+            $('#detailsSelected').prop('disabled', true);
+            $('#deleteSelected').prop('disabled', true);
+            $('#toggleSelected').prop('disabled', true);
+        }
+
+        $(document).ready(function() {
+            // Handle modal loading via AJAX
             $('#createModal').on('show.bs.modal', function (event) {
                 var modal = $(this);
                 var url = '@Url.Action("Create")';
@@ -161,79 +275,136 @@
                     </text>
                 }
                 $.get(url, function(data) {
-                    modal.find('.modal-body').html(data);
+                    modal.find('#createModalContent').html(data);
                 });
             });
 
-            // Handle edit button click
-            $('.edit-btn').click(function() {
-                var id = $(this).data('id');
-                var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', id);
-
-                $.get(url, function(data) {
-                    $('#editModal .modal-body').html(data);
-                    $('#editModal').modal('show');
-                });
-            });
-
-            // Handle delete button click
-            $('.delete-btn').click(function() {
-                var id = $(this).data('id');
-                var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', id);
-
-                $.get(url, function(data) {
-                    $('#deleteModal .modal-body').html(data);
-                    $('#deleteModal').modal('show');
-                });
-            });
-        });
-
-        // Handle form submission via AJAX
-        $(document).on('submit', 'form', function(e) {
-            e.preventDefault();
-            var form = $(this);
-            var url = form.attr('action');
-            var method = form.attr('method') || 'POST';
-
-            // Get form data including anti-forgery token
-            var formData = new FormData(form[0]);
-
-            $.ajax({
-                url: url,
-                type: method,
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                success: function(result) {
-                    if (result.success) {
-                        // Show success message
-                        if (result.message) {
-                            alert(result.message);
-                        }
-                        // Close modal and refresh page after delay
-                        $('.modal').modal('hide');
-                        setTimeout(function() {
-                            location.reload();
-                        }, 2000);
-                    } else {
-                        // Show validation errors
-                        form.replaceWith(result);
-                    }
-                },
-                error: function(xhr) {
-                    // Handle error
-                    console.log(xhr.responseText);
-                    if (xhr.status == 200 && xhr.responseText) {
-                        // This might be HTML with validation errors
-                        form.replaceWith(xhr.responseText);
-                    } else if (xhr.status == 400 && xhr.responseText) {
-                        // Handle validation errors
-                        form.replaceWith(xhr.responseText);
-                    }
+            // Handle action buttons
+            $('#editSelected').click(function() {
+                if (selectedBookGradeId) {
+                    var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedBookGradeId);
+                    $.get(url, function(data) {
+                        $('#editModalContent').html(data);
+                        $('#editModal').modal('show');
+                    });
                 }
+            });
+
+            $('#detailsSelected').click(function() {
+                if (selectedBookGradeId) {
+                    var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedBookGradeId);
+                    $.get(url, function(data) {
+                        $('#detailsModalContent').html(data);
+                        $('#detailsModal').modal('show');
+                    });
+                }
+            });
+
+            $('#deleteSelected').click(function() {
+                if (selectedBookGradeId) {
+                    var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedBookGradeId);
+                    $.get(url, function(data) {
+                        $('#deleteModalContent').html(data);
+                        $('#deleteModal').modal('show');
+                    });
+                }
+            });
+
+            $('#toggleSelected').click(function() {
+                if (selectedBookGradeId) {
+                    var actionText = selectedBookGradeState === "Activo" ? "desactivar" : "activar";
+                    $('#toggleActionText').text(actionText);
+                    $('#toggleModal').modal('show');
+                    $('#confirmToggle').data('id', selectedBookGradeId).data('url', '@Url.Action("ToggleEstado")');
+                }
+            });
+
+            // Handle form submission via AJAX
+            $(document).on('submit', 'form', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                var method = form.attr('method') || 'POST';
+
+                // Get form data including anti-forgery token
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: url,
+                    type: method,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    success: function(result) {
+                        if (result.success) {
+                            // Show success message
+                            if (result.message) {
+                                toastr.success(result.message);
+                            }
+                            // Close modal and refresh page after delay
+                            $('.modal').modal('hide');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            // Show validation errors
+                            form.replaceWith(result);
+                        }
+                    },
+                    error: function(xhr) {
+                        // Handle error
+                        console.log(xhr.responseText);
+                        if (xhr.status == 200 && xhr.responseText) {
+                            // This might be HTML with validation errors
+                            form.replaceWith(xhr.responseText);
+                        } else if (xhr.status == 400 && xhr.responseText) {
+                            // Handle validation errors
+                            form.replaceWith(xhr.responseText);
+                        }
+                    }
+                });
+            });
+
+            // Handle toggle modal
+            $('#toggleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var id = button.data('id');
+                var url = button.data('action');
+                var currentState = button.data('current-state');
+
+                var modal = $(this);
+                var actionText = currentState === "Activo" ? "desactivar" : "activar";
+                modal.find('#toggleActionText').text(actionText);
+                modal.find('#confirmToggle').data('id', id).data('url', url);
+            });
+
+            $('#confirmToggle').click(function() {
+                var id = $(this).data('id');
+                var url = $(this).data('url');
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: { id: id },
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    success: function(result) {
+                        if (result.success) {
+                            toastr.success('Estado actualizado exitosamente');
+                            $('#toggleModal').modal('hide');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
+                    },
+                    error: function(xhr) {
+                        toastr.error('Error al actualizar el estado');
+                    }
+                });
             });
         });
     </script>

@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Compra",
+    "Descripcion": "Ingreso por compra a proveedores",
+    "EsEntrada": true,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Nombre": "Saldo Inicial",
+    "Descripcion": "Ingreso por saldo inicial de inventario",
+    "EsEntrada": true,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Devolución",
+    "Descripcion": "Ingreso por devolución de clientes",
+    "EsEntrada": true,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 4,
+    "Nombre": "Producción",
+    "Descripcion": "Ingreso por producción interna",
+    "EsEntrada": true,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 5,
+    "Nombre": "Transferencia",
+    "Descripcion": "Ingreso por transferencia entre almacenes",
+    "EsEntrada": true,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 6,
+    "Nombre": "Venta",
+    "Descripcion": "Salida por venta a clientes",
+    "EsEntrada": false,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 7,
+    "Nombre": "Consumo",
+    "Descripcion": "Salida por consumo interno",
+    "EsEntrada": false,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 8,
+    "Nombre": "Devolución Proveedor",
+    "Descripcion": "Salida por devolución a proveedores",
+    "EsEntrada": false,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 9,
+    "Nombre": "Producción Consumo",
+    "Descripcion": "Salida por consumo en producción",
+    "EsEntrada": false,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  },
+  {
+    "Id": 10,
+    "Nombre": "Transferencia Salida",
+    "Descripcion": "Salida por transferencia entre almacenes",
+    "EsEntrada": false,
+    "Estado": true,
+    "FechaCreacion": "2025-12-09T00:00:00"
+  }
+]

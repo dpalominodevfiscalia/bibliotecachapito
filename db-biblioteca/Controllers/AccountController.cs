@@ -20,6 +20,18 @@ namespace BibliotecaDB.Controllers
         // GET: Account/Login
         public ActionResult Login()
         {
+            // Always prevent caching for login page to ensure fresh load
+            Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+            Response.Headers.Add("Pragma", "no-cache");
+            Response.Headers.Add("Expires", "0");
+
+            // Clear any existing authentication if user somehow got here while logged in
+            if (HttpContext.Request.Cookies["ProfileId"] != null)
+            {
+                HttpContext.Response.Cookies.Delete("ProfileId");
+                HttpContext.Session.Clear();
+            }
+
             return View();
         }
 
@@ -50,7 +62,17 @@ namespace BibliotecaDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
+            // Clear authentication cookie
             HttpContext.Response.Cookies.Delete("ProfileId");
+
+
+            // Check if this is an AJAX request
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Ok(new { success = true });
+            }
+
+            // For non-AJAX requests, redirect to login
             return RedirectToAction("Login", "Account");
         }
     }

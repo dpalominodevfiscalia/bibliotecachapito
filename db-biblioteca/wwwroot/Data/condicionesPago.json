@@ -1,0 +1,15 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "NUEVA CONDICION",
+    "Descripcion": "AAAAAAA",
+    "DiasCredito": 30,
+    "Tipo": "Contado",
+    "DescuentoPorProntoPago": 10,
+    "FormaPago": "Transferencia",
+    "Moneda": "PEN",
+    "AplicaImpuestos": "Si",
+    "Observaciones": "535345345",
+    "Estado": "Activo"
+  }
+]

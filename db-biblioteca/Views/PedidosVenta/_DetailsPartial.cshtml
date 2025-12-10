@@ -1,0 +1,82 @@
+@model BibliotecaDB.Models.PedidoVenta
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.NumeroPedido)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.NumeroPedido)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.IdCliente)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Cliente.Nombre) @Html.DisplayFor(model => model.Cliente.Apellido)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.IdCotizacion)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Cotizacion.NumeroCotizacion)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FechaPedido)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FechaPedido)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FechaEntrega)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FechaEntrega)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.CondicionesPago)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.CondicionesPago)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Moneda)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Moneda)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Subtotal)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Subtotal)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Impuestos)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Impuestos)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Total)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Total)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Observaciones)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Observaciones)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Estado)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Vendedor)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Vendedor)
+    </dd>
+</dl>

@@ -1,0 +1,48 @@
+@model BibliotecaDB.Models.MovimientoAlmacen
+
+@{
+    ViewData["Title"] = "Detalles del Movimiento";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">Fecha Movimiento</dt>
+            <dd class="col-sm-10">@Model.FechaMovimiento.ToString("dd/MM/yyyy HH:mm")</dd>
+
+            <dt class="col-sm-2">Tipo Movimiento</dt>
+            <dd class="col-sm-10">@Model.TipoMovimiento?.Nombre</dd>
+
+            <dt class="col-sm-2">Producto</dt>
+            <dd class="col-sm-10">@Model.Producto?.Nombre</dd>
+
+            <dt class="col-sm-2">Cantidad</dt>
+            <dd class="col-sm-10">@Model.Cantidad</dd>
+
+            <dt class="col-sm-2">Almacén Origen</dt>
+            <dd class="col-sm-10">@Model.AlmacenOrigen?.Nombre</dd>
+
+            <dt class="col-sm-2">Almacén Destino</dt>
+            <dd class="col-sm-10">@(Model.AlmacenDestino != null ? Model.AlmacenDestino.Nombre : "-")</dd>
+
+            <dt class="col-sm-2">Documento Referencia</dt>
+            <dd class="col-sm-10">@Model.DocumentoReferencia</dd>
+
+            <dt class="col-sm-2">Observaciones</dt>
+            <dd class="col-sm-10">@Model.Observaciones</dd>
+
+            <dt class="col-sm-2">Usuario</dt>
+            <dd class="col-sm-10">@Model.Usuario</dd>
+
+            <dt class="col-sm-2">Estado</dt>
+            <dd class="col-sm-10">@(Model.Estado ? "Activo" : "Inactivo")</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

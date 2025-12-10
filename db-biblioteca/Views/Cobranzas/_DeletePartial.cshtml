@@ -1,0 +1,38 @@
+@model BibliotecaDB.Models.Cobranza
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar esta cobranza?</p>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NumeroRecibo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NumeroRecibo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </dt>
+            <dd class="col-sm-10">
+                @(Model.Cliente?.Nombre ?? "") @(Model.Cliente?.Apellido ?? "")
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaCobranza)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaCobranza)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Monto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Monto)
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

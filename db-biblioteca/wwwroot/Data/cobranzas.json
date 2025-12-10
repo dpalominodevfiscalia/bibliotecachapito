@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "NumeroRecibo": "657567567",
+    "IdCliente": 1,
+    "IdPedidoVenta": 1,
+    "FechaCobranza": "2025-12-09T21:55:27.894268-05:00",
+    "Moneda": "PEN",
+    "Monto": 100,
+    "FormaPago": "56465456",
+    "ReferenciaPago": "654654",
+    "Observaciones": "6546546",
+    "Estado": "Pendiente",
+    "Cobrador": "654645",
+    "Cliente": null,
+    "PedidoVenta": null
+  }
+]

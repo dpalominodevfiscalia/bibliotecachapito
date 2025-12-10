@@ -1,0 +1,34 @@
+@model BibliotecaDB.Models.Importacion
+
+<h3>¿Estás seguro de que quieres eliminar esta importación?</h3>
+<div class="alert alert-warning">
+    <p>Esta acción no se puede deshacer.</p>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Número de Importación</label>
+    <div>@Model.NumeroImportacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Proveedor</label>
+    <div>@Model.Proveedor?.Nombre</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Importación</label>
+    <div>@Model.FechaImportacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor Total</label>
+    <div>@Model.ValorTotal</div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

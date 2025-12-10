@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "IdProducto": 2,
+    "IdAlmacen": 1,
+    "Cantidad": -5.00,
+    "StockMinimo": 0,
+    "StockMaximo": 0,
+    "FechaActualizacion": "2025-12-09T16:03:59.2413283-05:00",
+    "UsuarioActualizacion": "System",
+    "Producto": null,
+    "Almacen": null
+  },
+  {
+    "Id": 2,
+    "IdProducto": 2,
+    "IdAlmacen": 2,
+    "Cantidad": 5.00,
+    "StockMinimo": 0,
+    "StockMaximo": 0,
+    "FechaActualizacion": "2025-12-09T16:03:59.2631865-05:00",
+    "UsuarioActualizacion": "System",
+    "Producto": null,
+    "Almacen": null
+  }
+]

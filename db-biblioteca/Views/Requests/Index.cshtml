@@ -1,7 +1,7 @@
 @model IEnumerable<BibliotecaDB.Models.Solicitud>
 
 @{
-    ViewData["Title"] = "Solicitudes";
+    ViewData["Title"] = "Requerimiento de Compra";
 
     // Helper functions for badge classes - defined here so they're available in Razor
     Func<string, string> GetPriorityBadgeClass = (priority) =>
@@ -376,7 +376,6 @@
                         }
                     }
                 });
-            });
-        });
+            }); 
     </script>
 }

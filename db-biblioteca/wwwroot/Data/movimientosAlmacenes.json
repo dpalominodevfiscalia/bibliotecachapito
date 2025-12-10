@@ -1,0 +1,19 @@
+[
+  {
+    "Id": 1,
+    "IdTipoMovimiento": 2,
+    "IdAlmacenOrigen": 1,
+    "IdAlmacenDestino": 2,
+    "IdProducto": 2,
+    "Cantidad": 5.00,
+    "Observaciones": "dsdfsdf",
+    "FechaMovimiento": "2025-12-09T16:03:59.203046-05:00",
+    "Usuario": null,
+    "DocumentoReferencia": "31231312",
+    "Estado": true,
+    "TipoMovimiento": null,
+    "AlmacenOrigen": null,
+    "AlmacenDestino": null,
+    "Producto": null
+  }
+]

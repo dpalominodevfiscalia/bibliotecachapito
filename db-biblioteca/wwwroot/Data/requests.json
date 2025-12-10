@@ -7,7 +7,7 @@
       "NombreUsuario": "admin",
       "Contrase\u00F1a": "admin",
       "Correo": "admin@example.com",
-      "Estado": "Inactivo",
+      "Estado": "Activo",
       "IdRol": 1,
       "Rol": {
         "Id": 1,
@@ -30,9 +30,61 @@
         "Estado": "Activo"
       }
     },
-    "Descripcion": "Solicitud de ejemplo",
+    "IdSolicitud": null,
+    "AreaSolicitante": null,
+    "SolicitadoPor": null,
     "FechaSolicitud": "2023-01-01T00:00:00",
+    "Prioridad": null,
     "EstadoSolicitud": null,
+    "ProductoServicio": null,
+    "CantidadSolicitada": 0,
+    "Justificacion": null,
+    "FechaRequerida": "0001-01-01T00:00:00",
+    "Descripcion": "Solicitud de ejemplo",
     "Estado": "Activo"
+  },
+  {
+    "Id": 2,
+    "IdUsuario": 1,
+    "Usuario": {
+      "Id": 1,
+      "NombreUsuario": "admin",
+      "Contrase\u00F1a": "admin",
+      "Correo": "admin@example.com",
+      "Estado": "Activo",
+      "IdRol": 1,
+      "Rol": {
+        "Id": 1,
+        "Nombre": "Administrador",
+        "Usuarios": null,
+        "Acciones": null,
+        "Estado": "Activo"
+      },
+      "IdPerfil": 1,
+      "Perfil": {
+        "Id": 1,
+        "Nombre": "Admin",
+        "Apellido": "Usuario",
+        "FechaNacimiento": "1980-01-01T00:00:00",
+        "NumeroDocumento": null,
+        "Telefono": null,
+        "Usuarios": null,
+        "Acciones": null,
+        "StartMenuId": null,
+        "Estado": "Activo"
+      }
+    },
+    "IdSolicitud": "AAAA",
+    "AreaSolicitante": "23423423",
+    "SolicitadoPor": "4234324",
+    "FechaSolicitud": "2025-12-09T02:34:00",
+    "Prioridad": "alta",
+    "EstadoSolicitud": "Aprobado",
+    "ProductoServicio": "32423432",
+    "CantidadSolicitada": 1,
+    "Justificacion": "43242423432",
+    "FechaRequerida": "2025-12-09T00:00:00",
+    "Descripcion": "432432",
+    "Estado": "ACTIVO"
   }
 ]

@@ -4,199 +4,764 @@
     "Title": "Inicio",
     "Url": "/Home/Index",
     "Icon": "fas fa-home",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
-  },
-  {
-    "Id": 2,
-    "Title": "Usuarios",
-    "Url": "/Users/Index",
-    "Icon": "fas fa-users",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 11,
+    "Modulo": null
   },
   {
     "Id": 3,
     "Title": "Libros",
     "Url": "/Books/Index",
     "Icon": "fas fa-book",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 3,
+    "Modulo": null
   },
   {
     "Id": 4,
     "Title": "Colegios",
     "Url": "/Schools/Index",
     "Icon": "fas fa-school",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 3,
+    "Modulo": null
   },
   {
     "Id": 5,
     "Title": "Compras",
     "Url": "/Compras/Index",
     "Icon": "fas fa-shopping-cart",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
   },
   {
     "Id": 6,
     "Title": "Pagos",
     "Url": "/Payments/Index",
     "Icon": "fas fa-credit-card",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 6,
+    "Modulo": null
   },
   {
     "Id": 7,
     "Title": "Ventas",
     "Url": "/Sales/Index",
     "Icon": "fas fa-chart-line",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 6,
+    "Modulo": null
   },
   {
     "Id": 8,
-    "Title": "Solicitudes",
+    "Title": "Requerimiento de compra",
     "Url": "/Requests/Index",
     "Icon": "fas fa-clipboard-list",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
   },
   {
     "Id": 9,
     "Title": "Roles",
     "Url": "/Roles/Index",
     "Icon": "fas fa-user-tag",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
   },
   {
     "Id": 10,
     "Title": "Perfiles",
     "Url": "/Profiles/Index",
     "Icon": "fas fa-id-card",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
   },
   {
     "Id": 11,
     "Title": "Servicios",
     "Url": "/Services/Index",
     "Icon": "fas fa-cogs",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 2,
+    "Modulo": null
   },
   {
     "Id": 12,
     "Title": "Acciones",
     "Url": "/Actions/Index",
     "Icon": "fas fa-tasks",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
   },
   {
     "Id": 13,
     "Title": "Opciones",
     "Url": "/Opcion/Index",
     "Icon": "fas fa-bars",
-    "Profiles": [ 1 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 4, 3 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
   },
   {
     "Id": 14,
     "Title": "Productos",
     "Url": "/Products/Index",
     "Icon": "fas fa-box",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 2,
+    "Modulo": null
   },
   {
     "Id": 15,
-    "Title": "Categorías",
+    "Title": "Categorias",
     "Url": "/Categories/Index",
     "Icon": "fas fa-tags",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 2,
+    "Modulo": null
   },
   {
     "Id": 16,
     "Title": "Clientes",
     "Url": "/Clients/Index",
     "Icon": "fas fa-user-tie",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 2,
+    "Modulo": null
   },
   {
     "Id": 17,
     "Title": "Tipos de Clientes",
     "Url": "/ClientTypes/Index",
     "Icon": "fas fa-users-cog",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 2,
+    "Modulo": null
   },
   {
     "Id": 18,
     "Title": "Niveles",
     "Url": "/Levels/Index",
     "Icon": "fas fa-layer-group",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 3,
+    "Modulo": null
   },
   {
     "Id": 19,
     "Title": "Grados",
     "Url": "/Grades/Index",
     "Icon": "fas fa-graduation-cap",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 3,
+    "Modulo": null
   },
   {
     "Id": 20,
     "Title": "Libros por Grado",
     "Url": "/BookGrades/Index",
     "Icon": "fas fa-book-reader",
-    "Profiles": [ 1, 2 ],
-    "Roles": [ 1 ],
-    "ActionIds": [ 1, 2, 3, 4, 5 ],
-    "Estado": "Activo"
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 3,
+    "Modulo": null
+  },
+  {
+    "Id": 21,
+    "Title": "Usuarios",
+    "Url": "/Users/Index",
+    "Icon": "fas fa-users",
+    "Profiles": [
+      1
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
+  },
+  {
+    "Id": 22,
+    "Title": "Proveedores",
+    "Url": "/Proveedores/Index",
+    "Icon": "fas fa-truck",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
+  },
+  {
+    "Id": 23,
+    "Title": "Condiciones de Pago",
+    "Url": "/CondicionesPago/Index",
+    "Icon": "fas fa-handshake",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
+  },
+  {
+    "Id": 24,
+    "Title": "Importaciones",
+    "Url": "/Importaciones/Index",
+    "Icon": "fas fa-shipping-fast",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
+  },
+  {
+    "Id": 25,
+    "Title": "Facturaciones a Proveedores",
+    "Url": "/FacturacionesProveedores/Index",
+    "Icon": "fas fa-file-invoice-dollar",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
+  },
+  {
+    "Id": 26,
+    "Title": "Pagos de Proveedores",
+    "Url": "/SupplierPayments/Index",
+    "Icon": "fas fa-money-bill-wave",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 4,
+    "Modulo": null
+  },
+  {
+    "Id": 27,
+    "Title": "Almacenes",
+    "Url": "/Almacenes/Index",
+    "Icon": "fas fa-warehouse",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 5,
+    "Modulo": null
+  },
+  {
+    "Id": 28,
+    "Title": "Movimientos de Almac\u00E9n",
+    "Url": "/MovimientosAlmacenes/Index",
+    "Icon": "fas fa-exchange-alt",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 5,
+    "Modulo": null
+  },
+  {
+    "Id": 29,
+    "Title": "Control de Stock",
+    "Url": "/Stocks/Index",
+    "Icon": "fas fa-boxes",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 5,
+    "Modulo": null
+  },
+  {
+    "Id": 30,
+    "Title": "Cotizaciones",
+    "Url": "/Cotizaciones/Index",
+    "Icon": "fas fa-file-alt",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 6,
+    "Modulo": null
+  },
+  {
+    "Id": 31,
+    "Title": "Pedidos de Venta",
+    "Url": "/PedidosVenta/Index",
+    "Icon": "fas fa-shopping-basket",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 6,
+    "Modulo": null
+  },
+  {
+    "Id": 32,
+    "Title": "Cobranzas",
+    "Url": "/Cobranzas/Index",
+    "Icon": "fas fa-money-check-alt",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 6,
+    "Modulo": null
+  },
+  {
+    "Id": 33,
+    "Title": "Cat\u00E1logos",
+    "Url": "/Catalogos/Index",
+    "Icon": "fas fa-list-alt",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 1,
+    "Modulo": null
+  },
+  {
+    "Id": 34,
+    "Title": "Recetas",
+    "Url": "/Recetas/Index",
+    "Icon": "fas fa-utensils",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 9,
+    "Modulo": null
+  },
+  {
+    "Id": 35,
+    "Title": "Programaciones de \u00D3rdenes de Producci\u00F3n",
+    "Url": "/ProgramacionesOrdenesProduccion/Index",
+    "Icon": "fas fa-calendar-alt",
+    "Profiles": [
+      1,
+      2
+    ],
+    "Roles": [
+      1
+    ],
+    "ActionIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Estado": "Activo",
+    "ModuloId": 9,
+    "Modulo": null
   }
 ]

@@ -228,8 +228,8 @@
 
             // Handle action buttons
             $('#editSelected').click(function() {
-                if (selectedOrderId) {
-                    var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedOrderId);
+                if (selectedCompraId) {
+                    var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedCompraId);
                     $.get(url, function(data) {
                         $('#editModalContent').html(data);
                         $('#editModal').modal('show');
@@ -238,8 +238,8 @@
             });
 
             $('#detailsSelected').click(function() {
-                if (selectedOrderId) {
-                    var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedOrderId);
+                if (selectedCompraId) {
+                    var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedCompraId);
                     $.get(url, function(data) {
                         $('#detailsModalContent').html(data);
                         $('#detailsModal').modal('show');
@@ -248,8 +248,8 @@
             });
 
             $('#deleteSelected').click(function() {
-                if (selectedOrderId) {
-                    var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedOrderId);
+                if (selectedCompraId) {
+                    var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedCompraId);
                     $.get(url, function(data) {
                         $('#deleteModalContent').html(data);
                         $('#deleteModal').modal('show');

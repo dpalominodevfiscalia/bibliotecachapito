@@ -25,5 +25,26 @@ namespace BibliotecaDB.Models
         public DbSet<Nivel> Niveles { get; set; }
         public DbSet<Grado> Grados { get; set; }
         public DbSet<LibroGrado> LibrosGrados { get; set; }
+
+        // Module and Option management
+        public DbSet<Modulo> Modulos { get; set; }
+        public DbSet<Opcion> Opciones { get; set; }
+        public DbSet<OpcionAccion> OpcionAcciones { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+
+        // Warehouse management
+        public DbSet<Almacen> Almacenes { get; set; }
+        public DbSet<TipoMovimiento> TiposMovimientos { get; set; }
+        public DbSet<MovimientoAlmacen> MovimientosAlmacenes { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+
+        // Catalog management
+        public DbSet<Catalogo> Catalogos { get; set; }
+
+        // Recipe management
+        public DbSet<Receta> Recetas { get; set; }
+
+        // Production Order Scheduling
+        public DbSet<ProgramacionOrdenProduccion> ProgramacionesOrdenesProduccion { get; set; }
     }
 }

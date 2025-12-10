@@ -1,0 +1,263 @@
+@model IEnumerable<BibliotecaDB.Models.Stock>
+@{
+    ViewData["Title"] = "Stocks";
+}
+
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        @if (ViewContext.HttpContext.Items["HasCreateStockPermission"] as bool? ?? false)
+        {
+            <button title="Crear Nuevo" type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+                <i class="fas fa-plus"></i>
+            </button>
+        }
+    </div>
+    <div class="action-buttons">
+        @if (ViewContext.HttpContext.Items["HasEditStockPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
+                <i class="fas fa-edit"></i>
+            </button>
+        }
+        @if (ViewContext.HttpContext.Items["HasDetailsStockPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled>
+                <i class="fas fa-info-circle"></i>
+            </button>
+        }
+        @if (ViewContext.HttpContext.Items["HasDeleteStockPermission"] as bool? ?? false)
+        {
+            <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
+                <i class="fas fa-trash"></i>
+            </button>
+        }
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <input type="radio" name="selectStock" id="selectAll" onchange="toggleSelectAll()">
+            </th>
+            <th>Producto</th>
+            <th>Almacén</th>
+            <th>Cantidad</th>
+            <th>Stock Mínimo</th>
+            <th>Stock Máximo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="radio" name="selectStock" class="stock-radio" value="@item.Id" data-stockname="@item.Producto.Nombre - @item.Almacen.Nombre" onchange="handleStockSelection()">
+                </td>
+                <td>@item.Producto.Nombre</td>
+                <td>@item.Almacen.Nombre</td>
+                <td>@item.Cantidad</td>
+                <td>@item.StockMinimo</td>
+                <td>@item.StockMaximo</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Crear Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="createModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="editModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Detalles de Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="detailsModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded via AJAX -->
+                <div id="deleteModalContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        var selectedStockId = null;
+        var selectedStockName = null;
+
+        function handleStockSelection() {
+            var radio = event.target;
+            if (radio.checked) {
+                selectedStockId = radio.value;
+                selectedStockName = radio.dataset.stockname;
+
+                // Enable action buttons
+                $('#editSelected').prop('disabled', false);
+                $('#detailsSelected').prop('disabled', false);
+                $('#deleteSelected').prop('disabled', false);
+            }
+        }
+
+        function toggleSelectAll() {
+            var radios = document.querySelectorAll('.stock-radio');
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
+            selectedStockId = null;
+            selectedStockName = null;
+
+            // Disable action buttons
+            $('#editSelected').prop('disabled', true);
+            $('#detailsSelected').prop('disabled', true);
+            $('#deleteSelected').prop('disabled', true);
+        }
+
+        $(document).ready(function() {
+            // Handle modal loading via AJAX
+            $('#createModal').on('show.bs.modal', function (event) {
+                var modal = $(this);
+                $.get('@Url.Action("Create")', function(data) {
+                    modal.find('#createModalContent').html(data);
+                });
+            });
+
+            // Handle action buttons
+            $('#editSelected').click(function() {
+                if (selectedStockId) {
+                    var url = '@Url.Action("Edit", new { id = "__id__" })'.replace('__id__', selectedStockId);
+                    $.get(url, function(data) {
+                        $('#editModalContent').html(data);
+                        $('#editModal').modal('show');
+                    });
+                }
+            });
+
+            $('#detailsSelected').click(function() {
+                if (selectedStockId) {
+                    var url = '@Url.Action("Details", new { id = "__id__" })'.replace('__id__', selectedStockId);
+                    $.get(url, function(data) {
+                        $('#detailsModalContent').html(data);
+                        $('#detailsModal').modal('show');
+                    });
+                }
+            });
+
+            $('#deleteSelected').click(function() {
+                if (selectedStockId) {
+                    var url = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', selectedStockId);
+                    $.get(url, function(data) {
+                        $('#deleteModalContent').html(data);
+                        $('#deleteModal').modal('show');
+                    });
+                }
+            });
+
+            // Handle form submission via AJAX
+            $(document).on('submit', 'form', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                var method = form.attr('method') || 'POST';
+
+                // Get form data including anti-forgery token
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+                    url: url,
+                    type: method,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    success: function(result) {
+                        if (result.success) {
+                            // Show success message
+                            if (result.message) {
+                                toastr.success(result.message);
+                            }
+                            // Close modal and refresh page after delay
+                            $('.modal').modal('hide');
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            // Show validation errors
+                            form.replaceWith(result);
+                        }
+                    },
+                    error: function(xhr) {
+                        // Handle error
+                        console.log(xhr.responseText);
+                        if (xhr.status == 200 && xhr.responseText) {
+                            // This might be HTML with validation errors
+                            form.replaceWith(xhr.responseText);
+                        } else if (xhr.status == 400 && xhr.responseText) {
+                            // Handle validation errors
+                            form.replaceWith(xhr.responseText);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

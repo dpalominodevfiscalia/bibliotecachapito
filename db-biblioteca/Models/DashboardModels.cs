@@ -49,5 +49,6 @@ namespace BibliotecaDB.Models
         public List<Rol> Roles { get; set; }
         public List<Perfil> Profiles { get; set; }
         public List<Accion> AvailableActions { get; set; }
+        public List<Modulo> Modulos { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "PRUEBA SAC",
+    "RazonSocial": "DFSF",
+    "RUC": "20152465456",
+    "Direccion": "FSDFSD",
+    "Telefono": "FSFSDFSD",
+    "Email": "FSF@GMAIL.COM",
+    "Contacto": "asddsdf",
+    "TelefonoContacto": "4324324324234",
+    "EmailContacto": "FSF@GMAIL.COM",
+    "TipoProveedor": "Nacional",
+    "CondicionesPago": "4234324",
+    "Banco": "asdasdasd",
+    "NumeroCuenta": "4343243243243242",
+    "Moneda": "PEN",
+    "Observaciones": "gfdgdfgfdg",
+    "Estado": "Activo"
+  }
+]

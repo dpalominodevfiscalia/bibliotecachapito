@@ -1,0 +1,98 @@
+@model BibliotecaDB.Models.FacturacionProveedor
+
+<div class="form-group">
+    <label class="control-label">Número de Factura</label>
+    <div>@Model.NumeroFactura</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Proveedor</label>
+    <div>@Model.Proveedor?.Nombre</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Factura</label>
+    <div>@Model.FechaFactura</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Vencimiento</label>
+    <div>@Model.FechaVencimiento</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Tipo de Documento</label>
+    <div>@Model.TipoDocumento</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Subtotal</label>
+    <div>@Model.Subtotal</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Porcentaje IGV</label>
+    <div>@Model.PorcentajeIGV%</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor IGV</label>
+    <div>@Model.ValorIGV</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Total</label>
+    <div>@Model.Total</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Moneda</label>
+    <div>@Model.Moneda</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Tipo de Cambio</label>
+    <div>@Model.TipoCambio</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Observaciones</label>
+    <div>@Model.Observaciones</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Estado de Pago</label>
+    <div>@Model.EstadoPago</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Pago</label>
+    <div>@Model.FechaPago</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Método de Pago</label>
+    <div>@Model.MetodoPago</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Número de Operación</label>
+    <div>@Model.NumeroOperacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Compra Asociada</label>
+    <div>@Model.Compra?.NumeroOrdenCompra</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Importación Asociada</label>
+    <div>@Model.Importacion?.NumeroImportacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Estado</label>
+    <div>@Model.Estado</div>
+</div>
+
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

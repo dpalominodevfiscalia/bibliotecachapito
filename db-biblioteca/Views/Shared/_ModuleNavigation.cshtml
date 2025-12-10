@@ -1,0 +1,22 @@
+@using BibliotecaDB.Models
+@model List<Modulo>
+
+@if (Model != null && Model.Any())
+{
+    <div class="module-navigation">
+        <h5 class="mb-3">Módulos del Sistema</h5>
+        <div class="list-group">
+            @foreach (var modulo in Model.OrderBy(m => m.Orden))
+            {
+                <a href="@modulo.Ruta" class="list-group-item list-group-item-action @(Url.Action().Contains(modulo.Ruta) ? "active" : "")">
+                    <i class="@modulo.Icono mr-2"></i>
+                    <span>@modulo.Nombre</span>
+                    @if (modulo.Estado == "Inactivo")
+                    {
+                        <span class="badge badge-warning float-right">Inactivo</span>
+                    }
+                </a>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,63 @@
+@model BibliotecaDB.Models.ProgramacionOrdenProduccion
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="CodigoOrden" class="control-label"></label>
+        <input asp-for="CodigoOrden" class="form-control" required />
+        <span asp-validation-for="CodigoOrden" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="form-control" required />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descripcion" class="control-label"></label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaProgramada" class="control-label"></label>
+        <input asp-for="FechaProgramada" class="form-control" type="date" required />
+        <span asp-validation-for="FechaProgramada" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaInicio" class="control-label"></label>
+        <input asp-for="FechaInicio" class="form-control" type="date" required />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaFin" class="control-label"></label>
+        <input asp-for="FechaFin" class="form-control" type="date" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado" class="control-label"></label>
+        <select asp-for="Estado" class="form-control">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Prioridad" class="control-label"></label>
+        <select asp-for="Prioridad" class="form-control">
+            <option value="">-- Seleccione Prioridad --</option>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+        </select>
+        <span asp-validation-for="Prioridad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Responsable" class="control-label"></label>
+        <input asp-for="Responsable" class="form-control" />
+        <span asp-validation-for="Responsable" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

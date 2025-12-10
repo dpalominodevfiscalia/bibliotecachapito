@@ -18,6 +18,9 @@ namespace BibliotecaDB.Models
         public DateTime FechaNacimiento { get; set; }
         public string Estado { get; set; } = "Activo";
 
+        // Computed property for full name
+        public string NombreCompleto => $"{Nombre} {Apellido}".Trim();
+
         // Navigation properties for relationships
         public int? TipoClienteId { get; set; }
         public virtual TipoCliente TipoCliente { get; set; }

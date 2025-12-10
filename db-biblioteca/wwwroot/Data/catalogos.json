@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "CatalogoId": "CAT-001",
+    "GrupoName": "Tipos de Documento",
+    "GrupoId": "GRP-DOC",
+    "Valor": "Factura",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:30:00"
+  },
+  {
+    "Id": 2,
+    "CatalogoId": "CAT-002",
+    "GrupoName": "Tipos de Documento",
+    "GrupoId": "GRP-DOC",
+    "Valor": "Boleta",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:31:00"
+  },
+  {
+    "Id": 3,
+    "CatalogoId": "CAT-003",
+    "GrupoName": "Tipos de Documento",
+    "GrupoId": "GRP-DOC",
+    "Valor": "Guía de Remisión",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:32:00"
+  },
+  {
+    "Id": 4,
+    "CatalogoId": "CAT-004",
+    "GrupoName": "Estados de Pedido",
+    "GrupoId": "GRP-EST",
+    "Valor": "Pendiente",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:33:00"
+  },
+  {
+    "Id": 5,
+    "CatalogoId": "CAT-005",
+    "GrupoName": "Estados de Pedido",
+    "GrupoId": "GRP-EST",
+    "Valor": "Aprobado",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:34:00"
+  },
+  {
+    "Id": 6,
+    "CatalogoId": "CAT-006",
+    "GrupoName": "Estados de Pedido",
+    "GrupoId": "GRP-EST",
+    "Valor": "Entregado",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:35:00"
+  },
+  {
+    "Id": 7,
+    "CatalogoId": "CAT-007",
+    "GrupoName": "Formas de Pago",
+    "GrupoId": "GRP-PAG",
+    "Valor": "Efectivo",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:36:00"
+  },
+  {
+    "Id": 8,
+    "CatalogoId": "CAT-008",
+    "GrupoName": "Formas de Pago",
+    "GrupoId": "GRP-PAG",
+    "Valor": "Tarjeta de Crédito",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:37:00"
+  },
+  {
+    "Id": 9,
+    "CatalogoId": "CAT-009",
+    "GrupoName": "Formas de Pago",
+    "GrupoId": "GRP-PAG",
+    "Valor": "Transferencia Bancaria",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:38:00"
+  },
+  {
+    "Id": 10,
+    "CatalogoId": "CAT-010",
+    "GrupoName": "Tipos de Producto",
+    "GrupoId": "GRP-PRO",
+    "Valor": "Libro",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2023-01-15T08:39:00"
+  }
+]

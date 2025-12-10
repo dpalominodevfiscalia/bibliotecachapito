@@ -1,0 +1,82 @@
+@model BibliotecaDB.Models.PagoProveedor
+
+<div>
+    <h4>Detalles del Pago a Proveedor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Proveedor.Nombre)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Proveedor.Nombre)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Monto) @Model.Moneda
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.FechaPago)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FechaPago)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.MetodoPago)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.MetodoPago)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NumeroFactura)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NumeroFactura)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Referencia)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Referencia)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Moneda)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Moneda)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TipoCambio)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TipoCambio)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-9">
+            <span class="badge @(Model.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                @Html.DisplayFor(model => model.Estado)
+            </span>
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

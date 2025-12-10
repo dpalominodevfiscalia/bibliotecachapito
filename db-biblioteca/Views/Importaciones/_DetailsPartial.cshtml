@@ -1,0 +1,108 @@
+@model BibliotecaDB.Models.Importacion
+
+<div class="form-group">
+    <label class="control-label">Número de Importación</label>
+    <div>@Model.NumeroImportacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Proveedor</label>
+    <div>@Model.Proveedor?.Nombre</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Importación</label>
+    <div>@Model.FechaImportacion</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">País de Origen</label>
+    <div>@Model.PaisOrigen</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Puerto de Entrada</label>
+    <div>@Model.PuertoEntrada</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Incoterm</label>
+    <div>@Model.Incoterm</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Medio de Transporte</label>
+    <div>@Model.MedioTransporte</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Número de Guía</label>
+    <div>@Model.NumeroGuia</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Número de Factura</label>
+    <div>@Model.NumeroFactura</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor FOB</label>
+    <div>@Model.ValorFOB</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor CIF</label>
+    <div>@Model.ValorCIF</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Porcentaje de Arancel</label>
+    <div>@Model.PorcentajeArancel%</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor de Arancel</label>
+    <div>@Model.ValorArancel</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Porcentaje de IGV</label>
+    <div>@Model.PorcentajeIGV%</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor de IGV</label>
+    <div>@Model.ValorIGV</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Valor Total</label>
+    <div>@Model.ValorTotal</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Observaciones</label>
+    <div>@Model.Observaciones</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Estado Aduana</label>
+    <div>@Model.EstadoAduana</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Llegada</label>
+    <div>@Model.FechaLlegada</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Despacho</label>
+    <div>@Model.FechaDespacho</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Estado</label>
+    <div>@Model.Estado</div>
+</div>
+
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

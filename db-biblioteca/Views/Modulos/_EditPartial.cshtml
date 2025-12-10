@@ -1,0 +1,64 @@
+@model BibliotecaDB.Models.Modulo
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descripcion" class="control-label"></label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Icono" class="control-label"></label>
+        <div class="input-group">
+            <input asp-for="Icono" class="form-control" />
+            <div class="input-group-append">
+                <button type="button" class="btn btn-info" onclick="showIconPicker()">
+                    <i class="fas fa-icons"></i> Seleccionar Icono
+                </button>
+            </div>
+        </div>
+        <span asp-validation-for="Icono" class="text-danger"></span>
+        <div class="mt-2">
+            <i id="iconPreview" class="@Model.Icono" style="font-size: 24px;"></i>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Ruta" class="control-label"></label>
+        <input asp-for="Ruta" class="form-control" />
+        <span asp-validation-for="Ruta" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Orden" class="control-label"></label>
+        <input asp-for="Orden" class="form-control" type="number" min="0" max="999" />
+        <span asp-validation-for="Orden" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>
+
+<script>
+    function showIconPicker() {
+        // This would open an icon picker modal/dialog
+        alert('Icon picker would be implemented here');
+    }
+
+    // Update icon preview when icon input changes
+    $('#Icono').on('input', function() {
+        $('#iconPreview').removeClass().addClass($(this).val());
+    });
+</script>

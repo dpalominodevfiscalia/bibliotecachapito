@@ -1,0 +1,92 @@
+{
+  "modulos": [
+    {
+      "id": 1,
+      "nombre": "Compras",
+      "descripcion": "Módulo de gestión de compras y proveedores",
+      "icono": "fas fa-shopping-cart",
+      "ruta": "/Compras",
+      "orden": 1,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Aprobar"]
+    },
+    {
+      "id": 2,
+      "nombre": "Almacen",
+      "descripcion": "Módulo de gestión de inventario y almacén",
+      "icono": "fas fa-warehouse",
+      "ruta": "/Almacen",
+      "orden": 2,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Transferir"]
+    },
+    {
+      "id": 3,
+      "nombre": "Ventas",
+      "descripcion": "Módulo de gestión de ventas y clientes",
+      "icono": "fas fa-cash-register",
+      "ruta": "/Ventas",
+      "orden": 3,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Cotizar"]
+    },
+    {
+      "id": 4,
+      "nombre": "Tesorería",
+      "descripcion": "Módulo de gestión financiera y tesorería",
+      "icono": "fas fa-piggy-bank",
+      "ruta": "/Tesoria",
+      "orden": 4,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Conciliar"]
+    },
+    {
+      "id": 5,
+      "nombre": "Contabilidad",
+      "descripcion": "Módulo de contabilidad y estados financieros",
+      "icono": "fas fa-calculator",
+      "ruta": "/Contabilidad",
+      "orden": 5,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "CerrarPeriodo"]
+    },
+    {
+      "id": 6,
+      "nombre": "Producción",
+      "descripcion": "Módulo de gestión de producción y manufactura",
+      "icono": "fas fa-industry",
+      "ruta": "/Produccion",
+      "orden": 6,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Planificar"]
+    },
+    {
+      "id": 7,
+      "nombre": "Planillas",
+      "descripcion": "Módulo de gestión de planillas y recursos humanos",
+      "icono": "fas fa-file-invoice-dollar",
+      "ruta": "/Planillas",
+      "orden": 7,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Procesar"]
+    },
+    {
+      "id": 8,
+      "nombre": "Facturación Electrónica",
+      "descripcion": "Módulo de facturación electrónica y documentos digitales",
+      "icono": "fas fa-receipt",
+      "ruta": "/FacturacionElectronica",
+      "orden": 8,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Enviar"]
+    }
+  ],
+  "configuracion": {
+    "version": "1.0",
+    "fechaCreacion": "2025-12-08",
+    "ultimaActualizacion": "2025-12-08",
+    "creadoPor": "Sistema",
+    "modulosActivos": 8,
+    "modulosTotales": 8
+  }
+}

@@ -13,6 +13,10 @@ namespace BibliotecaDB.Models
         public List<int> ActionIds { get; set; } // Store action IDs instead of action type strings
         public string Estado { get; set; } = "Activo";
 
+        // Module assignment for MenuItem
+        public int ModuloId { get; set; }
+        public virtual Modulo Modulo { get; set; }
+
         public MenuItem()
         {
             Profiles = new List<int>();

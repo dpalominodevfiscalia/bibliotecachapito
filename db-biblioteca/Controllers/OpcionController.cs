@@ -95,6 +95,9 @@ namespace BibliotecaDB.Controllers
                 AvailableActions = _dataService.GetAcciones()
             };
 
+            // Add modules for module selection using ViewBag for SelectList
+            ViewBag.Modulos = new SelectList(_dataService.GetModulos(), "Id", "Nombre");
+
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_CreatePartial", viewModel);
@@ -105,7 +108,7 @@ namespace BibliotecaDB.Controllers
         // POST: Opcion/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,Title,Url,Icon,Estado")] MenuItem menuItem, string[] selectedProfiles, string[] selectedRoles, string[] selectedActions)
+        public async Task<ActionResult> Create([Bind("Id,Title,Url,Icon,Estado,ModuloId")] MenuItem menuItem, string[] selectedProfiles, string[] selectedRoles, string[] selectedActions)
         {
             if (ModelState.IsValid)
             {
@@ -180,6 +183,9 @@ namespace BibliotecaDB.Controllers
                 AvailableActions = _dataService.GetAcciones()
             };
 
+            // Add modules for module selection using ViewBag for SelectList
+            ViewBag.Modulos = new SelectList(_dataService.GetModulos(), "Id", "Nombre", menuItem.ModuloId);
+
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_EditPartial", viewModel);
@@ -190,7 +196,7 @@ namespace BibliotecaDB.Controllers
         // POST: Opcion/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind("Id,Title,Url,Icon,Estado")] MenuItem menuItem, string[] selectedProfiles, string[] selectedRoles, string[] selectedActions)
+        public async Task<ActionResult> Edit([Bind("Id,Title,Url,Icon,Estado,ModuloId")] MenuItem menuItem, string[] selectedProfiles, string[] selectedRoles, string[] selectedActions)
         {
             if (ModelState.IsValid)
             {
@@ -230,6 +236,7 @@ namespace BibliotecaDB.Controllers
                     }
                 }
 
+                //_dataService.UpdateOpcion(menuItem);
                 _dataService.UpdateOpcionItem(menuItem);
                 if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
                 {

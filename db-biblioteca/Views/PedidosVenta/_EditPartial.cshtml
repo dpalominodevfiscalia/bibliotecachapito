@@ -1,0 +1,79 @@
+@model BibliotecaDB.Models.PedidoVenta
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="NumeroPedido" class="control-label"></label>
+        <input asp-for="NumeroPedido" class="form-control" />
+        <span asp-validation-for="NumeroPedido" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdCliente" class="control-label"></label>
+        <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente">
+            <option value="">-- Seleccione Cliente --</option>
+        </select>
+        <span asp-validation-for="IdCliente" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdCotizacion" class="control-label"></label>
+        <select asp-for="IdCotizacion" class="form-control" asp-items="ViewBag.IdCotizacion">
+            <option value="">-- Seleccione Cotización --</option>
+        </select>
+        <span asp-validation-for="IdCotizacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaPedido" class="control-label"></label>
+        <input asp-for="FechaPedido" class="form-control" type="date" />
+        <span asp-validation-for="FechaPedido" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaEntrega" class="control-label"></label>
+        <input asp-for="FechaEntrega" class="form-control" type="date" />
+        <span asp-validation-for="FechaEntrega" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CondicionesPago" class="control-label"></label>
+        <input asp-for="CondicionesPago" class="form-control" />
+        <span asp-validation-for="CondicionesPago" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Moneda" class="control-label"></label>
+        <input asp-for="Moneda" class="form-control" />
+        <span asp-validation-for="Moneda" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Subtotal" class="control-label"></label>
+        <input asp-for="Subtotal" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Subtotal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Impuestos" class="control-label"></label>
+        <input asp-for="Impuestos" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Impuestos" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Total" class="control-label"></label>
+        <input asp-for="Total" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Total" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Observaciones" class="control-label"></label>
+        <textarea asp-for="Observaciones" class="form-control"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado" class="control-label"></label>
+        <input asp-for="Estado" class="form-control" />
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vendedor" class="control-label"></label>
+        <input asp-for="Vendedor" class="form-control" />
+        <span asp-validation-for="Vendedor" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

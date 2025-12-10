@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 1,
+    "NumeroCotizacion": "897979798",
+    "IdCliente": 1,
+    "FechaCotizacion": "2025-12-09T21:39:26.9468198-05:00",
+    "FechaValidez": "2026-01-08T00:00:00",
+    "CondicionesPago": "4234324",
+    "Moneda": "PEN",
+    "Subtotal": 1,
+    "Impuestos": 1,
+    "Total": 2,
+    "Observaciones": "kmhkhjkh",
+    "Estado": "Pendiente",
+    "Vendedor": "756756",
+    "Cliente": null
+  }
+]

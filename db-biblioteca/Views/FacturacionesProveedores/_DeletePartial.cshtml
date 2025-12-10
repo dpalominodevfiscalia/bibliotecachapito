@@ -1,0 +1,34 @@
+@model BibliotecaDB.Models.FacturacionProveedor
+
+<h3>¿Estás seguro de que quieres eliminar esta facturación?</h3>
+<div class="alert alert-warning">
+    <p>Esta acción no se puede deshacer.</p>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Número de Factura</label>
+    <div>@Model.NumeroFactura</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Proveedor</label>
+    <div>@Model.Proveedor?.Nombre</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Fecha de Factura</label>
+    <div>@Model.FechaFactura</div>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Total</label>
+    <div>@Model.Total</div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

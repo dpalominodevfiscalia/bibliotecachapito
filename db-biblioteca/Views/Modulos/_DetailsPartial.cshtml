@@ -1,0 +1,59 @@
+@model BibliotecaDB.Models.Modulo
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Icono)
+            </dt>
+            <dd class="col-sm-8">
+                <i class="@Model.Icono" style="font-size: 24px;"></i> @Model.Icono
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Ruta)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Ruta)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Orden)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Orden)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class="col-sm-8">
+                @if (Model.Estado == "Activo")
+                {
+                    <span class="badge badge-success">
+                        <i class="fas fa-check-circle"></i> @Model.Estado
+                    </span>
+                }
+                else
+                {
+                    <span class="badge badge-danger">
+                        <i class="fas fa-times-circle"></i> @Model.Estado
+                    </span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

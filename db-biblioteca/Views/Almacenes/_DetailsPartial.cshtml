@@ -1,0 +1,44 @@
+@model BibliotecaDB.Models.Almacen
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Nombre)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Nombre)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Descripcion)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Descripcion)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Ubicacion)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Ubicacion)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Responsable)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Responsable)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="col-sm-10">
+        @(Model.Estado ? "Activo" : "Inactivo")
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FechaCreacion)
+    </dt>
+    <dd class="col-sm-10">
+        @Model.FechaCreacion.ToString("dd/MM/yyyy HH:mm")
+    </dd>
+</dl>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+</div>

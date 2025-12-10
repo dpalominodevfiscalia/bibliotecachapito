@@ -1,0 +1,141 @@
+@model BibliotecaDB.Models.Importacion
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="NumeroImportacion" class="control-label"></label>
+        <input asp-for="NumeroImportacion" class="form-control" placeholder="Ej: IMP-0001" />
+        <span asp-validation-for="NumeroImportacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IdProveedor" class="control-label"></label>
+        <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.IdProveedor"></select>
+        <span asp-validation-for="IdProveedor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaImportacion" class="control-label"></label>
+        <input asp-for="FechaImportacion" class="form-control" type="datetime-local" />
+        <span asp-validation-for="FechaImportacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PaisOrigen" class="control-label"></label>
+        <input asp-for="PaisOrigen" class="form-control" placeholder="Ej: China" />
+        <span asp-validation-for="PaisOrigen" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PuertoEntrada" class="control-label"></label>
+        <input asp-for="PuertoEntrada" class="form-control" placeholder="Ej: Callao" />
+        <span asp-validation-for="PuertoEntrada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Incoterm" class="control-label"></label>
+        <select asp-for="Incoterm" class="form-control">
+            <option value="FOB">FOB - Free On Board</option>
+            <option value="CIF">CIF - Cost, Insurance and Freight</option>
+            <option value="EXW">EXW - Ex Works</option>
+            <option value="CFR">CFR - Cost and Freight</option>
+            <option value="DDP">DDP - Delivered Duty Paid</option>
+        </select>
+        <span asp-validation-for="Incoterm" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MedioTransporte" class="control-label"></label>
+        <input asp-for="MedioTransporte" class="form-control" placeholder="Ej: Marítimo" />
+        <span asp-validation-for="MedioTransporte" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumeroGuia" class="control-label"></label>
+        <input asp-for="NumeroGuia" class="form-control" placeholder="Ej: GUIA-12345" />
+        <span asp-validation-for="NumeroGuia" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumeroFactura" class="control-label"></label>
+        <input asp-for="NumeroFactura" class="form-control" placeholder="Ej: FACT-67890" />
+        <span asp-validation-for="NumeroFactura" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValorFOB" class="control-label"></label>
+        <input asp-for="ValorFOB" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ValorFOB" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValorCIF" class="control-label"></label>
+        <input asp-for="ValorCIF" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ValorCIF" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PorcentajeArancel" class="control-label"></label>
+        <input asp-for="PorcentajeArancel" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="PorcentajeArancel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValorArancel" class="control-label"></label>
+        <input asp-for="ValorArancel" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ValorArancel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PorcentajeIGV" class="control-label"></label>
+        <input asp-for="PorcentajeIGV" class="form-control" type="number" step="0.01" value="18" />
+        <span asp-validation-for="PorcentajeIGV" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValorIGV" class="control-label"></label>
+        <input asp-for="ValorIGV" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ValorIGV" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ValorTotal" class="control-label"></label>
+        <input asp-for="ValorTotal" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ValorTotal" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Observaciones" class="control-label"></label>
+        <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EstadoAduana" class="control-label"></label>
+        <select asp-for="EstadoAduana" class="form-control">
+            <option value="En trámite">En trámite</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Rechazado">Rechazado</option>
+            <option value="Despachado">Despachado</option>
+        </select>
+        <span asp-validation-for="EstadoAduana" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaLlegada" class="control-label"></label>
+        <input asp-for="FechaLlegada" class="form-control" type="date" />
+        <span asp-validation-for="FechaLlegada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaDespacho" class="control-label"></label>
+        <input asp-for="FechaDespacho" class="form-control" type="date" />
+        <span asp-validation-for="FechaDespacho" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Crear Importación" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

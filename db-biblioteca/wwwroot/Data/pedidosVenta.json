@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 1,
+    "NumeroPedido": "65465465464",
+    "IdCliente": 1,
+    "IdCotizacion": 1,
+    "FechaPedido": "2025-12-09T21:54:50.9959572-05:00",
+    "FechaEntrega": "2025-03-15T00:00:00",
+    "CondicionesPago": "4234324",
+    "Moneda": "PEN",
+    "Subtotal": 345,
+    "Impuestos": 34,
+    "Total": 435,
+    "Observaciones": "534",
+    "Estado": "Pendiente",
+    "Vendedor": "756756",
+    "Cliente": null,
+    "Cotizacion": null
+  }
+]

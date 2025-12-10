@@ -1,0 +1,18 @@
+@model BibliotecaDB.Models.PagoProveedor
+
+<form asp-action="Delete">
+    <div class="modal-body">
+        <h5>¿Estás seguro de que deseas eliminar este pago a proveedor?</h5>
+        <div class="alert alert-warning">
+            <p><strong>Proveedor:</strong> @Model.Proveedor?.Nombre</p>
+            <p><strong>Monto:</strong> @Model.Monto @Model.Moneda</p>
+            <p><strong>Fecha de Pago:</strong> @Model.FechaPago.ToString("dd/MM/yyyy")</p>
+            <p><strong>Método de Pago:</strong> @Model.MetodoPago</p>
+        </div>
+        <input type="hidden" asp-for="Id" />
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

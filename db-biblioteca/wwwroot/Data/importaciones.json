@@ -1,0 +1,28 @@
+[
+  {
+    "Id": 1,
+    "NumeroImportacion": "IMP-001",
+    "IdProveedor": 1,
+    "Proveedor": null,
+    "FechaImportacion": "2025-12-09T02:22:00",
+    "PaisOrigen": "China",
+    "PuertoEntrada": "1525",
+    "Incoterm": "FOB",
+    "MedioTransporte": "12",
+    "NumeroGuia": "guia -15212",
+    "NumeroFactura": "FAC6445",
+    "ValorFOB": 213123,
+    "ValorCIF": 11,
+    "PorcentajeArancel": 10,
+    "ValorArancel": 11,
+    "PorcentajeIGV": 18,
+    "ValorIGV": 18,
+    "ValorTotal": 100,
+    "Observaciones": null,
+    "Estado": "Activo",
+    "EstadoAduana": "En tr\u00E1mite",
+    "FechaLlegada": "2025-12-09T00:00:00",
+    "FechaDespacho": "2025-12-09T00:00:00",
+    "Detalles": []
+  }
+]

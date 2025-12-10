@@ -9,24 +9,81 @@
 <div class="d-flex justify-content-between mb-3">
     <div class="d-flex align-items-center">
         <button type="button" class="btn btn-success mr-3" data-toggle="modal" data-target="#createModal" title="Crear Nuevo Elemento de Menú">
-            <i class="fas fa-plus"></i> 
+            <i class="fas fa-plus"></i>
         </button>
         <a asp-action="BulkAssign" class="btn btn-info mr-3" title="Asignar Acciones de Menú Masivas" style="display:none;">
             <i class="fas fa-tasks"></i> Asignar Acciones de Menú Masivas
         </a>
         <div class="action-buttons">
             <button type="button" class="btn btn-primary btn-sm" id="editSelected" disabled>
-                <i class="fas fa-edit"></i> 
+                <i class="fas fa-edit"></i>
             </button>
             <button type="button" class="btn btn-info btn-sm" id="detailsSelected" disabled data-toggle="modal" data-target="#detailsModal">
-                <i class="fas fa-info-circle"></i> 
+                <i class="fas fa-info-circle"></i>
             </button>
             <button type="button" class="btn btn-danger btn-sm" id="deleteSelected" disabled>
-                <i class="fas fa-trash"></i> 
+                <i class="fas fa-trash"></i>
             </button>
             <button type="button" class="btn btn-warning btn-sm" id="toggleSelected" disabled>
                 <i class="fas fa-power-off"></i> <span id="toggleButtonText"> </span>
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- Search and Filter Controls -->
+<div class="card mb-3">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Búsqueda y Filtros</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="searchInput">Búsqueda Global:</label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar en todas las columnas...">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="titleFilter">Título:</label>
+                    <input type="text" class="form-control" id="titleFilter" placeholder="Filtrar título...">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="urlFilter">URL:</label>
+                    <input type="text" class="form-control" id="urlFilter" placeholder="Filtrar URL...">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="moduleFilter">Módulo:</label>
+                    <select class="form-control" id="moduleFilter">
+                        <option value="">Todos</option>
+                        @foreach (var modulo in _dataService.GetModulos())
+                        {
+                            <option value="@modulo.Nombre">@modulo.Nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="stateFilter">Estado:</label>
+                    <select class="form-control" id="stateFilter">
+                        <option value="">Todos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-secondary" id="clearFilters">Limpiar Filtros</button>
+                <button class="btn btn-primary" id="applyFilters">Aplicar Filtros</button>
+            </div>
         </div>
     </div>
 </div>
@@ -44,6 +101,9 @@
                 @Html.DisplayNameFor(model => model.Icon)
             </th>
             <th>
+                Módulo
+            </th>
+            <th>
                 Perfiles
             </th>
             <th>
@@ -58,71 +118,85 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @{
-                    var permissions = ViewBag.ActionPermissions as Dictionary<int, Dictionary<string, bool>>;
-                    var itemPermissions = permissions != null && permissions.ContainsKey(item.Id) ? permissions[item.Id] : new Dictionary<string, bool>();
-                    var canEdit = itemPermissions.ContainsKey("Editar") && itemPermissions["Editar"];
-                    var canDelete = itemPermissions.ContainsKey("Eliminar") && itemPermissions["Eliminar"];
-                    var canDetails = itemPermissions.ContainsKey("Detalles") && itemPermissions["Detalles"];
-                    var canToggle = itemPermissions.ContainsKey("ToggleEstado") && itemPermissions["ToggleEstado"];
-                }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        var permissions = ViewBag.ActionPermissions as Dictionary<int, Dictionary<string, bool>>;
+                        var itemPermissions = permissions != null && permissions.ContainsKey(item.Id) ? permissions[item.Id] : new Dictionary<string, bool>();
+                        var canEdit = itemPermissions.ContainsKey("Editar") && itemPermissions["Editar"];
+                        var canDelete = itemPermissions.ContainsKey("Eliminar") && itemPermissions["Eliminar"];
+                        var canDetails = itemPermissions.ContainsKey("Detalles") && itemPermissions["Detalles"];
+                        var canToggle = itemPermissions.ContainsKey("ToggleEstado") && itemPermissions["ToggleEstado"];
+                    }
 
-                <input type="radio" name="selectOpcion" class="opcion-radio" value="@item.Id" data-opcionname="@item.Title" data-state="@item.Estado" onchange="handleOpcionSelection()">
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Icon)
-            </td>
-            <td>
-                @if (item.Profiles != null && item.Profiles.Any())
-                {
-                    @string.Join(", ", item.Profiles)
-                }
-                else
-                {
-                    @: N/A
-                }
-            </td>
-            <td>
-                @if (item.Roles != null && item.Roles.Any())
-                {
-                    @string.Join(", ", item.Roles)
-                }
-                else
-                {
-                    @: N/A
-                }
-            </td>
-            <td>
-                @{
-                    var actionNames = _dataService.GetActionNamesFromIds(item.ActionIds);
-                    @actionNames
-                }
-            </td>
-            <td>
-               @if (item.Estado == "Activo")
-            {
-                <span class="badge badge-success">
-                    <i class="fas fa-check-circle"></i> @item.Estado
-                </span>
-            }
-            else
-            {
-                <span class="badge badge-danger">
-                    <i class="fas fa-times-circle"></i> @item.Estado
-                </span>
-            }
-            </td>
-        </tr>
-}
+                    <input type="radio" name="selectOpcion" class="opcion-radio" value="@item.Id" data-opcionname="@item.Title" data-state="@item.Estado" onchange="handleOpcionSelection()">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Icon)
+                </td>
+                <td>
+                    @{
+                        var modulo = _dataService.GetModuloById(item.ModuloId);
+                        if (modulo != null)
+                        {
+                            @modulo.Nombre
+                        }
+                        else
+                        {
+                            @: N/A
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.Profiles != null && item.Profiles.Any())
+                    {
+                        @string.Join(", ", item.Profiles)
+                    }
+                    else
+                    {
+                        @: N/A
+                    }
+                </td>
+                <td>
+                    @if (item.Roles != null && item.Roles.Any())
+                    {
+                        @string.Join(", ", item.Roles)
+                    }
+                    else
+                    {
+                        @: N/A
+                    }
+                </td>
+                <td>
+                    @{
+                        var actionNames = _dataService.GetActionNamesFromIds(item.ActionIds);
+                        @actionNames
+                    }
+                </td>
+                <td>
+                    @if (item.Estado == "Activo")
+                    {
+                        <span class="badge badge-success">
+                            <i class="fas fa-check-circle"></i> @item.Estado
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">
+                            <i class="fas fa-times-circle"></i> @item.Estado
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
@@ -404,6 +478,123 @@
                     });
                 }
             }
+        });
+    </script>
+
+    <!-- Search and Filter JavaScript -->
+    <script>
+        $(document).ready(function() {
+            // Real-time search functionality
+            $('#searchInput').on('input', function() {
+                var searchText = $(this).val().toLowerCase();
+                filterTable(searchText, $('#titleFilter').val(), $('#urlFilter').val(), $('#moduleFilter').val(), $('#stateFilter').val());
+            });
+
+            // Apply filters button
+            $('#applyFilters').click(function() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var titleFilter = $('#titleFilter').val().toLowerCase();
+                var urlFilter = $('#urlFilter').val().toLowerCase();
+                var moduleFilter = $('#moduleFilter').val();
+                var stateFilter = $('#stateFilter').val();
+
+                filterTable(searchText, titleFilter, urlFilter, moduleFilter, stateFilter);
+            });
+
+            // Clear filters button
+            $('#clearFilters').click(function() {
+                $('#searchInput').val('');
+                $('#titleFilter').val('');
+                $('#urlFilter').val('');
+                $('#moduleFilter').val('');
+                $('#stateFilter').val('');
+
+                // Show all rows
+                $('table tbody tr').show();
+            });
+
+            function filterTable(searchText, titleFilter, urlFilter, moduleFilter, stateFilter) {
+                $('table tbody tr').each(function() {
+                    var row = $(this);
+                    var title = row.find('td:eq(1)').text().toLowerCase();
+                    var url = row.find('td:eq(2)').text().toLowerCase();
+                    var module = row.find('td:eq(4)').text();
+                    var state = row.find('td:eq(8)').text().trim();
+
+                    // Check if row matches all filter criteria
+                    var matchesSearch = true;
+                    var matchesTitle = true;
+                    var matchesUrl = true;
+                    var matchesModule = true;
+                    var matchesState = true;
+
+                    // Apply search filter (searches in all columns)
+                    if (searchText) {
+                        matchesSearch = title.includes(searchText) ||
+                                      url.includes(searchText) ||
+                                      module.includes(searchText) ||
+                                      state.includes(searchText);
+                    }
+
+                    // Apply title filter
+                    if (titleFilter) {
+                        matchesTitle = title.includes(titleFilter);
+                    }
+
+                    // Apply URL filter
+                    if (urlFilter) {
+                        matchesUrl = url.includes(urlFilter);
+                    }
+
+                    // Apply module filter
+                    if (moduleFilter) {
+                        matchesModule = module === moduleFilter;
+                    }
+
+                    // Apply state filter
+                    if (stateFilter) {
+                        matchesState = state === stateFilter;
+                    }
+
+                    // Show/hide row based on all filters
+                    if (matchesSearch && matchesTitle && matchesUrl && matchesModule && matchesState) {
+                        row.show();
+                    } else {
+                        row.hide();
+                    }
+                });
+            }
+
+            // Add individual column filter inputs with real-time filtering
+            $('#titleFilter').on('input', function() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var titleFilter = $(this).val().toLowerCase();
+                var urlFilter = $('#urlFilter').val().toLowerCase();
+                var moduleFilter = $('#moduleFilter').val();
+                var stateFilter = $('#stateFilter').val();
+
+                filterTable(searchText, titleFilter, urlFilter, moduleFilter, stateFilter);
+            });
+
+            $('#urlFilter').on('input', function() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var titleFilter = $('#titleFilter').val().toLowerCase();
+                var urlFilter = $(this).val().toLowerCase();
+                var moduleFilter = $('#moduleFilter').val();
+                var stateFilter = $('#stateFilter').val();
+
+                filterTable(searchText, titleFilter, urlFilter, moduleFilter, stateFilter);
+            });
+
+            $('#moduleFilter, #stateFilter').change(function() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var titleFilter = $('#titleFilter').val().toLowerCase();
+                var urlFilter = $('#urlFilter').val().toLowerCase();
+                var moduleFilter = $('#moduleFilter').val();
+                var stateFilter = $('#stateFilter').val();
+
+                filterTable(searchText, titleFilter, urlFilter, moduleFilter, stateFilter);
+            });
         });
     </script>
 }

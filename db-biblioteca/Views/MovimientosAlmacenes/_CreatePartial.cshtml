@@ -1,0 +1,54 @@
+@model BibliotecaDB.Models.MovimientoAlmacen
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="IdTipoMovimiento" class="control-label"></label>
+        <select asp-for="IdTipoMovimiento" class="form-control" asp-items="ViewBag.IdTipoMovimiento"></select>
+        <span asp-validation-for="IdTipoMovimiento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdAlmacenOrigen" class="control-label"></label>
+        <select asp-for="IdAlmacenOrigen" class="form-control" asp-items="ViewBag.IdAlmacenOrigen"></select>
+        <span asp-validation-for="IdAlmacenOrigen" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdAlmacenDestino" class="control-label"></label>
+        <select asp-for="IdAlmacenDestino" class="form-control" asp-items="ViewBag.IdAlmacenDestino">
+            <option value="">-- Seleccione almacén destino (opcional) --</option>
+        </select>
+        <span asp-validation-for="IdAlmacenDestino" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdProducto" class="control-label"></label>
+        <select asp-for="IdProducto" class="form-control" asp-items="ViewBag.IdProducto"></select>
+        <span asp-validation-for="IdProducto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cantidad" class="control-label"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Observaciones" class="control-label"></label>
+        <textarea asp-for="Observaciones" class="form-control"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DocumentoReferencia" class="control-label"></label>
+        <input asp-for="DocumentoReferencia" class="form-control" />
+        <span asp-validation-for="DocumentoReferencia" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado" class="control-label"></label>
+        <select asp-for="Estado" class="form-control">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-primary" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+</form>

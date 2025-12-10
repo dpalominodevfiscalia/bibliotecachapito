@@ -1,0 +1,197 @@
+@model IEnumerable<BibliotecaDB.Models.ProgramacionOrdenProduccion>
+@{
+    ViewData["Title"] = "Programaciones de Órdenes de Producción";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@ViewData["Title"]</h2>
+
+            <div class="card">
+                <div class="card-header">
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                            <i class="fas fa-plus"></i> Crear Nueva Programación
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="programacionesTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha Programada</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin</th>
+                                    <th>Estado</th>
+                                    <th>Prioridad</th>
+                                    <th>Responsable</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.CodigoOrden</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.FechaProgramada.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.FechaInicio.ToString("dd/MM/yyyy")</td>
+                                        <td>@(item.FechaFin.HasValue ? item.FechaFin.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                                        <td>
+                                            <span class="badge @(item.Estado == "Activo" ? "badge-success" : "badge-danger")">
+                                                @item.Estado
+                                            </span>
+                                        </td>
+                                        <td>@item.Prioridad</td>
+                                        <td>@item.Responsable</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailsModal-@item.Id">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal-@item.Id">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-@item.Id">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                <button class="btn btn-secondary btn-sm" onclick="toggleEstado(@item.Id)">
+                                                    <i class="fas fa-sync"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Crear Programación de Orden de Producción</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_CreatePartial" model="new BibliotecaDB.Models.ProgramacionOrdenProduccion()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modals -->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="editModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="editModalLabel-@item.Id" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <partial name="_EditPartial" model="item" />
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Details Modals -->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="detailsModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel-@item.Id" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <partial name="_DetailsPartial" model="item" />
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Delete Modals -->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@item.Id" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <partial name="_DeletePartial" model="item" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#programacionesTable').DataTable({
+                "responsive": true,
+                "autoWidth": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                }
+            });
+
+            // Handle form submissions via AJAX
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+
+                var form = $(this);
+                var url = form.attr('action');
+                var method = form.attr('method');
+                var data = form.serialize();
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: data,
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success(response.message);
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Error al procesar la solicitud');
+                        console.error(error);
+                    }
+                });
+            });
+        });
+
+        function toggleEstado(id) {
+            $.ajax({
+                url: '/ProgramacionesOrdenesProduccion/ToggleEstado/' + id,
+                method: 'POST',
+                success: function(response) {
+                    if (response.success) {
+                        toastr.success('Estado actualizado a: ' + response.newEstado);
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        toastr.error('Error al actualizar el estado');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error al actualizar el estado');
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+}

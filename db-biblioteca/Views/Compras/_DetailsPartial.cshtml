@@ -1,7 +1,20 @@
 @model BibliotecaDB.Models.Compra
 
 <div>
-    <h4>Detalles de la Compra</h4>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Detalles de la Compra</h4>
+        <div class="action-buttons">
+            <button type="button" class="btn btn-primary btn-sm" onclick="editCompra(@Model.Id)" title="Editar Compra">
+                <i class="fas fa-edit"></i> Editar
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="deleteCompra(@Model.Id)" title="Eliminar Compra">
+                <i class="fas fa-trash"></i> Eliminar
+            </button>
+            <button type="button" class="btn btn-info btn-sm" onclick="viewDetalles(@Model.Id)" title="Ver Detalles de Compra">
+                <i class="fas fa-list"></i> Detalles
+            </button>
+        </div>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-3">
@@ -125,3 +138,32 @@
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 </div>
+
+<script>
+    function editCompra(id) {
+        // Close current modal
+        $('.modal').modal('hide');
+
+        // Load edit form via AJAX
+        $.get('/Compras/Edit/' + id, function(data) {
+            $('#editModalContent').html(data);
+            $('#editModal').modal('show');
+        });
+    }
+
+    function deleteCompra(id) {
+        // Close current modal
+        $('.modal').modal('hide');
+
+        // Load delete confirmation via AJAX
+        $.get('/Compras/Delete/' + id, function(data) {
+            $('#deleteModalContent').html(data);
+            $('#deleteModal').modal('show');
+        });
+    }
+
+    function viewDetalles(id) {
+        // Redirect to compra detalles page
+        window.location.href = '/CompraDetalles/Index?idCompra=' + id;
+    }
+</script>

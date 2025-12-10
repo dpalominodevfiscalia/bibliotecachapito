@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "IdProveedor": 1,
+    "Proveedor": null,
+    "Monto": 100,
+    "FechaPago": "2025-12-09T00:00:00",
+    "MetodoPago": "Transferencia",
+    "Referencia": "345345345",
+    "Observaciones": "43534534",
+    "NumeroFactura": "FAC6445",
+    "Moneda": "PEN",
+    "TipoCambio": 43534534,
+    "MontoSoles": 100,
+    "Estado": "Activo"
+  }
+]

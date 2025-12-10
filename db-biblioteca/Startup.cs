@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using BibliotecaDB.Models;
+using System;
 
 namespace BibliotecaDB
 {
@@ -19,6 +22,27 @@ namespace BibliotecaDB
         {
             services.AddControllersWithViews();
             services.AddSingleton<BibliotecaDB.Services.DataService>();
+
+            // Add authentication services
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "CookieAuthentication";
+                options.DefaultChallengeScheme = "CookieAuthentication";
+                options.DefaultSignInScheme = "CookieAuthentication";
+            })
+            .AddCookie("CookieAuthentication", options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.ExpireTimeSpan = TimeSpan.FromHours(8);
+            });
+
+            // Add authorization services
+            services.AddAuthorization();
+
+            // Add database context configuration
+            services.AddDbContext<BibliotecaDB.Models.BibliotecaDBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("BibliotecaDBContext")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,6 +62,7 @@ namespace BibliotecaDB
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

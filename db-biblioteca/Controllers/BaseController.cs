@@ -39,10 +39,14 @@ namespace BibliotecaDB.Controllers
             return null;
         }
 
-        protected void SetOpcionItems()
+        protected LayoutViewModel CreateLayoutViewModel()
         {
-            ViewBag.OpcionItems = _dataService.GetOpcionItemsForProfile(GetProfileId() ?? 1);
-            ViewBag.CurrentUser = GetCurrentUser();
+            return new LayoutViewModel
+            {
+                OpcionItems = _dataService.GetOpcionItemsForProfile(GetProfileId() ?? 1),
+                ModuleNavigation = _dataService.GetModulos(),
+                CurrentUser = GetCurrentUser()
+            };
         }
 
         protected bool HasActionPermission(string controller, string actionMethod)
@@ -103,6 +107,13 @@ namespace BibliotecaDB.Controllers
 
             var users = _dataService.GetUsuarios();
             return users.FirstOrDefault(u => u.IdPerfil == profileId.Value);
+        }
+
+        // Set OpcionItems for the current request
+        protected void SetOpcionItems()
+        {
+            var layoutViewModel = CreateLayoutViewModel();
+            HttpContext.Items["LayoutViewModel"] = layoutViewModel;
         }
     }
 }
