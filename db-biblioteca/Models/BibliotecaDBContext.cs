@@ -46,5 +46,8 @@ namespace BibliotecaDB.Models
 
         // Production Order Scheduling
         public DbSet<ProgramacionOrdenProduccion> ProgramacionesOrdenesProduccion { get; set; }
+
+        // Gastos Adicionales management
+        public DbSet<GastosAdicionales> GastosAdicionales { get; set; }
     }
 }

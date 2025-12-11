@@ -98,5 +98,175 @@
     "Estado": "Activo",
     "Usuario": "admin",
     "FechaRegistro": "2023-01-15T08:39:00"
+  },
+  {
+    "Id": 11,
+    "CatalogoId": "CAT-011",
+    "GrupoName": "Tipos de Producto",
+    "GrupoId": "GRP-PRO",
+    "Valor": "Bien",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:00:00"
+  },
+  {
+    "Id": 12,
+    "CatalogoId": "CAT-012",
+    "GrupoName": "Tipos de Producto",
+    "GrupoId": "GRP-PRO",
+    "Valor": "Servicio",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:01:00"
+  },
+  {
+    "Id": 13,
+    "CatalogoId": "CAT-013",
+    "GrupoName": "Tipos de Producto",
+    "GrupoId": "GRP-PRO",
+    "Valor": "Material",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:02:00"
+  },
+  {
+    "Id": 14,
+    "CatalogoId": "CAT-014",
+    "GrupoName": "Tipos de Producto",
+    "GrupoId": "GRP-PRO",
+    "Valor": "Equipo",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:03:00"
+  },
+  {
+    "Id": 15,
+    "CatalogoId": "CAT-015",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Unidad",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:04:00"
+  },
+  {
+    "Id": 16,
+    "CatalogoId": "CAT-016",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Kilogramo",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:05:00"
+  },
+  {
+    "Id": 17,
+    "CatalogoId": "CAT-017",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Litro",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:06:00"
+  },
+  {
+    "Id": 18,
+    "CatalogoId": "CAT-018",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Metro",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:07:00"
+  },
+  {
+    "Id": 19,
+    "CatalogoId": "CAT-019",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Caja",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:08:00"
+  },
+  {
+    "Id": 20,
+    "CatalogoId": "CAT-020",
+    "GrupoName": "Unidades de Medida",
+    "GrupoId": "GRP-UNI",
+    "Valor": "Paquete",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:09:00"
+  },
+  {
+    "Id": 21,
+    "CatalogoId": "CAT-021",
+    "GrupoName": "Monedas",
+    "GrupoId": "GRP-MON",
+    "Valor": "PEN",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:10:00"
+  },
+  {
+    "Id": 22,
+    "CatalogoId": "CAT-022",
+    "GrupoName": "Monedas",
+    "GrupoId": "GRP-MON",
+    "Valor": "USD",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:11:00"
+  },
+  {
+    "Id": 23,
+    "CatalogoId": "CAT-023",
+    "GrupoName": "Monedas",
+    "GrupoId": "GRP-MON",
+    "Valor": "EUR",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:12:00"
+  },
+  {
+    "Id": 24,
+    "CatalogoId": "CAT-024",
+    "GrupoName": "Tipos de Documento Inventario",
+    "GrupoId": "GRP-DOC-INV",
+    "Valor": "Factura",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:13:00"
+  },
+  {
+    "Id": 25,
+    "CatalogoId": "CAT-025",
+    "GrupoName": "Tipos de Documento Inventario",
+    "GrupoId": "GRP-DOC-INV",
+    "Valor": "Boleta",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:14:00"
+  },
+  {
+    "Id": 26,
+    "CatalogoId": "CAT-026",
+    "GrupoName": "Tipos de Documento Inventario",
+    "GrupoId": "GRP-DOC-INV",
+    "Valor": "Nota de Crédito",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:15:00"
+  },
+  {
+    "Id": 27,
+    "CatalogoId": "CAT-027",
+    "GrupoName": "Tipos de Documento Inventario",
+    "GrupoId": "GRP-DOC-INV",
+    "Valor": "Nota de Débito",
+    "Estado": "Activo",
+    "Usuario": "admin",
+    "FechaRegistro": "2025-12-11T10:16:00"
   }
 ]

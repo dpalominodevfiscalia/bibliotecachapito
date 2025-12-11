@@ -79,14 +79,24 @@
       "orden": 8,
       "estado": "Activo",
       "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Enviar"]
+    },
+    {
+      "id": 9,
+      "nombre": "Inventario",
+      "descripcion": "Módulo de gestión de inventario y registro de compras",
+      "icono": "fas fa-boxes",
+      "ruta": "/Inventario",
+      "orden": 9,
+      "estado": "Activo",
+      "permisos": ["Crear", "Editar", "Eliminar", "Ver", "Desactivar"]
     }
   ],
   "configuracion": {
     "version": "1.0",
     "fechaCreacion": "2025-12-08",
-    "ultimaActualizacion": "2025-12-08",
+    "ultimaActualizacion": "2025-12-11",
     "creadoPor": "Sistema",
-    "modulosActivos": 8,
-    "modulosTotales": 8
+    "modulosActivos": 9,
+    "modulosTotales": 9
   }
 }

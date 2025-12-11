@@ -50,6 +50,7 @@ namespace BibliotecaDB.Services
         private List<Cobranza> _cobranzas;
         private List<Catalogo> _catalogos;
         private List<ProgramacionOrdenProduccion> _programacionesOrdenesProduccion;
+        private List<GastosAdicionales> _gastosAdicionales;
 
     public DataService(IWebHostEnvironment env)
     {
@@ -98,6 +99,7 @@ namespace BibliotecaDB.Services
             _catalogos = LoadFromFile<Catalogo>("catalogos.json");
             _recetas = LoadFromFile<Receta>("recetas.json");
             _programacionesOrdenesProduccion = LoadFromFile<ProgramacionOrdenProduccion>("programacionesOrdenesProduccion.json");
+            _gastosAdicionales = LoadFromFile<GastosAdicionales>("gastosAdicionales.json");
             PopulateUsuarioDetails();
             PopulateSolicitudUsuario();
             PopulateAccionRelations();
@@ -2105,6 +2107,75 @@ namespace BibliotecaDB.Services
             {
                 programacion.Estado = programacion.Estado == "Activo" ? "Inactivo" : "Activo";
                 SaveToFile("programacionesOrdenesProduccion.json", _programacionesOrdenesProduccion);
+            }
+        }
+
+        // Gastos Adicionales
+        public List<GastosAdicionales> GetGastosAdicionales() => _gastosAdicionales;
+        public GastosAdicionales GetGastosAdicionalesById(int id) => _gastosAdicionales.FirstOrDefault(i => i.Id == id);
+        public void AddGastosAdicionales(GastosAdicionales gastosAdicionales)
+        {
+            // Business logic validation
+            if (string.IsNullOrWhiteSpace(gastosAdicionales.NumeroDocumento))
+                throw new ArgumentException("El número de documento es obligatorio");
+
+            if (string.IsNullOrWhiteSpace(gastosAdicionales.Proveedor))
+                throw new ArgumentException("El proveedor es obligatorio");
+
+            if (string.IsNullOrWhiteSpace(gastosAdicionales.RUC) || gastosAdicionales.RUC.Length != 11)
+                throw new ArgumentException("El RUC debe tener exactamente 11 caracteres");
+
+            if (gastosAdicionales.Cantidad <= 0)
+                throw new ArgumentException("La cantidad debe ser mayor que 0");
+
+            if (gastosAdicionales.CostoUnitario <= 0)
+                throw new ArgumentException("El costo unitario debe ser mayor que 0");
+
+            // Calculate total cost if not provided or validate if provided
+            var calculatedTotal = gastosAdicionales.Cantidad * gastosAdicionales.CostoUnitario;
+            if (gastosAdicionales.CostoTotal == 0)
+            {
+                gastosAdicionales.CostoTotal = calculatedTotal;
+            }
+            else if (Math.Abs(gastosAdicionales.CostoTotal - calculatedTotal) > 0.01m)
+            {
+                throw new ArgumentException("El costo total no coincide con cantidad * costo unitario");
+            }
+
+            gastosAdicionales.Id = _gastosAdicionales.Any() ? _gastosAdicionales.Max(i => i.Id) + 1 : 1;
+            gastosAdicionales.Estado = "Activo";
+            _gastosAdicionales.Add(gastosAdicionales);
+            SaveToFile("gastosAdicionales.json", _gastosAdicionales);
+        }
+        public void UpdateGastosAdicionales(GastosAdicionales gastosAdicionales)
+        {
+            var index = _gastosAdicionales.FindIndex(i => i.Id == gastosAdicionales.Id);
+            if (index != -1)
+            {
+                // Validate business logic
+                var calculatedTotal = gastosAdicionales.Cantidad * gastosAdicionales.CostoUnitario;
+                if (Math.Abs(gastosAdicionales.CostoTotal - calculatedTotal) > 0.01m)
+                {
+                    throw new ArgumentException("El costo total no coincide con cantidad * costo unitario");
+                }
+
+                _gastosAdicionales[index] = gastosAdicionales;
+                SaveToFile("gastosAdicionales.json", _gastosAdicionales);
+            }
+        }
+        public void DeleteGastosAdicionales(int id)
+        {
+            _gastosAdicionales.RemoveAll(i => i.Id == id);
+            SaveToFile("gastosAdicionales.json", _gastosAdicionales);
+        }
+
+        public void ToggleGastosAdicionalesEstado(int id)
+        {
+            var gastosAdicionales = _gastosAdicionales.FirstOrDefault(i => i.Id == id);
+            if (gastosAdicionales != null)
+            {
+                gastosAdicionales.Estado = gastosAdicionales.Estado == "Activo" ? "Inactivo" : "Activo";
+                SaveToFile("gastosAdicionales.json", _gastosAdicionales);
             }
         }
     }
